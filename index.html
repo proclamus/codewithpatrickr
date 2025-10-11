@@ -1,43 +1,569 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Document</title>
+    <title>Seu Nome | Backend, Mobile & Games Developer</title>
+    <!-- Tailwind CSS CDN para estilização moderna e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configuração do Tailwind para usar uma fonte agradável (Inter) e um esquema de cores personalizado -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'background-dark': '#0f172a', // Slate 900
+                        'primary-neon': '#22d3ee',   // Cyan 400
+                        'secondary-gray': '#94a3b8', // Slate 400
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-neon': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Ícones Lucide para um visual limpo (usaremos SVG inline) -->
+    <!-- Nota: No ambiente Canvas, é recomendado usar SVGs inline ou emojis. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .nav-link:hover {
+            color: #22d3ee;
+            transition: color 0.3s;
+        }
+        .code-block {
+            border-left: 4px solid #22d3ee;
+        }
+        /* Estilos para o ícone do menu mobile */
+        .menu-icon {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2rem;
+            height: 2rem;
+            cursor: pointer;
+        }
+        .menu-icon div {
+            width: 2rem;
+            height: 3px;
+            background-color: white;
+            transition: all 0.3s linear;
+            transform-origin: 1px;
+        }
+    </style>
 </head>
-<body>
-    <div class="navbar">
-        <div class="dropdown">
-            <button class="dropbtn">Conteúdos</button>
-            <div class="dropdown-content">
-                <a href="#Html">HTML</a>
-                <a href="#Css">CSS</a>
-                <a href="#Javascript">JavaScript</a>
-                <a href="#CSharp">C#</a>
-                <a href="#Sql">SQL</a>
+<body class="bg-background-dark text-white min-h-screen">
+
+    <!-- Navegação Sticky -->
+    <header class="sticky top-0 z-50 bg-background-dark/95 backdrop-blur-sm shadow-lg border-b border-primary-neon/20">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="text-xl font-bold text-primary-neon tracking-wider">
+                @CodeWithPatrickR
             </div>
+            
+            <!-- Menu Desktop -->
+            <div class="hidden md:flex space-x-8 font-semibold">
+                <a href="#home" class="nav-link text-white hover:text-primary-neon">Início</a>
+                <a href="#conteudos" class="nav-link text-white hover:text-primary-neon flex items-center">Conteúdos</a> 
+                <a href="#contatos" class="nav-link text-white hover:text-primary-neon">Contatos</a>
+                <a href="#publicacoes" class="nav-link text-white hover:text-primary-neon">Publicações</a>
+            </div>
+
+            <!-- Botão Menu Mobile -->
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-neon">
+                <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </nav>
+
+        <!-- Menu Mobile (oculto por padrão) -->
+        <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-primary-neon/20">
+            <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-neon/20" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Início</a>
+            
+            <!-- Conteúdos no Mobile -->
+            <a href="#conteudos" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-neon/20" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Conteúdos (Tecnologias)</a>
+            <div class="pl-4 border-l-2 border-primary-neon/50 space-y-1">
+                <a href="#conteudos-java" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Java & Backend</a>
+                <a href="#conteudos-cs" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">C# & Unity</a>
+                <a href="#conteudos-web" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Web (HTML/CSS/JS)</a>
+                <a href="#conteudos-sql" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">SQL & Databases</a>
+                <a href="#conteudos-python" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Python</a>
+            </div>
+
+            <a href="#contatos" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-neon/20" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Contatos</a>
         </div>
-        <a href="#Quemsou">Quem sou eu?</a>
-        <a href="#Contatos">Contatos</a>
-    </div>
+    </header>
 
-    <div id="showcase">
-        <div class="container">
-        </div>
-    </div>
-    
-    <div class="quemsou">
-        <h1> Quem sou eu? </h1>
-        <br></br>
-        <p>GitHub: https://github.com/proclamus/</p>  
-        <br>  
-        <p>Me chamo Patrick, desde pequeno tenho grande interesse em tecnologias e por isso me formei em Sistemas de Informação pela UFF. Tenho experiência na área financeira e também como desenvolvedor fazendo uso de linguagens como C#, SQL, JS, Python, C e métodos ágeis. Além disso, adoro uma boa musica e jogos online no tempo livre.</p>   
-        <br>
-        <p>Aptidões: Analista de Gestão - Finanças / Desenvolvedor de Sistemas</p>
-    </div>
+    <!-- Conteúdo Principal -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-    
+        <!-- 1. PÁGINA INICIAL / HOME -->
+        <section id="home" class="pt-16 pb-24 min-h-screen flex items-center">
+            <div class="grid md:grid-cols-3 gap-12 items-center">
+                <!-- Foto e Introdução -->
+                <div class="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
+                    <div class="relative w-48 h-48 mb-6">
+                        <!-- Substitua pelo link da sua foto (ou use um placeholder) -->
+                        <img src="AirBrush_20220901151039.jpg" alt="Foto Profissional" 
+                             class="rounded-full border-4 border-primary-neon shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-primary-neon/50">
+                        <span class="absolute bottom-2 right-2 h-4 w-4 bg-green-500 rounded-full ring-2 ring-white animate-pulse"></span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 leading-tight">
+                        Patrick <span class="text-primary-neon">Ribeiro</span>
+                    </h1>
+                    <p class="text-xl text-secondary-gray font-light">
+                        Full Stack | Backend | Mobile & Game Dev
+                    </p>
+                </div>
 
+                <!-- Descrição e Missão -->
+                <div class="md:col-span-2 space-y-6">
+                    <h2 class="text-3xl font-semibold text-primary-neon">Quem Eu Sou</h2>
+                    <p class="text-lg text-secondary-gray leading-relaxed code-block p-4 bg-background-dark/50 rounded-lg">
+                        Atuo como Desenvolvedor de Software, onde a solidez e a segurança do Backend são inegociáveis. Minha base está em C#/.NET, Java e sistemas transacionais.
+                        <br><br>
+                        Paralelamente, canalizo minha paixão por inovação para o desenvolvimento mobile (Flutter) e a criação de Games na Unity. Essa jornada dupla me permite unir a disciplina de sistemas críticos com a criatividade de novas plataformas. Meu foco é ser um especialista em sistemas, com a visão de quem constrói a experiência final do usuário.
+                    </p>
+                </div>
+            </div>
+            
+        </section>
+
+        <section id="techs" class="pt-24 pb-24">
+                        <!-- Blocos de Experiência (Tech Stack) -->
+            <h2 class="text-4xl font-extrabold text-center text-primary-neon mb-12">
+                Tecnologias com que mais trabalho <span class="text-white">(Techs)</span>
+            </h2>
+            <div class="mt-20 w-full">
+                <h3 class="text-2xl font-semibold mb-8 text-center text-primary-neon">Meu Tech Stack Híbrido</h3>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+
+                    <!-- Cartão C# (Backend Core) -->
+                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
+                        <div class="text-4xl mb-2">💻</div>
+                        <p class="font-bold">C# / .NET</p>
+                        <p class="text-sm text-secondary-gray">Backend Sólido</p>
+                    </div>
+
+                    <!-- Cartão Java (Backend Core) -->
+                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
+                        <div class="text-4xl mb-2">⚙️</div>
+                        <p class="font-bold">Java</p>
+                        <p class="text-sm text-secondary-gray">Sistemas de Alto Desempenho</p>
+                    </div>
+
+                    <!-- Cartão Unity (Game Dev) -->
+                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
+                        <div class="text-4xl mb-2">🎮</div>
+                        <p class="font-bold">Unity</p>
+                        <p class="text-sm text-secondary-gray">Projetos Pessoais & Games</p>
+                    </div>
+                    
+                    <!-- Cartão Flutter (Mobile Dev) -->
+                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
+                        <div class="text-4xl mb-2">📱</div>
+                        <p class="font-bold">Flutter / Dart</p>
+                        <p class="text-sm text-secondary-gray">Iniciação Mobile Multiplataforma</p>
+                    </div>
+
+                    <!-- Cartão JS/React (Frontend) -->
+                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
+                        <div class="text-4xl mb-2">🌐</div>
+                        <p class="font-bold">JS / React</p>
+                        <p class="text-sm text-secondary-gray">Desenvolvimento Web</p>
+                    </div>
+                    
+                    <!-- Cartão Python (Data/Scripts) -->
+                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
+                        <div class="text-4xl mb-2">🐍</div>
+                        <p class="font-bold">Python</p>
+                        <p class="text-sm text-secondary-gray">Scripts e Automação</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. CONTEÚDOS / TECNOLOGIAS -->
+        <section id="conteudos" class="pt-24 pb-24">
+            <h2 class="text-4xl font-extrabold text-center text-primary-neon mb-12">
+                Conhecimento Detalhado <span class="text-white">(Conteúdos)</span>
+            </h2>
+
+            <!-- Interface de Tabs (Dropdown-like content) -->
+            <div class="bg-background-dark/50 rounded-xl shadow-2xl p-6 border border-primary-neon/20">
+
+                <!-- Botões de Navegação dos Conteúdos (Funciona como os links do dropdown) -->
+                <div class="flex flex-wrap justify-center mb-8 border-b border-primary-neon/30">
+                    <button data-target="java" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300 active-tab-button" id="conteudos-java">Java</button>
+                    <button data-target="csharp" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-cs">C#</button>
+                    <button data-target="sql" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-sql">DBs</button>
+                    <button data-target="python" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-python">Python</button>
+                    <button data-target="mobile" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-mobile">Mobile</button>
+                    <button data-target="unity" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-unity">Unity</button>
+                    <button data-target="web" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-web">Web (HTML/CSS/JS)</button>
+                </div>
+
+                <!-- Conteúdo das Tabs -->
+                <div id="content-container">
+
+                    <!-- Java & Backend (Padrão) -->
+                    <div data-content="java" class="tab-content space-y-4">
+                        <h3 class="text-2xl font-bold text-primary-neon">Java: O Poder Transacional</h3>
+                        <p class="text-secondary-gray">Minha experiência com Java se concentra em arquiteturas de microsserviços e sistemas legados de alta disponibilidade. Domínio em:</p>
+                        <ul class="list-disc list-inside ml-4 text-white">
+                            <li>Tenho experiência com Java voltada principalmente ao desenvolvimento backend e automação de processos.</li>
+                            <li>Atuei com Spring Boot, Camunda BPM e integrações REST, focando em construção de fluxos de negócio e APIs escaláveis.</li>
+                            <li>Um dos principais desafios foi montar fluxogramas complexos no Camunda e integrar tarefas automatizadas com código Java.</li>
+                        </ul>
+                        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-orange-300"><code>// Exemplo simples de API REST com Spring Boot
+@RestController
+@RequestMapping("/api/clientes")
+public class ClienteController {
+
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;Cliente&gt; buscarCliente(@PathVariable Long id) {
+        Cliente cliente = new Cliente(id, "Patrick", "RJ");
+        return ResponseEntity.ok(cliente);
+    }
+}
+</code></pre>
+                    </div>
+
+                    <!-- C# & Unity (Oculto) -->
+                    <div data-content="csharp" class="tab-content space-y-4 hidden">
+                        <h3 class="text-2xl font-bold text-primary-neon">C#: Da Estabilidade Bancária ao C# em Unity</h3>
+                        <p class="text-secondary-gray">C# é a espinha dorsal da minha carreira CLT e a linguagem central para meus projetos de Game Development.</p>
+                        <ul class="list-disc list-inside ml-4 text-white">
+                            <li>Atuo com C# e .NET Core em desenvolvimento web e desktop, utilizando arquiteturas em camadas e MVC</li>
+                            <li>Tenho experiência com Entity Framework para consultas otimizadas e migrações de banco, além de IoC e DTOs para manter o código limpo e organizado.</li>
+                            <li>Um dos projetos mais relevantes foi o desenvolvimento de uma plataforma para geração de documentos, focando em desempenho, velocidade para área de negócio e estabilidade.</li>
+                        </ul>
+                        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-blue-300"><code>// Exemplo de endpoint simples em ASP.NET Core
+[ApiController]
+[Route("api/[controller]")]
+public class ProdutosController : ControllerBase
+{
+    [HttpGet("{id}")]
+    public IActionResult GetProduto(int id)
+    {
+        var produto = new { Id = id, Nome = "Café Expresso", Preco = 9.90 };
+        return Ok(produto);
+    }
+}
+</code></pre>
+                    </div>
+                    
+                    <!-- Web (Oculto) -->
+                    <div data-content="web" class="tab-content space-y-4 hidden">
+                        <h3 class="text-2xl font-bold text-primary-neon">Frontend: A Interface do Usuário</h3>
+                        <p class="text-secondary-gray">Embora meu foco seja Backend, tenho experiência em estruturação Web (HTML/CSS) e com frameworks modernos (JavaScript/React) para prototipagem e interfaces de gestão.</p>
+                        <ul class="list-disc list-inside ml-4 text-white">
+                            <li>Domínio em HTML5, CSS3 e JavaScript, criando interfaces responsivas e interativas.</li>
+                            <li>Costumo utilizar React em conjunto com APIs REST para construção de SPAs dinâmicas.</li>
+                            <li>Um exemplo prático foi a criação desta pagina.</li>
+                        </ul>
+                        <!-- Não é necessário um bloco de código aqui, pois o código atual é o exemplo. -->
+                         <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-yellow-300"><code>&lt;div class="card"&gt;
+  &lt;h3&gt;Olá, mundo!&lt;/h3&gt;
+  &lt;button id="btn"&gt;Clique Aqui&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+  .card { background: #222; color: #fff; padding: 16px; border-radius: 8px; }
+  button { background: #00d1b2; border: none; padding: 8px 12px; cursor: pointer; }
+&lt;/style&gt;
+
+&lt;script&gt;
+  document.getElementById("btn").addEventListener("click", () =&gt; {
+    alert("Você clicou no botão!");
+  });
+&lt;/script&gt;
+</code></pre>
+                    </div>
+
+                    <!-- SQL & DBs (Oculto) -->
+                    <div data-content="sql" class="tab-content space-y-4 hidden">
+                        <h3 class="text-2xl font-bold text-primary-neon">SQL e Gestão de Dados</h3>
+                        <p class="text-secondary-gray">Essencial para o Backend: Modelagem de dados, otimização de consultas e manutenção de bancos de dados relacionais e NoSQL.</p>
+                        <ul class="list-disc list-inside ml-4 text-white">
+                            <li>Experiência com bancos SQL Server, Vertica e Elastic Search, aplicando modelagem de dados, procedures e otimização de queries.</li>
+                            <li>Já atuei em projetos com múltiplos contextos de banco e estratégias de versionamento via migrations.</li>
+                            <li>Em aplicações reais, desenvolvi queries para relatórios e controle de fluxos automatizados com grande volume de dados.</li>
+                        </ul>
+                        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-green-300"><code>-- Exemplo de consulta SQL com JOIN e otimização
+SELECT 
+    p.NomeProduto, c.NomeCategoria, p.Preco
+FROM 
+    Produtos p
+INNER JOIN 
+    Categorias c ON p.CategoriaId = c.Id
+WHERE 
+    p.Preco &gt; 50
+ORDER BY 
+    p.Preco DESC;
+-- Índice sugerido: CREATE INDEX IX_Produtos_CategoriaId ON Produtos(CategoriaId);
+</code></pre>
+                    </div>
+
+                    <!-- Python (Oculto) -->
+                    <div data-content="mobile" class="tab-content space-y-4 hidden">
+                        <h3 class="text-2xl font-bold text-primary-neon">Mobile: Flutter / Dart</h3>
+                        <p class="text-secondary-gray">Sempre pensei em virar desenvolvedor para facilitar a vida de pessoas, havia saido disso por conta da CLT, mas quero voltar a focar nisso e empreender</p>
+                        <ul class="list-disc list-inside ml-4 text-white">
+                            <li>Atuo no desenvolvimento mobile com Flutter, criando aplicativos nativos para Android com foco em usabilidade.</li>
+                            <li>Trabalho com SharedPreferences, notificações locais e persistência de dados leve.</li>
+                            <li>Meu primeiro app publicado na Google Play é um lembrete para beber água, desenvolvido para aprimorar hábitos diários de saúde.</li>
+                        </ul>
+<pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-cyan-300"><code>// Exemplo simples de contador em Flutter
+import 'package:flutter/material.dart';
+
+void main() =&gt; runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(title: const Text('Contador Flutter')),
+        body: const CounterWidget(),
+      ),
+    );
+  }
+}
+
+class CounterWidget extends StatefulWidget {
+  const CounterWidget({super.key});
+  @override
+  State&lt;CounterWidget&gt; createState() =&gt; _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State&lt;CounterWidget&gt; {
+  int count = 0;
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(mainAxisSize: MainAxisSize.min, children: [
+        Text('Contagem: $count'),
+        ElevatedButton(
+          onPressed: () =&gt; setState(() =&gt; count++),
+          child: const Text('Incrementar'),
+        ),
+      ]),
+    );
+  }
+}
+</code></pre>
+
+                    </div>
+                    <div data-content="unity" class="tab-content space-y-4 hidden">
+                        <h3 class="text-2xl font-bold text-primary-neon">Unity: C# / Game Dev</h3>
+                        <p class="text-secondary-gray">Games é uma paixão minha, então desenvolver os meus próprios é quase um hobbie</p>
+                        <ul class="list-disc list-inside ml-4 text-white">
+                            <li>Uso Unity e C# no desenvolvimento de jogos 2D e protótipos indie, aplicando conceitos de prefabs, física, colisões e controle de player.</li>
+                            <li>Também já atuei em GameJam em um projeto roguelike e de tiro 2D, com foco em gameplay fluido e progressão de personagem.</li>
+                            <li>Um dos projetos atuais é um roguelite 2D desenvolvido em parceria com um amigo, que será lançado inicialmente no Itch.io.</li>
+                        </ul>
+<pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-purple-300"><code>// Script básico de movimento horizontal no Unity
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    public float speed = 5f;
+
+    void Update()
+    {
+        float move = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        transform.Translate(move, 0, 0);
+    }
+}
+</code></pre>
+
+                    </div>
+                    <div data-content="python" class="tab-content space-y-4 hidden">
+                        <h3 class="text-2xl font-bold text-primary-neon">Python: Scripts e Ferramentas</h3>
+                        <p class="text-secondary-gray">Uso Python para tarefas de automação, scripts de rotina de banco (simulação de dados) e data analysis simples.</p>
+                        <ul class="list-disc list-inside ml-4 text-white">
+                            <li>Utilizo Python para automação de tarefas, scripts de produtividade e criação de ferramentas simples com PyAutoGUI, Tkinter e Pandas.</li>
+                            <li>Também já trabalhei com Power BI e análise de dados em Python para criação de relatórios visuais.</li>
+                            <li>Um exemplo marcante foi um script que automatizava processos repetitivos no trabalho, reduzindo o tempo de execução em mais de 70%.</li>
+                            <li>Tambem desenvolvi um sistema chamado FocusGuard, que está publicado no itch.io e tem com funcionalidade aplicar pomodoro e auxiliar os usuários a focarem em suas tarefas.</li>
+                        </ul>
+<pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-lime-300"><code># Exemplo de automação simples em Python
+import pyautogui, time
+
+print("Automação iniciando em 3s...")
+time.sleep(3)
+
+for i in range(5):
+    pyautogui.write(f"Execução número {i+1}")
+    pyautogui.press("enter")
+</code></pre>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+                <!-- 3. PUBLICACOES -->
+        <section id="publicacoes" class="pt-24 pb-24 text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-6">
+                Publicações
+            </h2>
+            <p class="text-lg text-secondary-gray mb-12">
+                Sistemas/Apps Publicados
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-12">
+                
+                <!-- Link LinkedIn -->
+                <a href="https://play.google.com/store/apps/details?id=com.rinstrack.bebaagua&hl=pt_BR" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
+                    <!--<svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 4.5A1.5 1.5 0 114.5 6 1.5 1.5 0 016 4.5z"/></svg-->
+                    <span class="text-lg font-semibold text-white">RinsTrack</span>
+                </a>
+
+                <!-- Link Instagram -->
+                <a href="https://codewithpatrickr.itch.io/focusguard" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
+                    <!--svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 2.8c.6 0 1.2.2 1.6.6s.6 1 .6 1.6c0 .6-.2 1.2-.6 1.6s-1 .6-1.6.6c-.6 0-1.2-.2-1.6-.6s-.6-1-.6-1.6c0-.6.2-1.2.6-1.6s1-.6 1.6-.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm5 3.2c0 1.54-1.26 2.8-2.8 2.8H9.8c-1.54 0-2.8-1.26-2.8-2.8v-3.2h1.6c0 1.43 1.17 2.6 2.6 2.6h.4c1.43 0 2.6-1.17 2.6-2.6h1.6v3.2z"/></svg-->
+                    <span class="text-lg font-semibold text-white">FocusGuard</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- 4. CONTATOS -->
+        <section id="contatos" class="pt-24 pb-24 text-center">
+            <h2 class="text-4xl font-extrabold text-white mb-6">
+                Vamos Conectar?
+            </h2>
+            <p class="text-lg text-secondary-gray mb-12">
+                Estou sempre aberto a discutir projetos de Backend, Mobile ou a próxima ideia de Game!
+            </p>
+
+            <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-12">
+                
+                <!-- Link LinkedIn -->
+                <a href="https://www.linkedin.com/in/patrickribeiro97/" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
+                    <svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 4.5A1.5 1.5 0 114.5 6 1.5 1.5 0 016 4.5z"/></svg>
+                    <span class="text-lg font-semibold text-white">LinkedIn Profissional</span>
+                </a>
+
+                <!-- Link Instagram -->
+                <a href="https://www.instagram.com/codewithpatrickr/" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
+                    <svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 2.8c.6 0 1.2.2 1.6.6s.6 1 .6 1.6c0 .6-.2 1.2-.6 1.6s-1 .6-1.6.6c-.6 0-1.2-.2-1.6-.6s-.6-1-.6-1.6c0-.6.2-1.2.6-1.6s1-.6 1.6-.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm5 3.2c0 1.54-1.26 2.8-2.8 2.8H9.8c-1.54 0-2.8-1.26-2.8-2.8v-3.2h1.6c0 1.43 1.17 2.6 2.6 2.6h.4c1.43 0 2.6-1.17 2.6-2.6h1.6v3.2z"/></svg>
+                    <span class="text-lg font-semibold text-white">Instagram Profissional</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="text-center py-6 border-t border-primary-neon/20 text-secondary-gray text-sm">
+        Desenvolvido em um momento de inspiração e criatividade 💡 | Hospedado no GitHub Pages.
+    </footer>
+
+    <!-- JavaScript para Interatividade (Menu Mobile e Tabs de Conteúdos) -->
+    <script>
+        // 1. Controle do Menu Mobile
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIconOpen.classList.toggle('hidden');
+            menuIconClose.classList.toggle('hidden');
+        });
+
+        // 2. Controle das Tabs de Conteúdos
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        const showContent = (target) => {
+            // Oculta todos os conteúdos
+            tabContents.forEach(content => {
+                content.classList.add('hidden');
+            });
+            // Remove o estilo ativo de todos os botões
+            tabButtons.forEach(button => {
+                button.classList.remove('active-tab-button', 'border-primary-neon', 'text-primary-neon');
+                button.classList.add('border-transparent', 'text-secondary-gray');
+            });
+
+            // Mostra o conteúdo alvo
+            const targetContent = document.querySelector(`[data-content="${target}"]`);
+            if (targetContent) {
+                targetContent.classList.remove('hidden');
+            }
+
+            // Ativa o botão correto
+            const targetButton = document.querySelector(`[data-target="${target}"]`);
+            if (targetButton) {
+                targetButton.classList.add('active-tab-button', 'border-primary-neon', 'text-primary-neon');
+                targetButton.classList.remove('border-transparent', 'text-secondary-gray');
+            }
+        };
+
+        // Event Listeners para os botões
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const target = button.getAttribute('data-target');
+                showContent(target);
+
+                // Rolagem suave para o topo da seção de conteúdo ao clicar no tab (opcional, para UX)
+                document.getElementById('conteudos').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Event Listeners para os links internos do menu desktop (para garantir o scroll suave e a abertura do tab)
+        const dropdownLinks = document.querySelectorAll('#conteudos-links-desktop a');
+        dropdownLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const sectionId = link.getAttribute('href').substring(1); // Ex: conteudos-java
+                const targetId = sectionId.split('-')[1]; // Ex: java
+                
+                showContent(targetId);
+                
+                // Força o scroll suave para a seção principal de conteúdo
+                document.getElementById('conteudos').scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Event Listeners para os links internos do menu mobile
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                
+                // Se for um link de conteúdo específico (#conteudos-...), abre o tab correto
+                if (href.startsWith('#conteudos-')) {
+                    const targetId = href.substring(11); // Ex: java, csharp
+                    showContent(targetId);
+                }
+                
+                // Garante que o scroll aconteça após o fechamento do menu
+                setTimeout(() => {
+                    document.querySelector(href.split('-')[0]).scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            });
+        });
+
+        // Inicializa o primeiro tab (Java & Backend)
+        document.addEventListener('DOMContentLoaded', () => {
+            showContent('java'); 
+        });
+
+    </script>
 </body>
 </html>
