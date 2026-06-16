@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patrick Ribeiro | Backend, Mobile & Games Developer</title>
-    <meta name="description" content="Desenvolvedor Full Stack especializado em Backend (C#/.NET, Java), Mobile (Flutter) e Game Development (Unity).">
+    <title>Patrick Ribeiro | Full Stack & Backend Developer</title>
+    <meta name="description" content="Desenvolvedor Full Stack especializado em Backend (C#/.NET, Java), Web, Mobile (Flutter) e IA aplicada — LLMs, RAGs e Agentes.">
     <meta property="og:title" content="Patrick Ribeiro | Full Stack Developer">
-    <meta property="og:description" content="Backend, Mobile & Games Developer — @CodeWithPatrickR">
+    <meta property="og:description" content="Full Stack · Backend · Web · Mobile — @CodeWithPatrickR">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-size='13' font-weight='bold' fill='%2322d3ee'>PR</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -459,8 +459,8 @@ time.<span class="c-fn">sleep</span>(<span class="c-num">3</span>)
                         <ul class="tab-list">
                             <li>Aprofundamento em LLMs, RAGs, engenharia de prompt e construção de agentes autônomos.</li>
                             <li>Nos projetos recentes, passo mais tempo pensando em arquitetura e infraestrutura do que codando — orquestração de modelos, pipelines de dados e integração com APIs de IA.</li>
-                            <li>Experiência prática com integração da API da Anthropic (Claude), OpenAI e fluxos multi-agente.</li>
-                            <li>Foco em aplicações reais: sistemas que combinam backends robustos com camadas de inteligência para automação e geração de conteúdo.</li>
+                            <li>Experiência prática com integração da API do <strong>Gemini (Google)</strong> para geração e avaliação de conteúdo em produção.</li>
+                            <li><strong>Qual Gabarito</strong> é o principal caso real: plataforma educacional para ENEM e UERJ com simulados gerados por IA, correção automática de redações, flashcards adaptativos, cronograma personalizado e laboratório de redação — tudo alimentado pelo Gemini.</li>
                         </ul>
                     </div>
                     <div class="code-block-wrap">
@@ -468,22 +468,18 @@ time.<span class="c-fn">sleep</span>(<span class="c-num">3</span>)
                             <span class="code-lang py-lang">Python</span>
                             <span class="code-file">rag_pipeline.py</span>
                         </div>
-                        <pre class="code-block"><code><span class="c-comment"># Exemplo simplificado de pipeline RAG</span>
-<span class="c-kw">from</span> anthropic <span class="c-kw">import</span> Anthropic
+                        <pre class="code-block"><code><span class="c-comment"># Integração com Gemini — padrão usado no Qual Gabarito</span>
+<span class="c-kw">import</span> google.generativeai <span class="c-kw">as</span> genai
 
-client <span class="c-op">=</span> <span class="c-fn">Anthropic</span>()
+genai.<span class="c-fn">configure</span>(api_key<span class="c-op">=</span>GEMINI_API_KEY)
+model <span class="c-op">=</span> genai.<span class="c-fn">GenerativeModel</span>(<span class="c-str">"gemini-1.5-flash"</span>)
 
-<span class="c-kw">def</span> <span class="c-fn">query_with_context</span>(question, context_docs):
-    context <span class="c-op">=</span> <span class="c-str">"\n"</span>.join(context_docs)
-    response <span class="c-op">=</span> client.messages.<span class="c-fn">create</span>(
-        model<span class="c-op">=</span><span class="c-str">"claude-sonnet-4-6"</span>,
-        max_tokens<span class="c-op">=</span><span class="c-num">1024</span>,
-        messages<span class="c-op">=</span>[{
-            <span class="c-str">"role"</span>: <span class="c-str">"user"</span>,
-            <span class="c-str">"content"</span>: <span class="c-str">f"Contexto:\n</span><span class="c-var">{context}</span><span class="c-str">\n\nPergunta: </span><span class="c-var">{question}</span><span class="c-str">"</span>
-        }]
-    )
-    <span class="c-kw">return</span> response.content[<span class="c-num">0</span>].text</code></pre>
+<span class="c-kw">def</span> <span class="c-fn">gerar_questao</span>(topico, dificuldade):
+    prompt <span class="c-op">=</span> <span class="c-str">f"""Crie uma questão de múltipla escolha sobre
+</span><span class="c-var">{topico}</span><span class="c-str">, nível </span><span class="c-var">{dificuldade}</span><span class="c-str">, no estilo ENEM.
+Inclua 5 alternativas e o gabarito comentado."""</span>
+    response <span class="c-op">=</span> model.<span class="c-fn">generate_content</span>(prompt)
+    <span class="c-kw">return</span> response.text</code></pre>
                     </div>
                 </div>
 
@@ -503,13 +499,14 @@ client <span class="c-op">=</span> <span class="c-fn">Anthropic</span>()
             <a href="https://www.qualgabarito.com.br/" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
                 <div class="pub-icon">
                     <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+                        <path d="M12 2a7 7 0 017 7c0 4-3 6-4 8H9c-1-2-4-4-4-8a7 7 0 017-7z"/>
+                        <path d="M9 17h6M10 20h4"/>
                     </svg>
                 </div>
                 <div class="pub-info">
                     <h3 class="pub-title">Qual Gabarito</h3>
-                    <p class="pub-desc">Site web para consulta de gabaritos e resultados</p>
-                    <span class="pub-tag">Web</span>
+                    <p class="pub-desc">Plataforma de estudos com IA para ENEM e UERJ — simulados gerados por IA, correção de redação, flashcards, cronograma personalizado e ranking</p>
+                    <span class="pub-tag">Web App / IA · Edu</span>
                 </div>
                 <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </a>
