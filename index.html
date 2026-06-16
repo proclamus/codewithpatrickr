@@ -3,469 +3,654 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Nome | Backend, Mobile & Games Developer</title>
-    <!-- Tailwind CSS CDN para estilização moderna e responsiva -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Configuração do Tailwind para usar uma fonte agradável (Inter) e um esquema de cores personalizado -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'background-dark': '#0f172a', // Slate 900
-                        'primary-neon': '#22d3ee',   // Cyan 400
-                        'secondary-gray': '#94a3b8', // Slate 400
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    animation: {
-                        'pulse-neon': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>Patrick Ribeiro | Backend, Mobile & Games Developer</title>
+    <meta name="description" content="Desenvolvedor Full Stack especializado em Backend (C#/.NET, Java), Mobile (Flutter) e Game Development (Unity).">
+    <meta property="og:title" content="Patrick Ribeiro | Full Stack Developer">
+    <meta property="og:description" content="Backend, Mobile & Games Developer — @CodeWithPatrickR">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-size='13' font-weight='bold' fill='%2322d3ee'>PR</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <!-- Ícones Lucide para um visual limpo (usaremos SVG inline) -->
-    <!-- Nota: No ambiente Canvas, é recomendado usar SVGs inline ou emojis. -->
 </head>
-<body class="bg-background-dark text-white min-h-screen">
+<body>
 
-    <!-- Navegação Sticky -->
-    <header class="sticky top-0 z-50 bg-background-dark/95 backdrop-blur-sm shadow-lg border-b border-primary-neon/20">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <div class="text-xl font-bold text-primary-neon tracking-wider">
-                @CodeWithPatrickR
-            </div>
-            
-            <!-- Menu Desktop -->
-            <div class="hidden md:flex space-x-8 font-semibold">
-                <a href="#home" class="nav-link text-white hover:text-primary-neon">Início</a>
-                <a href="#conteudos" class="nav-link text-white hover:text-primary-neon flex items-center">Conteúdos</a> 
-                <a href="#contatos" class="nav-link text-white hover:text-primary-neon">Contatos</a>
-                <a href="#publicacoes" class="nav-link text-white hover:text-primary-neon">Publicações</a>
-            </div>
-
-            <!-- Botão Menu Mobile -->
-            <button id="mobile-menu-button" class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-neon">
-                <svg id="menu-icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                <svg id="menu-icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-        </nav>
-
-        <!-- Menu Mobile (oculto por padrão) -->
-        <div id="mobile-menu" class="hidden md:hidden px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-primary-neon/20">
-            <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-neon/20" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Início</a>
-            
-            <!-- Conteúdos no Mobile -->
-            <a href="#conteudos" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-neon/20" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Conteúdos (Tecnologias)</a>
-            <div class="pl-4 border-l-2 border-primary-neon/50 space-y-1">
-                <a href="#conteudos-java" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Java & Backend</a>
-                <a href="#conteudos-cs" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">C# & Unity</a>
-                <a href="#conteudos-web" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Web (HTML/CSS/JS)</a>
-                <a href="#conteudos-sql" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">SQL & Databases</a>
-                <a href="#conteudos-python" class="block px-3 py-1 text-sm text-secondary-gray hover:bg-primary-neon/10 rounded-md" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Python</a>
-            </div>
-
-            <a href="#contatos" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:bg-primary-neon/20" onclick="document.getElementById('mobile-menu').classList.add('hidden');">Contatos</a>
+<!-- ====== HEADER ====== -->
+<header id="header">
+    <nav class="container nav-container">
+        <a href="#home" class="nav-logo">
+            <span class="logo-bracket">&lt;</span>CodeWithPatrickR<span class="logo-bracket">/&gt;</span>
+        </a>
+        <div class="nav-links" id="nav-links">
+            <a href="#home" class="nav-link">Início</a>
+            <a href="#techs" class="nav-link">Tecnologias</a>
+            <a href="#conteudos" class="nav-link">Conteúdos</a>
+            <a href="#publicacoes" class="nav-link">Publicações</a>
+            <a href="#contatos" class="nav-link btn-nav">Contatos</a>
         </div>
-    </header>
+        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
+    <div class="nav-drawer" id="nav-drawer">
+        <button class="drawer-close" id="drawer-close" aria-label="Fechar menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+        <a href="#home" class="drawer-link">Início</a>
+        <a href="#techs" class="drawer-link">Tecnologias</a>
+        <a href="#conteudos" class="drawer-link">Conteúdos</a>
+        <a href="#publicacoes" class="drawer-link">Publicações</a>
+        <a href="#contatos" class="drawer-link">Contatos</a>
+    </div>
+</header>
 
-    <!-- Conteúdo Principal -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+<main>
 
-        <!-- 1. PÁGINA INICIAL / HOME -->
-        <section id="home" class="pt-16 pb-24 min-h-screen flex items-center">
-            <div class="grid md:grid-cols-3 gap-12 items-center">
-                <!-- Foto e Introdução -->
-                <div class="md:col-span-1 flex flex-col items-center md:items-start text-center md:text-left">
-                    <div class="relative w-48 h-48 mb-6">
-                        <!-- Substitua pelo link da sua foto (ou use um placeholder) -->
-                        <img src="AirBrush_20220901151039.jpg" alt="Foto Profissional" 
-                             class="rounded-full border-4 border-primary-neon shadow-2xl transition-all duration-300 hover:scale-[1.02] hover:shadow-primary-neon/50">
-                        <span class="absolute bottom-2 right-2 h-4 w-4 bg-green-500 rounded-full ring-2 ring-white animate-pulse"></span>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 leading-tight">
-                        Patrick <span class="text-primary-neon">Ribeiro</span>
-                    </h1>
-                    <p class="text-xl text-secondary-gray font-light">
-                        Full Stack | Backend | Mobile & Web Developer
-                    </p>
-                </div>
-
-                <!-- Descrição e Missão -->
-                <div class="md:col-span-2 space-y-6">
-                    <h2 class="text-3xl font-semibold text-primary-neon">Quem Sou Eu</h2>
-                    <p class="text-lg text-secondary-gray leading-relaxed code-block p-4 bg-background-dark/50 rounded-lg">
-                        Atuo como Desenvolvedor de Software, onde a solidez e a segurança do Backend são inegociáveis. Minha base está em C#/.NET, Java e sistemas transacionais.
-                        <br><br>
-                        Paralelamente, canalizo minha paixão por inovação para o desenvolvimento mobile (Flutter) e a criação de Games na Unity. Essa jornada dupla me permite unir a disciplina de sistemas críticos com a criatividade de novas plataformas. Meu foco é ser um especialista em sistemas, com a visão de quem constrói a experiência final do usuário.
-                    </p>
-                </div>
+<!-- ====== HERO ====== -->
+<section id="home" class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content reveal">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Disponível para Projetos
             </div>
-            
-        </section>
-
-        <section id="techs" class="pt-24 pb-24">
-                        <!-- Blocos de Experiência (Tech Stack) -->
-            <h2 class="text-4xl font-extrabold text-center text-primary-neon mb-12">
-                Tecnologias com que mais trabalho <span class="text-white">(Techs)</span>
-            </h2>
-            <div class="mt-20 w-full">
-                <h3 class="text-2xl font-semibold mb-8 text-center text-primary-neon">Meu Tech Stack Híbrido</h3>
-                
-                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-
-                    <!-- Cartão C# (Backend Core) -->
-                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
-                        <div class="text-4xl mb-2">💻</div>
-                        <p class="font-bold">C# / .NET</p>
-                        <p class="text-sm text-secondary-gray">Backend Sólido</p>
-                    </div>
-
-                    <!-- Cartão Java (Backend Core) -->
-                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
-                        <div class="text-4xl mb-2">⚙️</div>
-                        <p class="font-bold">Java</p>
-                        <p class="text-sm text-secondary-gray">Sistemas de Alto Desempenho</p>
-                    </div>
-
-                    <!-- Cartão Unity (Game Dev) -->
-                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
-                        <div class="text-4xl mb-2">🎮</div>
-                        <p class="font-bold">Unity</p>
-                        <p class="text-sm text-secondary-gray">Projetos Pessoais & Games</p>
-                    </div>
-                    
-                    <!-- Cartão Flutter (Mobile Dev) -->
-                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
-                        <div class="text-4xl mb-2">📱</div>
-                        <p class="font-bold">Flutter / Dart</p>
-                        <p class="text-sm text-secondary-gray">Iniciação Mobile Multiplataforma</p>
-                    </div>
-
-                    <!-- Cartão JS/React (Frontend) -->
-                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
-                        <div class="text-4xl mb-2">🌐</div>
-                        <p class="font-bold">JS / React</p>
-                        <p class="text-sm text-secondary-gray">Desenvolvimento Web</p>
-                    </div>
-                    
-                    <!-- Cartão Python (Data/Scripts) -->
-                    <div class="p-4 bg-background-dark/50 border border-primary-neon/30 rounded-xl text-center shadow-lg transition-all duration-300 hover:bg-primary-neon/10 hover:shadow-primary-neon/50">
-                        <div class="text-4xl mb-2">🐍</div>
-                        <p class="font-bold">Python</p>
-                        <p class="text-sm text-secondary-gray">Scripts e Automação</p>
-                    </div>
-                </div>
+            <h1 class="hero-title">
+                Patrick<br>
+                <span class="accent">Ribeiro</span>
+            </h1>
+            <div class="hero-roles">
+                <span class="role-label">Full Stack</span>
+                <span class="role-sep">·</span>
+                <span class="role-label">Backend</span>
+                <span class="role-sep">·</span>
+                <span class="role-label">Web</span>
+                <span class="role-sep">·</span>
+                <span class="role-label">Mobile</span>
             </div>
-        </section>
+            <p class="hero-desc">
+                Atuo como Desenvolvedor <span class="accent">Full Stack</span> com foco sólido em
+                Backend (<span class="accent">C#/.NET</span>, <span class="accent">Java</span>) e Web.
+                Desenvolvo apps mobile com <span class="accent">Flutter</span> e aprofundo
+                conhecimentos em <span class="accent">IA aplicada</span> — LLMs, RAGs e Agentes —
+                com foco crescente em arquitetura e infraestrutura de sistemas.
+            </p>
+            <div class="hero-ctas">
+                <a href="#publicacoes" class="btn-primary">Ver Projetos</a>
+                <a href="#contatos" class="btn-outline">Entrar em Contato</a>
+            </div>
+        </div>
 
-        <!-- 2. CONTEÚDOS / TECNOLOGIAS -->
-        <section id="conteudos" class="pt-24 pb-24">
-            <h2 class="text-4xl font-extrabold text-center text-primary-neon mb-12">
-                Conhecimento Detalhado <span class="text-white">(Conteúdos)</span>
-            </h2>
-
-            <!-- Interface de Tabs (Dropdown-like content) -->
-            <div class="bg-background-dark/50 rounded-xl shadow-2xl p-6 border border-primary-neon/20">
-
-                <!-- Botões de Navegação dos Conteúdos (Funciona como os links do dropdown) -->
-                <div class="flex flex-wrap justify-center mb-8 border-b border-primary-neon/30">
-                    <button data-target="java" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300 active-tab-button" id="conteudos-java">Java</button>
-                    <button data-target="csharp" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-cs">C#</button>
-                    <button data-target="sql" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-sql">DBs</button>
-                    <button data-target="python" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-python">Python</button>
-                    <button data-target="mobile" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-mobile">Mobile</button>
-                    <button data-target="unity" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-unity">Unity</button>
-                    <button data-target="web" class="tab-button px-6 py-3 font-medium text-lg text-secondary-gray hover:text-primary-neon border-b-2 border-transparent transition-all duration-300" id="conteudos-web">Web (HTML/CSS/JS)</button>
+        <div class="hero-visual reveal reveal-delay">
+            <div class="hero-photo-wrap">
+                <div class="photo-ring"></div>
+                <img src="AirBrush_20220901151039.jpg" alt="Patrick Ribeiro" class="hero-photo">
+                <span class="photo-status"></span>
+            </div>
+            <div class="terminal-card">
+                <div class="terminal-header">
+                    <span class="dot dot-red"></span>
+                    <span class="dot dot-yellow"></span>
+                    <span class="dot dot-green"></span>
+                    <span class="terminal-title">developer.ts</span>
                 </div>
+                <pre class="terminal-body"><code><span class="c-kw">const</span> <span class="c-var">developer</span> <span class="c-op">=</span> {
+  <span class="c-key">name</span><span class="c-op">:</span>  <span class="c-str">'Patrick Ribeiro'</span>,
+  <span class="c-key">stack</span><span class="c-op">:</span> [<span class="c-str">'C#'</span>, <span class="c-str">'Java'</span>, <span class="c-str">'React'</span>],
+  <span class="c-key">also</span><span class="c-op">:</span>  [<span class="c-str">'Flutter'</span>, <span class="c-str">'Python'</span>, <span class="c-str">'LLMs'</span>],
+  <span class="c-key">open</span><span class="c-op">:</span>  <span class="c-bool">true</span> <span class="c-comment">// para novos projetos</span>
+}</code></pre>
+            </div>
+        </div>
+    </div>
+    <div class="hero-scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>scroll</span>
+    </div>
+</section>
 
-                <!-- Conteúdo das Tabs -->
-                <div id="content-container">
+<!-- ====== TECH STACK ====== -->
+<section id="techs" class="section section-alt">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">// stack</span>
+            <h2 class="section-title">Tecnologias com que <span class="accent">mais trabalho</span></h2>
+        </div>
+        <div class="tech-grid">
+            <!-- C#/.NET -->
+            <div class="tech-card reveal">
+                <div class="tech-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M15 2L3 8.5v13L15 28l12-7.5v-13L15 2z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.08)"/>
+                        <text x="50%" y="56%" dominant-baseline="central" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#22d3ee">C#</text>
+                    </svg>
+                </div>
+                <h3 class="tech-name">C# / .NET</h3>
+                <p class="tech-desc">Backend Sólido</p>
+            </div>
+            <!-- Java -->
+            <div class="tech-card reveal">
+                <div class="tech-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M11 4s-1.5 1 1.5 3.5C15.5 10 17 11 17 13.5c0 0 2-2-1-4C13 7.5 11 6.5 11 4z" fill="#22d3ee"/>
+                        <path d="M15.5 4.5s-1 .7 1 2.3c2 1.6 3.5 2.8 3.5 4.7 0 0 1.5-1.2-.7-2.8C17.3 7.2 15.5 6 15.5 4.5z" fill="#22d3ee" opacity=".7"/>
+                        <path d="M9 19.5s-1 .6.7 1.2c2 .8 6 .9 9.5-.1 0 0 1 .7-.3 1.3-5 1.9-11.5-.1-9.9-2.4z" fill="#22d3ee"/>
+                        <path d="M8.5 17s-1.2.8.6 1.5c2.3.9 8 1 10.6-.1 0 0 .8.7-.3 1.2-4.5 1.5-10.6.2-10.9-2.6z" fill="#22d3ee" opacity=".8"/>
+                        <path d="M14 14.5c1.8 0 5-1.5 5-1.5S17.5 15.5 14 16.5c-3.5 1-7.5.5-7.5.5s2.5-.7 7.5-2.5z" fill="#22d3ee" opacity=".6"/>
+                        <path d="M20 24.5c-3 .8-7 .9-10 .1 0 0-.5.4.7.7 3.5 1 10.5.5 11.5-2C22.5 22.5 20 24.5 20 24.5z" fill="#22d3ee" opacity=".7"/>
+                    </svg>
+                </div>
+                <h3 class="tech-name">Java</h3>
+                <p class="tech-desc">Alto Desempenho</p>
+            </div>
+            <!-- JS/React -->
+            <div class="tech-card reveal">
+                <div class="tech-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <circle cx="15" cy="15" r="3" fill="#22d3ee"/>
+                        <ellipse cx="15" cy="15" rx="12" ry="5" stroke="#22d3ee" stroke-width="1.5" fill="none" opacity=".7"/>
+                        <ellipse cx="15" cy="15" rx="12" ry="5" stroke="#22d3ee" stroke-width="1.5" fill="none" opacity=".7" transform="rotate(60 15 15)"/>
+                        <ellipse cx="15" cy="15" rx="12" ry="5" stroke="#22d3ee" stroke-width="1.5" fill="none" opacity=".7" transform="rotate(-60 15 15)"/>
+                    </svg>
+                </div>
+                <h3 class="tech-name">JS / React</h3>
+                <p class="tech-desc">Desenvolvimento Web</p>
+            </div>
+            <!-- Python -->
+            <div class="tech-card reveal">
+                <div class="tech-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M15 3c-3 0-5.5.8-5.5 2.3V8.5h5.5v1H8C6.3 9.5 5 10.8 5 12.5v3.5c0 1.5 1.3 2.8 3 2.8h1.5V16c0-1.5 1.3-2.8 3-2.8h5c1.5 0 2.8-1.3 2.8-2.8V5.3C20.3 3.8 18 3 15 3zm-1 3c.5 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z" fill="#22d3ee" opacity=".9"/>
+                        <path d="M15 27c3 0 5.5-.8 5.5-2.3V21.5H15v-1h7C23.7 20.5 25 19.2 25 17.5V14c0-1.5-1.3-2.8-3-2.8h-1.5V14c0 1.5-1.3 2.8-3 2.8h-5C11 16.8 9.7 18.1 9.7 19.6V24.7C9.7 26.2 12 27 15 27zm1-3c-.5 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z" fill="#22d3ee" opacity=".5"/>
+                    </svg>
+                </div>
+                <h3 class="tech-name">Python</h3>
+                <p class="tech-desc">Scripts e Automação</p>
+            </div>
+            <!-- Flutter -->
+            <div class="tech-card reveal">
+                <div class="tech-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <path d="M12 4h9L11 14H4L12 4z" fill="#22d3ee" opacity=".9"/>
+                        <path d="M11 16l-7 7h8.5l4-4L11 16z" fill="#22d3ee" opacity=".5"/>
+                        <path d="M16.5 19.5L13 24h8.5L16.5 19.5z" fill="#22d3ee" opacity=".9"/>
+                        <path d="M11 16l5 3.5L22 14H13L11 16z" fill="#22d3ee" opacity=".7"/>
+                    </svg>
+                </div>
+                <h3 class="tech-name">Flutter / Dart</h3>
+                <p class="tech-desc">Mobile Multiplataforma</p>
+            </div>
+            <!-- IA / LLMs -->
+            <div class="tech-card reveal">
+                <div class="tech-icon">
+                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
+                        <circle cx="15" cy="15" r="4.5" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.12)"/>
+                        <circle cx="5"  cy="10" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
+                        <circle cx="5"  cy="20" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
+                        <circle cx="25" cy="10" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
+                        <circle cx="25" cy="20" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
+                        <circle cx="15" cy="4"  r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
+                        <circle cx="15" cy="26" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
+                        <line x1="10.5" y1="12.5" x2="7"   y2="11"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
+                        <line x1="10.5" y1="17.5" x2="7"   y2="19"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
+                        <line x1="19.5" y1="12.5" x2="23"  y2="11"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
+                        <line x1="19.5" y1="17.5" x2="23"  y2="19"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
+                        <line x1="15"   y1="10.5" x2="15"  y2="6.5" stroke="#22d3ee" stroke-width="1" opacity=".5"/>
+                        <line x1="15"   y1="19.5" x2="15"  y2="23.5" stroke="#22d3ee" stroke-width="1" opacity=".5"/>
+                    </svg>
+                </div>
+                <h3 class="tech-name">IA / LLMs</h3>
+                <p class="tech-desc">Agentes &amp; Arquitetura</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-                    <!-- Java & Backend (Padrão) -->
-                    <div data-content="java" class="tab-content space-y-4">
-                        <h3 class="text-2xl font-bold text-primary-neon">Java: O Poder Transacional</h3>
-                        <p class="text-secondary-gray">Minha experiência com Java se concentra em arquiteturas de microsserviços e sistemas legados de alta disponibilidade. Domínio em:</p>
-                        <ul class="list-disc list-inside ml-4 text-white">
-                            <li>Tenho experiência com Java voltada principalmente ao desenvolvimento backend e automação de processos.</li>
+<!-- ====== CONTEÚDOS ====== -->
+<section id="conteudos" class="section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">// knowledge</span>
+            <h2 class="section-title">Conhecimento <span class="accent">Detalhado</span></h2>
+        </div>
+        <div class="tabs-container reveal">
+            <div class="tabs-nav" role="tablist">
+                <button class="tab-btn active" data-target="java" role="tab">Java</button>
+                <button class="tab-btn" data-target="csharp" role="tab">C#</button>
+                <button class="tab-btn" data-target="sql" role="tab">DBs</button>
+                <button class="tab-btn" data-target="python" role="tab">Python</button>
+                <button class="tab-btn" data-target="mobile" role="tab">Mobile</button>
+                <button class="tab-btn" data-target="unity" role="tab">Unity</button>
+                <button class="tab-btn" data-target="web" role="tab">Web</button>
+                <button class="tab-btn" data-target="ia" role="tab">IA</button>
+            </div>
+            <div class="tabs-body">
+
+                <!-- Java -->
+                <div class="tab-panel active" data-content="java">
+                    <div class="tab-info">
+                        <h3 class="tab-title">Java: <span class="accent">O Poder Transacional</span></h3>
+                        <p class="tab-desc">Minha experiência com Java se concentra em arquiteturas de microsserviços e sistemas legados de alta disponibilidade.</p>
+                        <ul class="tab-list">
+                            <li>Experiência com Java voltada principalmente ao desenvolvimento backend e automação de processos.</li>
                             <li>Atuei com Spring Boot, Camunda BPM e integrações REST, focando em construção de fluxos de negócio e APIs escaláveis.</li>
                             <li>Um dos principais desafios foi montar fluxogramas complexos no Camunda e integrar tarefas automatizadas com código Java.</li>
                         </ul>
-                        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-orange-300"><code>// Exemplo simples de API REST com Spring Boot
-@RestController
-@RequestMapping("/api/clientes")
-public class ClienteController {
-
-    @GetMapping("/{id}")
-    public ResponseEntity&lt;Cliente&gt; buscarCliente(@PathVariable Long id) {
-        Cliente cliente = new Cliente(id, "Patrick", "RJ");
-        return ResponseEntity.ok(cliente);
-    }
-}
-</code></pre>
                     </div>
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang java-lang">Java</span>
+                            <span class="code-file">ClienteController.java</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-comment">// Exemplo simples de API REST com Spring Boot</span>
+<span class="c-kw">@RestController</span>
+<span class="c-kw">@RequestMapping</span>(<span class="c-str">"/api/clientes"</span>)
+<span class="c-kw">public class</span> <span class="c-type">ClienteController</span> {
 
-                    <!-- C# & Unity (Oculto) -->
-                    <div data-content="csharp" class="tab-content space-y-4 hidden">
-                        <h3 class="text-2xl font-bold text-primary-neon">C#: Da Estabilidade Bancária ao C# em Unity</h3>
-                        <p class="text-secondary-gray">C# é a espinha dorsal da minha carreira CLT e a linguagem central para meus projetos de Game Development.</p>
-                        <ul class="list-disc list-inside ml-4 text-white">
-                            <li>Atuo com C# e .NET Core em desenvolvimento web e desktop, utilizando arquiteturas em camadas e MVC</li>
+    <span class="c-kw">@GetMapping</span>(<span class="c-str">"/{id}"</span>)
+    <span class="c-kw">public</span> <span class="c-type">ResponseEntity</span>&lt;<span class="c-type">Cliente</span>&gt; buscarCliente(
+            <span class="c-kw">@PathVariable</span> <span class="c-type">Long</span> id) {
+        <span class="c-type">Cliente</span> cliente <span class="c-op">=</span> <span class="c-kw">new</span> <span class="c-type">Cliente</span>(id, <span class="c-str">"Patrick"</span>, <span class="c-str">"RJ"</span>);
+        <span class="c-kw">return</span> <span class="c-type">ResponseEntity</span>.ok(cliente);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- C# -->
+                <div class="tab-panel" data-content="csharp">
+                    <div class="tab-info">
+                        <h3 class="tab-title">C#: <span class="accent">Da Estabilidade ao Game Dev</span></h3>
+                        <p class="tab-desc">C# é a espinha dorsal da minha carreira CLT e a linguagem central para meus projetos de Game Development.</p>
+                        <ul class="tab-list">
+                            <li>Atuo com C# e .NET Core em desenvolvimento web e desktop, utilizando arquiteturas em camadas e MVC.</li>
                             <li>Tenho experiência com Entity Framework para consultas otimizadas e migrações de banco, além de IoC e DTOs para manter o código limpo e organizado.</li>
-                            <li>Um dos projetos mais relevantes foi o desenvolvimento de uma plataforma para geração de documentos, focando em desempenho, velocidade para área de negócio e estabilidade.</li>
+                            <li>Um dos projetos mais relevantes foi o desenvolvimento de uma plataforma para geração de documentos, focando em desempenho e estabilidade.</li>
                         </ul>
-                        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-blue-300"><code>// Exemplo de endpoint simples em ASP.NET Core
-[ApiController]
-[Route("api/[controller]")]
-public class ProdutosController : ControllerBase
+                    </div>
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang cs-lang">C#</span>
+                            <span class="code-file">ProdutosController.cs</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-comment">// Exemplo de endpoint simples em ASP.NET Core</span>
+[<span class="c-kw">ApiController</span>]
+[<span class="c-kw">Route</span>(<span class="c-str">"api/[controller]"</span>)]
+<span class="c-kw">public class</span> <span class="c-type">ProdutosController</span> : <span class="c-type">ControllerBase</span>
 {
-    [HttpGet("{id}")]
-    public IActionResult GetProduto(int id)
+    [<span class="c-kw">HttpGet</span>(<span class="c-str">"{id}"</span>)]
+    <span class="c-kw">public</span> <span class="c-type">IActionResult</span> GetProduto(<span class="c-type">int</span> id)
     {
-        var produto = new { Id = id, Nome = "Café Expresso", Preco = 9.90 };
-        return Ok(produto);
+        <span class="c-kw">var</span> produto <span class="c-op">=</span> <span class="c-kw">new</span> {
+            Id = id, Nome = <span class="c-str">"Café Expresso"</span>, Preco = <span class="c-num">9.90</span>
+        };
+        <span class="c-kw">return</span> Ok(produto);
     }
-}
-</code></pre>
+}</code></pre>
                     </div>
-                    
-                    <!-- Web (Oculto) -->
-                    <div data-content="web" class="tab-content space-y-4 hidden">
-                        <h3 class="text-2xl font-bold text-primary-neon">Frontend: A Interface do Usuário</h3>
-                        <p class="text-secondary-gray">Embora meu foco seja Backend, tenho experiência em estruturação Web (HTML/CSS) e com frameworks modernos (JavaScript/React) para prototipagem e interfaces de gestão.</p>
-                        <ul class="list-disc list-inside ml-4 text-white">
-                            <li>Domínio em HTML5, CSS3 e JavaScript, criando interfaces responsivas e interativas.</li>
-                            <li>Costumo utilizar React em conjunto com APIs REST para construção de SPAs dinâmicas.</li>
-                            <li>Um exemplo prático foi a criação desta pagina.</li>
-                        </ul>
-                        <!-- Não é necessário um bloco de código aqui, pois o código atual é o exemplo. -->
-                         <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-yellow-300"><code>&lt;div class="card"&gt;
-  &lt;h3&gt;Olá, mundo!&lt;/h3&gt;
-  &lt;button id="btn"&gt;Clique Aqui&lt;/button&gt;
-&lt;/div&gt;
+                </div>
 
-&lt;style&gt;
-  .card { background: #222; color: #fff; padding: 16px; border-radius: 8px; }
-  button { background: #00d1b2; border: none; padding: 8px 12px; cursor: pointer; }
-&lt;/style&gt;
-
-&lt;script&gt;
-  document.getElementById("btn").addEventListener("click", () =&gt; {
-    alert("Você clicou no botão!");
-  });
-&lt;/script&gt;
-</code></pre>
-                    </div>
-
-                    <!-- SQL & DBs (Oculto) -->
-                    <div data-content="sql" class="tab-content space-y-4 hidden">
-                        <h3 class="text-2xl font-bold text-primary-neon">SQL e Gestão de Dados</h3>
-                        <p class="text-secondary-gray">Essencial para o Backend: Modelagem de dados, otimização de consultas e manutenção de bancos de dados relacionais e NoSQL.</p>
-                        <ul class="list-disc list-inside ml-4 text-white">
+                <!-- SQL -->
+                <div class="tab-panel" data-content="sql">
+                    <div class="tab-info">
+                        <h3 class="tab-title">SQL: <span class="accent">Gestão de Dados</span></h3>
+                        <p class="tab-desc">Modelagem de dados, otimização de consultas e manutenção de bancos relacionais e NoSQL.</p>
+                        <ul class="tab-list">
                             <li>Experiência com bancos SQL Server, Vertica e Elastic Search, aplicando modelagem de dados, procedures e otimização de queries.</li>
                             <li>Já atuei em projetos com múltiplos contextos de banco e estratégias de versionamento via migrations.</li>
                             <li>Em aplicações reais, desenvolvi queries para relatórios e controle de fluxos automatizados com grande volume de dados.</li>
                         </ul>
-                        <pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-green-300"><code>-- Exemplo de consulta SQL com JOIN e otimização
-SELECT 
-    p.NomeProduto, c.NomeCategoria, p.Preco
-FROM 
-    Produtos p
-INNER JOIN 
-    Categorias c ON p.CategoriaId = c.Id
-WHERE 
-    p.Preco &gt; 50
-ORDER BY 
-    p.Preco DESC;
--- Índice sugerido: CREATE INDEX IX_Produtos_CategoriaId ON Produtos(CategoriaId);
-</code></pre>
                     </div>
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang sql-lang">SQL</span>
+                            <span class="code-file">query.sql</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-comment">-- Consulta com JOIN e otimização</span>
+<span class="c-kw">SELECT</span>
+    p.NomeProduto, c.NomeCategoria, p.Preco
+<span class="c-kw">FROM</span>
+    Produtos p
+<span class="c-kw">INNER JOIN</span>
+    Categorias c <span class="c-kw">ON</span> p.CategoriaId <span class="c-op">=</span> c.Id
+<span class="c-kw">WHERE</span>
+    p.Preco <span class="c-op">&gt;</span> <span class="c-num">50</span>
+<span class="c-kw">ORDER BY</span>
+    p.Preco <span class="c-kw">DESC</span>;
+<span class="c-comment">-- Índice: CREATE INDEX IX_Produtos_CategoriaId ON Produtos(CategoriaId);</span></code></pre>
+                    </div>
+                </div>
 
-                    <!-- Python (Oculto) -->
-                    <div data-content="mobile" class="tab-content space-y-4 hidden">
-                        <h3 class="text-2xl font-bold text-primary-neon">Mobile: Flutter / Dart</h3>
-                        <p class="text-secondary-gray">Sempre pensei em virar desenvolvedor para facilitar a vida de pessoas, havia saido disso por conta da CLT, mas quero voltar a focar nisso e empreender</p>
-                        <ul class="list-disc list-inside ml-4 text-white">
+                <!-- Python -->
+                <div class="tab-panel" data-content="python">
+                    <div class="tab-info">
+                        <h3 class="tab-title">Python: <span class="accent">Scripts e Ferramentas</span></h3>
+                        <p class="tab-desc">Uso Python para tarefas de automação, scripts de rotina de banco e data analysis simples.</p>
+                        <ul class="tab-list">
+                            <li>Utilizo Python para automação de tarefas, scripts de produtividade e criação de ferramentas com PyAutoGUI, Tkinter e Pandas.</li>
+                            <li>Também já trabalhei com Power BI e análise de dados em Python para criação de relatórios visuais.</li>
+                            <li>Um script que automatizava processos repetitivos no trabalho reduziu o tempo de execução em mais de 70%.</li>
+                            <li>Desenvolvi o FocusGuard, publicado no Itch.io: um sistema Pomodoro para auxiliar usuários a focarem em suas tarefas.</li>
+                        </ul>
+                    </div>
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang py-lang">Python</span>
+                            <span class="code-file">automacao.py</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-comment"># Exemplo de automação simples em Python</span>
+<span class="c-kw">import</span> pyautogui, time
+
+<span class="c-fn">print</span>(<span class="c-str">"Automação iniciando em 3s..."</span>)
+time.<span class="c-fn">sleep</span>(<span class="c-num">3</span>)
+
+<span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-fn">range</span>(<span class="c-num">5</span>):
+    pyautogui.<span class="c-fn">write</span>(<span class="c-str">f"Execução número </span><span class="c-var">{i+1}</span><span class="c-str">"</span>)
+    pyautogui.<span class="c-fn">press</span>(<span class="c-str">"enter"</span>)</code></pre>
+                    </div>
+                </div>
+
+                <!-- Mobile -->
+                <div class="tab-panel" data-content="mobile">
+                    <div class="tab-info">
+                        <h3 class="tab-title">Mobile: <span class="accent">Flutter / Dart</span></h3>
+                        <p class="tab-desc">Sempre pensei em virar desenvolvedor para facilitar a vida de pessoas. Quero voltar a focar nisso e empreender.</p>
+                        <ul class="tab-list">
                             <li>Atuo no desenvolvimento mobile com Flutter, criando aplicativos nativos para Android com foco em usabilidade.</li>
                             <li>Trabalho com SharedPreferences, notificações locais e persistência de dados leve.</li>
                             <li>Meu primeiro app publicado na Google Play é um lembrete para beber água, desenvolvido para aprimorar hábitos diários de saúde.</li>
                         </ul>
-<pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-cyan-300"><code>// Exemplo simples de contador em Flutter
-import 'package:flutter/material.dart';
-
-void main() =&gt; runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: const Text('Contador Flutter')),
-        body: const CounterWidget(),
-      ),
-    );
-  }
-}
-
-class CounterWidget extends StatefulWidget {
-  const CounterWidget({super.key});
-  @override
-  State&lt;CounterWidget&gt; createState() =&gt; _CounterWidgetState();
-}
-
-class _CounterWidgetState extends State&lt;CounterWidget&gt; {
-  int count = 0;
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(mainAxisSize: MainAxisSize.min, children: [
-        Text('Contagem: $count'),
-        ElevatedButton(
-          onPressed: () =&gt; setState(() =&gt; count++),
-          child: const Text('Incrementar'),
-        ),
-      ]),
-    );
-  }
-}
-</code></pre>
-
                     </div>
-                    <div data-content="unity" class="tab-content space-y-4 hidden">
-                        <h3 class="text-2xl font-bold text-primary-neon">Unity: C# / Game Dev</h3>
-                        <p class="text-secondary-gray">Games é uma paixão minha, então desenvolver os meus próprios é quase um hobbie</p>
-                        <ul class="list-disc list-inside ml-4 text-white">
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang dart-lang">Flutter</span>
+                            <span class="code-file">counter_widget.dart</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-comment">// Exemplo simples de contador em Flutter</span>
+<span class="c-kw">class</span> <span class="c-type">CounterWidget</span> <span class="c-kw">extends</span> <span class="c-type">StatefulWidget</span> {
+  <span class="c-kw">const</span> <span class="c-type">CounterWidget</span>({<span class="c-kw">super</span>.key});
+  <span class="c-kw">@override</span>
+  State&lt;<span class="c-type">CounterWidget</span>&gt; createState()
+      <span class="c-op">=&gt;</span> _<span class="c-type">CounterWidgetState</span>();
+}
+
+<span class="c-kw">class</span> _<span class="c-type">CounterWidgetState</span>
+    <span class="c-kw">extends</span> <span class="c-type">State</span>&lt;<span class="c-type">CounterWidget</span>&gt; {
+  <span class="c-type">int</span> count <span class="c-op">=</span> <span class="c-num">0</span>;
+  <span class="c-kw">@override</span>
+  <span class="c-type">Widget</span> build(<span class="c-type">BuildContext</span> context) {
+    <span class="c-kw">return</span> <span class="c-type">ElevatedButton</span>(
+      onPressed: () <span class="c-op">=&gt;</span> setState(() <span class="c-op">=&gt;</span> count<span class="c-op">++</span>),
+      child: <span class="c-type">Text</span>(<span class="c-str">'Contagem: </span><span class="c-var">$count</span><span class="c-str">'</span>),
+    );
+  }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Unity -->
+                <div class="tab-panel" data-content="unity">
+                    <div class="tab-info">
+                        <h3 class="tab-title">Unity: <span class="accent">C# / Game Dev</span></h3>
+                        <p class="tab-desc">Games é uma paixão minha, então desenvolver os meus próprios é quase um hobbie.</p>
+                        <ul class="tab-list">
                             <li>Uso Unity e C# no desenvolvimento de jogos 2D e protótipos indie, aplicando conceitos de prefabs, física, colisões e controle de player.</li>
-                            <li>Também já atuei em GameJam em um projeto roguelike e de tiro 2D, com foco em gameplay fluido e progressão de personagem.</li>
-                            <li>Um dos projetos atuais é um roguelite 2D desenvolvido em parceria com um amigo, que será lançado inicialmente no Itch.io.</li>
+                            <li>Já atuei em GameJam em um projeto roguelike e de tiro 2D, com foco em gameplay fluido e progressão de personagem.</li>
+                            <li>Um dos projetos atuais é um roguelite 2D desenvolvido em parceria com um amigo, que será lançado no Itch.io.</li>
                         </ul>
-<pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-purple-300"><code>// Script básico de movimento horizontal no Unity
-using UnityEngine;
-
-public class PlayerMovement : MonoBehaviour
-{
-    public float speed = 5f;
-
-    void Update()
-    {
-        float move = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-        transform.Translate(move, 0, 0);
-    }
-}
-</code></pre>
-
                     </div>
-                    <div data-content="python" class="tab-content space-y-4 hidden">
-                        <h3 class="text-2xl font-bold text-primary-neon">Python: Scripts e Ferramentas</h3>
-                        <p class="text-secondary-gray">Uso Python para tarefas de automação, scripts de rotina de banco (simulação de dados) e data analysis simples.</p>
-                        <ul class="list-disc list-inside ml-4 text-white">
-                            <li>Utilizo Python para automação de tarefas, scripts de produtividade e criação de ferramentas simples com PyAutoGUI, Tkinter e Pandas.</li>
-                            <li>Também já trabalhei com Power BI e análise de dados em Python para criação de relatórios visuais.</li>
-                            <li>Um exemplo marcante foi um script que automatizava processos repetitivos no trabalho, reduzindo o tempo de execução em mais de 70%.</li>
-                            <li>Tambem desenvolvi um sistema chamado FocusGuard, que está publicado no itch.io e tem com funcionalidade aplicar pomodoro e auxiliar os usuários a focarem em suas tarefas.</li>
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang unity-lang">Unity C#</span>
+                            <span class="code-file">PlayerMovement.cs</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-comment">// Script básico de movimento horizontal no Unity</span>
+<span class="c-kw">using</span> UnityEngine;
+
+<span class="c-kw">public class</span> <span class="c-type">PlayerMovement</span> : <span class="c-type">MonoBehaviour</span>
+{
+    <span class="c-kw">public float</span> speed <span class="c-op">=</span> <span class="c-num">5f</span>;
+
+    <span class="c-kw">void</span> <span class="c-fn">Update</span>()
+    {
+        <span class="c-kw">float</span> move <span class="c-op">=</span> <span class="c-type">Input</span>.GetAxis(<span class="c-str">"Horizontal"</span>)
+                    <span class="c-op">*</span> speed <span class="c-op">*</span> <span class="c-type">Time</span>.deltaTime;
+        transform.Translate(move, <span class="c-num">0</span>, <span class="c-num">0</span>);
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <!-- Web -->
+                <div class="tab-panel" data-content="web">
+                    <div class="tab-info">
+                        <h3 class="tab-title">Frontend: <span class="accent">A Interface do Usuário</span></h3>
+                        <p class="tab-desc">Embora meu foco seja Backend, tenho experiência em estruturação Web e frameworks modernos para prototipagem e interfaces.</p>
+                        <ul class="tab-list">
+                            <li>Domínio em HTML5, CSS3 e JavaScript, criando interfaces responsivas e interativas.</li>
+                            <li>Costumo utilizar React em conjunto com APIs REST para construção de SPAs dinâmicas.</li>
+                            <li>Um exemplo prático foi a criação desta própria página.</li>
                         </ul>
-<pre class="bg-gray-800 p-4 rounded-lg overflow-auto text-sm mt-4 text-lime-300"><code># Exemplo de automação simples em Python
-import pyautogui, time
+                    </div>
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang web-lang">HTML/JS</span>
+                            <span class="code-file">exemplo.html</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-op">&lt;</span><span class="c-kw">div</span> <span class="c-var">class</span><span class="c-op">=</span><span class="c-str">"card"</span><span class="c-op">&gt;</span>
+  <span class="c-op">&lt;</span><span class="c-kw">h3</span><span class="c-op">&gt;</span>Olá, mundo!<span class="c-op">&lt;/</span><span class="c-kw">h3</span><span class="c-op">&gt;</span>
+  <span class="c-op">&lt;</span><span class="c-kw">button</span> <span class="c-var">id</span><span class="c-op">=</span><span class="c-str">"btn"</span><span class="c-op">&gt;</span>Clique Aqui<span class="c-op">&lt;/</span><span class="c-kw">button</span><span class="c-op">&gt;</span>
+<span class="c-op">&lt;/</span><span class="c-kw">div</span><span class="c-op">&gt;</span>
 
-print("Automação iniciando em 3s...")
-time.sleep(3)
+<span class="c-op">&lt;</span><span class="c-kw">script</span><span class="c-op">&gt;</span>
+  document.<span class="c-fn">getElementById</span>(<span class="c-str">"btn"</span>)
+    .addEventListener(<span class="c-str">"click"</span>, () <span class="c-op">=&gt;</span> {
+      <span class="c-fn">alert</span>(<span class="c-str">"Você clicou!"</span>);
+    });
+<span class="c-op">&lt;/</span><span class="c-kw">script</span><span class="c-op">&gt;</span></code></pre>
+                    </div>
+                </div>
 
-for i in range(5):
-    pyautogui.write(f"Execução número {i+1}")
-    pyautogui.press("enter")
-</code></pre>
+                <!-- IA / LLMs -->
+                <div class="tab-panel" data-content="ia">
+                    <div class="tab-info">
+                        <h3 class="tab-title">IA: <span class="accent">Engenharia Aplicada</span></h3>
+                        <p class="tab-desc">Cursando Pós-graduação em Engenharia de Software Aplicada à IA (UNIPDS + Anhanguera), com foco em sistemas inteligentes e arquitetura.</p>
+                        <ul class="tab-list">
+                            <li>Aprofundamento em LLMs, RAGs, engenharia de prompt e construção de agentes autônomos.</li>
+                            <li>Nos projetos recentes, passo mais tempo pensando em arquitetura e infraestrutura do que codando — orquestração de modelos, pipelines de dados e integração com APIs de IA.</li>
+                            <li>Experiência prática com integração da API da Anthropic (Claude), OpenAI e fluxos multi-agente.</li>
+                            <li>Foco em aplicações reais: sistemas que combinam backends robustos com camadas de inteligência para automação e geração de conteúdo.</li>
+                        </ul>
+                    </div>
+                    <div class="code-block-wrap">
+                        <div class="code-block-header">
+                            <span class="code-lang py-lang">Python</span>
+                            <span class="code-file">rag_pipeline.py</span>
+                        </div>
+                        <pre class="code-block"><code><span class="c-comment"># Exemplo simplificado de pipeline RAG</span>
+<span class="c-kw">from</span> anthropic <span class="c-kw">import</span> Anthropic
 
+client <span class="c-op">=</span> <span class="c-fn">Anthropic</span>()
+
+<span class="c-kw">def</span> <span class="c-fn">query_with_context</span>(question, context_docs):
+    context <span class="c-op">=</span> <span class="c-str">"\n"</span>.join(context_docs)
+    response <span class="c-op">=</span> client.messages.<span class="c-fn">create</span>(
+        model<span class="c-op">=</span><span class="c-str">"claude-sonnet-4-6"</span>,
+        max_tokens<span class="c-op">=</span><span class="c-num">1024</span>,
+        messages<span class="c-op">=</span>[{
+            <span class="c-str">"role"</span>: <span class="c-str">"user"</span>,
+            <span class="c-str">"content"</span>: <span class="c-str">f"Contexto:\n</span><span class="c-var">{context}</span><span class="c-str">\n\nPergunta: </span><span class="c-var">{question}</span><span class="c-str">"</span>
+        }]
+    )
+    <span class="c-kw">return</span> response.content[<span class="c-num">0</span>].text</code></pre>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
-                <!-- 3. PUBLICACOES -->
-        <section id="publicacoes" class="pt-24 pb-24 text-center">
-            <h2 class="text-4xl font-extrabold text-white mb-6">
-                Publicações
-            </h2>
-            <p class="text-lg text-secondary-gray mb-12">
-                Sistemas/Apps/Sites Publicados
-            </p>
+<!-- ====== PUBLICAÇÕES ====== -->
+<section id="publicacoes" class="section section-alt">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">// projects</span>
+            <h2 class="section-title">Sistemas &amp; Apps <span class="accent">Publicados</span></h2>
+        </div>
+        <div class="pub-grid">
+            <a href="https://www.qualgabarito.com.br/" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+                <div class="pub-icon">
+                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/>
+                    </svg>
+                </div>
+                <div class="pub-info">
+                    <h3 class="pub-title">Qual Gabarito</h3>
+                    <p class="pub-desc">Site web para consulta de gabaritos e resultados</p>
+                    <span class="pub-tag">Web</span>
+                </div>
+                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.rinstrack.bebaagua&hl=pt_BR" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+                <div class="pub-icon">
+                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
+                        <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>
+                    </svg>
+                </div>
+                <div class="pub-info">
+                    <h3 class="pub-title">RinsTrack</h3>
+                    <p class="pub-desc">App de lembrete para beber água — Google Play</p>
+                    <span class="pub-tag">Android</span>
+                </div>
+                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://codewithpatrickr.itch.io/focusguard" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+                <div class="pub-icon">
+                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+                    </svg>
+                </div>
+                <div class="pub-info">
+                    <h3 class="pub-title">FocusGuard</h3>
+                    <p class="pub-desc">Sistema Pomodoro para foco e produtividade</p>
+                    <span class="pub-tag">Desktop / Python</span>
+                </div>
+                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://codewithpatrickr.itch.io/bingopop" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+                <div class="pub-icon">
+                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
+                    </svg>
+                </div>
+                <div class="pub-info">
+                    <h3 class="pub-title">BingoPop</h3>
+                    <p class="pub-desc">Jogo de Bingo casual publicado no Itch.io</p>
+                    <span class="pub-tag">Game</span>
+                </div>
+                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://codewithpatrickr.itch.io/pocket-rpg" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+                <div class="pub-icon">
+                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
+                        <path d="M2 20h20M6 20V10l6-6 6 6v10M10 20v-5h4v5"/>
+                    </svg>
+                </div>
+                <div class="pub-info">
+                    <h3 class="pub-title">Pocket RPG</h3>
+                    <p class="pub-desc">App utilitário para RPG de mesa — fichas, mapas, dados e grimório do mestre</p>
+                    <span class="pub-tag">Web App / RPG</span>
+                </div>
+                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://tcaconsult.com.br" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+                <div class="pub-icon">
+                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
+                        <path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M8 11h2M14 11h2M8 15h2M14 15h2M11 21v-4h2v4"/>
+                    </svg>
+                </div>
+                <div class="pub-info">
+                    <h3 class="pub-title">TCA Tonelli</h3>
+                    <p class="pub-desc">Site institucional para empresa de arquitetura e consultoria</p>
+                    <span class="pub-tag">Web / Arquitetura</span>
+                </div>
+                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://bemmequerobeer.com.br" target="_blank" rel="noopener noreferrer" class="pub-card reveal">
+                <div class="pub-icon">
+                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
+                        <path d="M5 3h14l-1 7H6L5 3zM6 10v9a1 1 0 001 1h10a1 1 0 001-1v-9"/><path d="M15 10v5M9 10v5M12 10v5"/>
+                    </svg>
+                </div>
+                <div class="pub-info">
+                    <h3 class="pub-title">Bem me quer Beer</h3>
+                    <p class="pub-desc">Site para empresa de chopps variados em eventos</p>
+                    <span class="pub-tag">Web / Eventos</span>
+                </div>
+                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
 
-            <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-12">
+<!-- ====== CONTATOS ====== -->
+<section id="contatos" class="section contatos-section">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-label">// connect</span>
+            <h2 class="section-title">Vamos <span class="accent">Conectar?</span></h2>
+            <p class="section-sub">Estou sempre aberto a discutir projetos de Backend, Mobile, Sites ou a próxima ideia de Game!</p>
+        </div>
+        <div class="contact-grid">
+            <a href="https://www.linkedin.com/in/patrickribeiro97/" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
+                <div class="contact-icon">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 4.5A1.5 1.5 0 114.5 6 1.5 1.5 0 016 4.5z"/></svg>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-platform">LinkedIn</span>
+                    <span class="contact-handle">Perfil Profissional</span>
+                </div>
+                <svg class="contact-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://www.instagram.com/codewithpatrickr/" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
+                <div class="contact-icon">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="#0f172a"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0f172a"/></svg>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-platform">Instagram</span>
+                    <span class="contact-handle">@codewithpatrickr</span>
+                </div>
+                <svg class="contact-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <a href="https://codewithpatrickr.itch.io/" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
+                <div class="contact-icon">
+                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 245.371 220.736">
+                        <path d="M31.99 1.365C21.287 7.72.2 31.945 0 38.298v10.516c0 13.126 12.44 24.2 23.73 24.2 13.57 0 24.957-11.37 24.957-24.9 0 13.53 10.88 24.9 24.45 24.9 13.57 0 24.45-11.37 24.45-24.9 0 13.53 11.386 24.9 24.956 24.9h.04c13.57 0 24.956-11.37 24.956-24.9 0 13.53 10.88 24.9 24.45 24.9 13.57 0 24.45-11.37 24.45-24.9 0 13.53 11.386 24.9 24.956 24.9 11.29 0 23.73-11.074 23.73-24.2V38.298c-.2-6.353-21.287-30.578-31.99-36.933C180.118.197 45.377.197 31.99 1.365zm80.565 87.474c-1.956.01-3.94.087-5.874.285-5.74.646-11.494 2.065-15.87 4.97C72.5 106.37 64.887 128.5 64.887 128.5H45.507v38.504h9.99c0 18.54-.876 36.04-4.967 54.956h149.32c-4.09-18.916-4.967-36.416-4.967-54.956h9.99V128.5h-19.38s-7.612-22.13-26.004-34.406c-6.723-4.44-16.62-5.932-26.937-5.255a94.97 94.97 0 00-25.0 0z"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <span class="contact-platform">Itch.io</span>
+                    <span class="contact-handle">codewithpatrickr</span>
+                </div>
+                <svg class="contact-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
 
-                <a href="https://www.qualgabarito.com.br/" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <!--svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 2.8c.6 0 1.2.2 1.6.6s.6 1 .6 1.6c0 .6-.2 1.2-.6 1.6s-1 .6-1.6.6c-.6 0-1.2-.2-1.6-.6s-.6-1-.6-1.6c0-.6.2-1.2.6-1.6s1-.6 1.6-.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm5 3.2c0 1.54-1.26 2.8-2.8 2.8H9.8c-1.54 0-2.8-1.26-2.8-2.8v-3.2h1.6c0 1.43 1.17 2.6 2.6 2.6h.4c1.43 0 2.6-1.17 2.6-2.6h1.6v3.2z"/></svg-->
-                    <span class="text-lg font-semibold text-white">Qual Gabarito</span>
-                </a>
-                
-                <!-- Link LinkedIn -->
-                <a href="https://play.google.com/store/apps/details?id=com.rinstrack.bebaagua&hl=pt_BR" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <!--<svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 4.5A1.5 1.5 0 114.5 6 1.5 1.5 0 016 4.5z"/></svg-->
-                    <span class="text-lg font-semibold text-white">RinsTrack</span>
-                </a>
+</main>
 
-                <!-- Link Instagram -->
-                <a href="https://codewithpatrickr.itch.io/focusguard" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <!--svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 2.8c.6 0 1.2.2 1.6.6s.6 1 .6 1.6c0 .6-.2 1.2-.6 1.6s-1 .6-1.6.6c-.6 0-1.2-.2-1.6-.6s-.6-1-.6-1.6c0-.6.2-1.2.6-1.6s1-.6 1.6-.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm5 3.2c0 1.54-1.26 2.8-2.8 2.8H9.8c-1.54 0-2.8-1.26-2.8-2.8v-3.2h1.6c0 1.43 1.17 2.6 2.6 2.6h.4c1.43 0 2.6-1.17 2.6-2.6h1.6v3.2z"/></svg-->
-                    <span class="text-lg font-semibold text-white">FocusGuard</span>
-                </a>
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+    <div class="footer-accent-line"></div>
+    <div class="container footer-inner">
+        <span class="footer-logo">&lt;CodeWithPatrickR/&gt;</span>
+        <span class="footer-copy">Desenvolvido com paixão e criatividade · GitHub Pages</span>
+    </div>
+</footer>
 
-                <a href="https://codewithpatrickr.itch.io/bingopop" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <!--svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 2.8c.6 0 1.2.2 1.6.6s.6 1 .6 1.6c0 .6-.2 1.2-.6 1.6s-1 .6-1.6.6c-.6 0-1.2-.2-1.6-.6s-.6-1-.6-1.6c0-.6.2-1.2.6-1.6s1-.6 1.6-.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm5 3.2c0 1.54-1.26 2.8-2.8 2.8H9.8c-1.54 0-2.8-1.26-2.8-2.8v-3.2h1.6c0 1.43 1.17 2.6 2.6 2.6h.4c1.43 0 2.6-1.17 2.6-2.6h1.6v3.2z"/></svg-->
-                    <span class="text-lg font-semibold text-white">BingoPop</span>
-                </a>
-
-                <a href="https://codewithpatrickr.itch.io/pocket-rpg" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <!--svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 2.8c.6 0 1.2.2 1.6.6s.6 1 .6 1.6c0 .6-.2 1.2-.6 1.6s-1 .6-1.6.6c-.6 0-1.2-.2-1.6-.6s-.6-1-.6-1.6c0-.6.2-1.2.6-1.6s1-.6 1.6-.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm5 3.2c0 1.54-1.26 2.8-2.8 2.8H9.8c-1.54 0-2.8-1.26-2.8-2.8v-3.2h1.6c0 1.43 1.17 2.6 2.6 2.6h.4c1.43 0 2.6-1.17 2.6-2.6h1.6v3.2z"/></svg-->
-                    <span class="text-lg font-semibold text-white">Pocket RPG</span>
-                </a>
-
-            </div>
-        </section>
-
-        <!-- 4. CONTATOS -->
-        <section id="contatos" class="pt-24 pb-24 text-center">
-            <h2 class="text-4xl font-extrabold text-white mb-6">
-                Vamos Conectar?
-            </h2>
-            <p class="text-lg text-secondary-gray mb-12">
-                Estou sempre aberto a discutir projetos de Backend, Mobile, Sites ou a próxima ideia de Game!
-            </p>
-
-            <div class="flex flex-col sm:flex-row justify-center space-y-6 sm:space-y-0 sm:space-x-12">
-                
-                <!-- Link LinkedIn -->
-                <a href="https://www.linkedin.com/in/patrickribeiro97/" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 4.5A1.5 1.5 0 114.5 6 1.5 1.5 0 016 4.5z"/></svg>
-                    <span class="text-lg font-semibold text-white">LinkedIn Profissional</span>
-                </a>
-
-                <!-- Link Instagram -->
-                <a href="https://www.instagram.com/codewithpatrickr/" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm3.2 2.8c.6 0 1.2.2 1.6.6s.6 1 .6 1.6c0 .6-.2 1.2-.6 1.6s-1 .6-1.6.6c-.6 0-1.2-.2-1.6-.6s-.6-1-.6-1.6c0-.6.2-1.2.6-1.6s1-.6 1.6-.6zM12 9c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 2c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1-.45-1-1-1zm5 3.2c0 1.54-1.26 2.8-2.8 2.8H9.8c-1.54 0-2.8-1.26-2.8-2.8v-3.2h1.6c0 1.43 1.17 2.6 2.6 2.6h.4c1.43 0 2.6-1.17 2.6-2.6h1.6v3.2z"/></svg>
-                    <span class="text-lg font-semibold text-white">Instagram Profissional</span>
-                </a>
-
-                <a href="https://codewithpatrickr.itch.io/" target="_blank" class="flex items-center justify-center p-4 bg-primary-neon/20 hover:bg-primary-neon/30 transition-colors duration-300 rounded-xl shadow-lg border-b-4 border-primary-neon w-full sm:w-64">
-                    <svg class="w-8 h-8 mr-3 text-white" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"></svg>
-                    <span class="text-lg font-semibold text-white">Itch.io</span>
-                </a>               
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Rodapé -->
-    <footer class="text-center py-6 border-t border-primary-neon/20 text-secondary-gray text-sm">
-        Desenvolvido em um momento de inspiração e criatividade 💡 | Hospedado no GitHub Pages.
-    </footer>
-
-    <!-- JavaScript para Interatividade (Menu Mobile e Tabs de Conteúdos) -->
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

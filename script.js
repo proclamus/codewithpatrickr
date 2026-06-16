@@ -1,100 +1,106 @@
-// 1. Controle do Menu Mobile
-const mobileMenuButton = document.getElementById("mobile-menu-button");
-const mobileMenu = document.getElementById("mobile-menu");
-const menuIconOpen = document.getElementById("menu-icon-open");
-const menuIconClose = document.getElementById("menu-icon-close");
+(function () {
+    'use strict';
 
-mobileMenuButton.addEventListener("click", () => {
-  mobileMenu.classList.toggle("hidden");
-  menuIconOpen.classList.toggle("hidden");
-  menuIconClose.classList.toggle("hidden");
-});
+    const header  = document.getElementById('header');
+    const hamburger = document.getElementById('hamburger');
+    const drawer    = document.getElementById('nav-drawer');
+    const overlay   = document.getElementById('nav-overlay');
+    const drawerClose = document.getElementById('drawer-close');
 
-// 2. Controle das Tabs de Conteúdos
-const tabButtons = document.querySelectorAll(".tab-button");
-const tabContents = document.querySelectorAll(".tab-content");
+    // ── Header scroll shadow ──────────────────────────────────────
+    window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
 
-const showContent = (target) => {
-  // Oculta todos os conteúdos
-  tabContents.forEach((content) => {
-    content.classList.add("hidden");
-  });
-  // Remove o estilo ativo de todos os botões
-  tabButtons.forEach((button) => {
-    button.classList.remove(
-      "active-tab-button",
-      "border-primary-neon",
-      "text-primary-neon"
-    );
-    button.classList.add("border-transparent", "text-secondary-gray");
-  });
-
-  // Mostra o conteúdo alvo
-  const targetContent = document.querySelector(`[data-content="${target}"]`);
-  if (targetContent) {
-    targetContent.classList.remove("hidden");
-  }
-
-  // Ativa o botão correto
-  const targetButton = document.querySelector(`[data-target="${target}"]`);
-  if (targetButton) {
-    targetButton.classList.add(
-      "active-tab-button",
-      "border-primary-neon",
-      "text-primary-neon"
-    );
-    targetButton.classList.remove("border-transparent", "text-secondary-gray");
-  }
-};
-
-// Event Listeners para os botões
-tabButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    const target = button.getAttribute("data-target");
-    showContent(target);
-
-    // Rolagem suave para o topo da seção de conteúdo ao clicar no tab (opcional, para UX)
-    document.getElementById("conteudos").scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-// Event Listeners para os links internos do menu desktop (para garantir o scroll suave e a abertura do tab)
-const dropdownLinks = document.querySelectorAll("#conteudos-links-desktop a");
-dropdownLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-    const sectionId = link.getAttribute("href").substring(1); // Ex: conteudos-java
-    const targetId = sectionId.split("-")[1]; // Ex: java
-
-    showContent(targetId);
-
-    // Força o scroll suave para a seção principal de conteúdo
-    document.getElementById("conteudos").scrollIntoView({ behavior: "smooth" });
-  });
-});
-
-// Event Listeners para os links internos do menu mobile
-const mobileLinks = document.querySelectorAll("#mobile-menu a");
-mobileLinks.forEach((link) => {
-  link.addEventListener("click", (e) => {
-    const href = link.getAttribute("href");
-
-    // Se for um link de conteúdo específico (#conteudos-...), abre o tab correto
-    if (href.startsWith("#conteudos-")) {
-      const targetId = href.substring(11); // Ex: java, csharp
-      showContent(targetId);
+    // ── Mobile drawer ─────────────────────────────────────────────
+    function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        hamburger.classList.add('open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
     }
 
-    // Garante que o scroll aconteça após o fechamento do menu
-    setTimeout(() => {
-      document
-        .querySelector(href.split("-")[0])
-        .scrollIntoView({ behavior: "smooth" });
-    }, 100);
-  });
-});
+    hamburger.addEventListener('click', function () {
+        drawer.classList.contains('active') ? closeDrawer() : openDrawer();
+    });
+    overlay.addEventListener('click', closeDrawer);
+    drawerClose.addEventListener('click', closeDrawer);
+    document.querySelectorAll('.drawer-link').forEach(function (link) {
+        link.addEventListener('click', closeDrawer);
+    });
 
-// Inicializa o primeiro tab (Java & Backend)
-document.addEventListener("DOMContentLoaded", () => {
-  showContent("java");
-});
+    // ── Tab system ────────────────────────────────────────────────
+    var tabBtns   = document.querySelectorAll('.tab-btn');
+    var tabPanels = document.querySelectorAll('.tab-panel');
+
+    function activateTab(target) {
+        tabBtns.forEach(function (btn) {
+            btn.classList.toggle('active', btn.dataset.target === target);
+        });
+        tabPanels.forEach(function (panel) {
+            panel.classList.toggle('active', panel.dataset.content === target);
+        });
+    }
+
+    tabBtns.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            activateTab(btn.dataset.target);
+        });
+    });
+
+    // ── Scroll reveal ─────────────────────────────────────────────
+    var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(function (el) {
+        revealObserver.observe(el);
+    });
+
+    // ── Smooth scroll with header offset ─────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+            var target = document.querySelector(this.getAttribute('href'));
+            if (!target) return;
+            e.preventDefault();
+            var offset = header.offsetHeight;
+            var top = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+        });
+    });
+
+    // ── Active nav link highlight on scroll ───────────────────────
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-link');
+
+    function updateActiveNav() {
+        var scrollY = window.scrollY + header.offsetHeight + 50;
+        sections.forEach(function (section) {
+            var top    = section.offsetTop;
+            var bottom = top + section.offsetHeight;
+            if (scrollY >= top && scrollY < bottom) {
+                var id = section.getAttribute('id');
+                navLinks.forEach(function (link) {
+                    link.classList.toggle('active-nav', link.getAttribute('href') === '#' + id);
+                });
+            }
+        });
+    }
+
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    updateActiveNav();
+
+})();
