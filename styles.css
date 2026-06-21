@@ -223,9 +223,13 @@ code { font-family: var(--mono); }
     backdrop-filter: blur(4px);
     z-index: 149;
     opacity: 0;
+    pointer-events: none;
     transition: opacity var(--t) var(--ease);
 }
-.nav-overlay.active { opacity: 1; }
+.nav-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
 
 /* Drawer */
 .nav-drawer {
