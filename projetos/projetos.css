@@ -1,0 +1,205 @@
+/* ============================
+   PÁGINA DE PROJETO (detalhe)
+   Reaproveita as variáveis e o header/footer de ../styles.css
+   ============================ */
+
+.proj-main { padding-top: 68px; }
+
+/* ── Barra de navegação (voltar) ── */
+.proj-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.86rem;
+    font-weight: 500;
+    color: var(--txt-sec);
+    padding: 30px 0 0;
+    transition: color var(--t), transform var(--t);
+}
+.proj-back:hover { color: var(--acento); transform: translateX(-3px); }
+.proj-back svg { width: 18px; height: 18px; }
+
+/* ── Cabeçalho do projeto ── */
+.proj-hero { padding-block: 40px 48px; }
+.proj-eyebrow {
+    display: block;
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--acento);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+.proj-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    line-height: 1.1;
+    margin-bottom: 18px;
+}
+.proj-lead {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--txt-sec);
+    max-width: 680px;
+    margin-bottom: 26px;
+}
+
+/* Tags de stack */
+.proj-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.proj-tag {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--acento);
+    background: var(--acento-bg);
+    border: 1px solid var(--border);
+    padding: 5px 14px;
+    border-radius: var(--r-pill);
+}
+
+/* Botões de ação */
+.proj-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+
+.proj-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-family: var(--mono);
+    color: var(--txt-muted);
+}
+.proj-status .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 10px rgba(34,197,94,0.6);
+}
+.proj-status.offline .dot { background: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,0.5); }
+
+/* ── Seção genérica dentro da página ── */
+.proj-section { padding-block: 52px; }
+.proj-section h2 {
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 14px;
+}
+.proj-section h2 .num {
+    font-family: var(--mono);
+    font-size: 0.9rem;
+    color: var(--acento);
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.proj-section p { color: var(--txt-sec); max-width: 720px; margin-bottom: 14px; }
+
+/* Lista de destaques / features */
+.proj-features {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 26px;
+}
+.proj-feature {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 20px 22px;
+    transition: border-color var(--t), transform var(--t);
+}
+.proj-feature:hover { border-color: var(--border-md); transform: translateY(-3px); }
+.proj-feature h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 6px; }
+.proj-feature h3::before { content: '▹'; color: var(--acento); margin-right: 8px; }
+.proj-feature p { font-size: 0.85rem; color: var(--txt-muted); margin: 0; line-height: 1.55; }
+
+/* ── Galeria de prints ── */
+.proj-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 26px;
+}
+.shot {
+    position: relative;
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    background: var(--bg-card);
+    cursor: zoom-in;
+    transition: border-color var(--t), transform var(--t), box-shadow var(--t);
+}
+.shot:hover {
+    border-color: var(--border-md);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(0,0,0,0.35), 0 0 22px rgba(34,211,238,0.06);
+}
+.shot img { width: 100%; height: auto; display: block; }
+.shot figcaption {
+    font-size: 0.78rem;
+    color: var(--txt-muted);
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+}
+
+/* Placeholder para print ainda não adicionado */
+.shot-placeholder {
+    display: grid;
+    place-items: center;
+    min-height: 200px;
+    color: var(--txt-muted);
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 24px;
+    cursor: default;
+    background:
+        repeating-linear-gradient(45deg, rgba(34,211,238,0.03) 0 10px, transparent 10px 20px),
+        var(--bg-card);
+}
+
+/* ── Lightbox ── */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: none;
+    place-items: center;
+    padding: 5vw;
+    background: rgba(8, 13, 24, 0.92);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+.lightbox.open { display: grid; }
+.lightbox img {
+    max-width: 100%;
+    max-height: 90vh;
+    border-radius: var(--r-sm);
+    box-shadow: var(--shadow-lg);
+}
+.lightbox-close {
+    position: absolute;
+    top: 24px; right: 28px;
+    width: 44px; height: 44px;
+    display: grid; place-items: center;
+    border: 1px solid var(--border-md);
+    border-radius: var(--r-sm);
+    background: rgba(15,23,42,0.6);
+    color: var(--txt);
+    cursor: pointer;
+    transition: border-color var(--t), color var(--t);
+}
+.lightbox-close:hover { border-color: var(--acento); color: var(--acento); }
+
+/* ── Navegação entre projetos (rodapé) ── */
+.proj-nav-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    padding-block: 40px;
+    border-top: 1px solid var(--border);
+    margin-top: 30px;
+}
+
+@media (max-width: 640px) {
+    .proj-features { grid-template-columns: 1fr; }
+}
