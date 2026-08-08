@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RinsTrack | Projeto — Patrick Ribeiro</title>
+    <meta name="description" content="RinsTrack — app Android em Flutter para lembrar de beber água, com meta diária, lembretes configuráveis e histórico de 7 dias.">
+    <meta property="og:title" content="RinsTrack | Projeto — Patrick Ribeiro">
+    <meta property="og:description" content="RinsTrack — app Android em Flutter para lembrar de beber água, com meta diária, lembretes configuráveis e histórico de 7 dias.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-size='13' font-weight='bold' fill='%2322d3ee'>PR</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="projetos.css">
+</head>
+<body>
+
+<header id="header">
+    <nav class="container nav-container">
+        <a href="../index.html#home" class="nav-logo">
+            <span class="logo-bracket">&lt;</span>CodeWithPatrickR<span class="logo-bracket">/&gt;</span>
+        </a>
+        <div class="nav-links">
+            <a href="../index.html#publicacoes" class="nav-link">Publicações</a>
+            <a href="../index.html#contatos" class="nav-link btn-nav">Contatos</a>
+        </div>
+    </nav>
+</header>
+
+<main class="proj-main">
+<div class="container">
+
+    <a href="../index.html#publicacoes" class="proj-back">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar para o portfólio
+    </a>
+
+    <!-- ====== HERO ====== -->
+    <section class="proj-hero reveal">
+        <span class="proj-eyebrow">// projeto próprio · android</span>
+        <h1 class="proj-title">Rins<span class="accent">Track</span></h1>
+        <p class="proj-lead">Meu <strong>primeiro aplicativo publicado na Google Play</strong>. Um lembrete de hidratação simples e direto: você define a meta diária, registra o que bebeu e o app cuida de te cutucar no intervalo certo. O detalhe que dá personalidade ao app são os rins — eles ficam saudáveis e azuis conforme você bate a meta, e tristes quando o dia está zerado.</p>
+
+        <div class="proj-tags">
+            <span class="proj-tag">Flutter</span>
+            <span class="proj-tag">Dart</span>
+            <span class="proj-tag">Android</span>
+            <span class="proj-tag">Google Play</span>
+            <span class="proj-tag">Notificações locais</span>
+        </div>
+
+        <div class="proj-actions">
+            <a href="https://play.google.com/store/apps/details?id=com.rinstrack.bebaagua&hl=pt_BR" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Ver na Google Play
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:8px"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <span class="proj-status">
+                <span class="dot"></span> No ar
+            </span>
+        </div>
+    </section>
+
+    <!-- ====== SOBRE ====== -->
+    <section class="proj-section reveal">
+        <h2><span class="num">01</span>Sobre o projeto</h2>
+        <p>A ideia nasceu de um problema pessoal: eu esquecia de beber água ao longo do dia. Os apps que testei eram cheios de cadastro, assinatura e telas demais para uma tarefa que deveria levar dois toques.</p>
+        <p>O RinsTrack foi construído em <strong>Flutter</strong> com foco em simplicidade — nenhuma conta, nenhum login, tudo salvo localmente no aparelho com <code>SharedPreferences</code>. O trabalho técnico mais interessante ficou nas <strong>notificações locais</strong>: agendar lembretes por intervalo respeitando uma janela do dia, sem incomodar o usuário de madrugada.</p>
+        <p>O feedback visual foi a decisão de design que mais mudou o uso na prática. Em vez de só uma barra de progresso, os rins mudam de estado — é uma forma de gamificação leve que dá vontade de completar a meta.</p>
+    </section>
+
+    <!-- ====== FUNCIONALIDADES ====== -->
+    <section class="proj-section reveal">
+        <h2><span class="num">02</span>O que o app faz</h2>
+        <ul class="proj-features">
+            <li class="proj-feature">
+                <h3>Meta diária configurável</h3>
+                <p>Você define quantos litros quer beber por dia e acompanha o progresso em tempo real.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Registro em dois toques</h3>
+                <p>Botão “+” para adicionar o que bebeu, sem formulário nem navegação extra.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Lembretes inteligentes</h3>
+                <p>Notificações por intervalo dentro de uma janela diária — nada de alerta às 3h da manhã.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Histórico de 7 dias</h3>
+                <p>Consulta e edição dos dias anteriores, para corrigir um registro esquecido.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Feedback visual</h3>
+                <p>Os rins ficam saudáveis conforme a meta avança e tristes quando o dia está zerado.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Reset diário</h3>
+                <p>Ao abrir num novo dia, o app pergunta se quer zerar o consumo — sem apagar nada sem avisar.</p>
+            </li>
+        </ul>
+    </section>
+
+
+    <!-- ====== GALERIA ====== -->
+    <section class="proj-section reveal">
+        <h2><span class="num">03</span>Capturas de tela</h2>
+        <p>Registros da interface — preservados aqui mesmo que o sistema saia do ar.</p>
+
+        <div class="proj-gallery retrato">
+            <figure class="shot">
+                <img src="../assets/projetos/rinstrack/home-hidratado.jpeg" alt="Tela inicial do RinsTrack com meta parcialmente atingida">
+                <figcaption>Meta em andamento — rins saudáveis</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/rinstrack/home-vazio.jpeg" alt="Tela inicial com consumo zerado">
+                <figcaption>Dia zerado — o feedback visual muda</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/rinstrack/lembretes.jpeg" alt="Painel de configuração de lembretes">
+                <figcaption>Lembretes — intervalo e janela diária</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/rinstrack/novo-dia.jpeg" alt="Diálogo de novo dia">
+                <figcaption>Novo dia — reset opcional do consumo</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/rinstrack/como-usar.jpeg" alt="Diálogo de instruções de uso">
+                <figcaption>Instruções de uso na primeira abertura</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <nav class="proj-nav-footer">
+        <a href="../index.html#publicacoes" class="btn-outline">← Todos os projetos</a>
+        <a href="https://play.google.com/store/apps/details?id=com.rinstrack.bebaagua&hl=pt_BR" target="_blank" rel="noopener noreferrer" class="btn-outline">Ver na Google Play →</a>
+    </nav>
+
+</div>
+</main>
+
+<footer class="footer">
+    <div class="footer-accent-line"></div>
+    <div class="container footer-inner">
+        <span class="footer-logo">&lt;CodeWithPatrickR/&gt;</span>
+        <span class="footer-copy">Desenvolvido com paixão e criatividade · GitHub Pages</span>
+    </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const header = document.getElementById('header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10));
+
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.shot img').forEach(img => {
+    img.parentElement.addEventListener('click', () => {
+        lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open');
+    });
+});
+function closeLb() { lb.classList.remove('open'); lbImg.src = ''; }
+document.getElementById('lightbox-close').addEventListener('click', closeLb);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+</script>
+</body>
+</html>

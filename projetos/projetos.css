@@ -118,6 +118,11 @@
     gap: 20px;
     margin-top: 26px;
 }
+/* Galeria para capturas de celular (retrato) — colunas mais estreitas */
+.proj-gallery.retrato {
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+}
+
 .shot {
     position: relative;
     border: 1px solid var(--border);

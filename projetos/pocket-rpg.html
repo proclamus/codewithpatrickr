@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket RPG | Projeto — Patrick Ribeiro</title>
+    <meta name="description" content="Pocket RPG — VTT de bolso para RPG de mesa: fichas de personagem, rolagem de dados, editor de mapa e gerenciador de combate.">
+    <meta property="og:title" content="Pocket RPG | Projeto — Patrick Ribeiro">
+    <meta property="og:description" content="Pocket RPG — VTT de bolso para RPG de mesa: fichas de personagem, rolagem de dados, editor de mapa e gerenciador de combate.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-size='13' font-weight='bold' fill='%2322d3ee'>PR</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="projetos.css">
+</head>
+<body>
+
+<header id="header">
+    <nav class="container nav-container">
+        <a href="../index.html#home" class="nav-logo">
+            <span class="logo-bracket">&lt;</span>CodeWithPatrickR<span class="logo-bracket">/&gt;</span>
+        </a>
+        <div class="nav-links">
+            <a href="../index.html#publicacoes" class="nav-link">Publicações</a>
+            <a href="../index.html#contatos" class="nav-link btn-nav">Contatos</a>
+        </div>
+    </nav>
+</header>
+
+<main class="proj-main">
+<div class="container">
+
+    <a href="../index.html#publicacoes" class="proj-back">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Voltar para o portfólio
+    </a>
+
+    <!-- ====== HERO ====== -->
+    <section class="proj-hero reveal">
+        <span class="proj-eyebrow">// projeto próprio · web app</span>
+        <h1 class="proj-title">Pocket <span class="accent">RPG</span></h1>
+        <p class="proj-lead">Uma <strong>VTT de bolso</strong> para RPG de mesa. Atende os dois lados da mesa: o jogador tem a ficha do personagem com HP, mana, habilidades e dados; o mestre tem o <strong>Grimório</strong>, com editor de mapa em grid, gerenciador de combate com balanceamento automático e até uma missão pronta para rodar.</p>
+
+        <div class="proj-tags">
+            <span class="proj-tag">JavaScript</span>
+            <span class="proj-tag">Web App</span>
+            <span class="proj-tag">RPG</span>
+            <span class="proj-tag">Itch.io</span>
+        </div>
+
+        <div class="proj-actions">
+            <a href="https://codewithpatrickr.itch.io/pocket-rpg" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                Abrir no Itch.io
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:8px"><path d="M7 17L17 7M7 7h10v10"/></svg>
+            </a>
+            <span class="proj-status">
+                <span class="dot"></span> No ar
+            </span>
+        </div>
+    </section>
+
+    <!-- ====== SOBRE ====== -->
+    <section class="proj-section reveal">
+        <h2><span class="num">01</span>Sobre o projeto</h2>
+        <p>RPG de mesa tem uma barreira de entrada alta: ficha em papel, dados que somem, mapa improvisado e o mestre fazendo conta de balanceamento na hora. As VTTs completas resolvem isso, mas são pesadas demais para uma mesa casual.</p>
+        <p>O Pocket RPG é o meio-termo: roda no navegador, cabe no celular e cobre o essencial. O jogador escolhe uma classe pronta (Guerreiro, Mago, Ladino, Bárbaro) ou <strong>cria a sua</strong>, e passa a ter ficha, dados D20/D6 e habilidades com custo de mana em uma tela só.</p>
+        <p>O lado do mestre é o mais completo. O <strong>editor de mapa</strong> monta o grid pintando paredes, portas, monstros, armadilhas e baús, e exporta o resultado. O <strong>gerenciador de combate</strong> sugere quantos inimigos usar conforme o número de heróis e controla HP, defesa e dano de cada um durante a luta.</p>
+    </section>
+
+    <!-- ====== FUNCIONALIDADES ====== -->
+    <section class="proj-section reveal">
+        <h2><span class="num">02</span>O que a ferramenta entrega</h2>
+        <ul class="proj-features">
+            <li class="proj-feature">
+                <h3>Fichas por classe</h3>
+                <p>Guerreiro, Mago, Ladino e Bárbaro prontos — com HP, mana, movimento e habilidades.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Classes personalizadas</h3>
+                <p>Criação de classe nova para mesas com regras próprias.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Rolagem de dados</h3>
+                <p>D20 e D6 integrados à ficha, sem precisar de dado físico.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Habilidades com custo</h3>
+                <p>Cada magia tem custo de mana e efeito descrito, controlados na própria ficha.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Editor de mapa</h3>
+                <p>Grid configurável pintando parede, porta, monstro, armadilha, baú e heróis — com exportação.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Gerenciador de combate</h3>
+                <p>Sugere o balanceamento pelo número de heróis e controla HP, defesa e dano dos inimigos.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Dado do mestre</h3>
+                <p>Rolagem separada para o narrador, fora da vista dos jogadores.</p>
+            </li>
+            <li class="proj-feature">
+                <h3>Missão de exemplo</h3>
+                <p>Tutorial jogável completo, com salas, monstros e regras de descanso.</p>
+            </li>
+        </ul>
+    </section>
+
+
+    <!-- ====== GALERIA ====== -->
+    <section class="proj-section reveal">
+        <h2><span class="num">03</span>Capturas de tela</h2>
+        <p>Registros da interface — preservados aqui mesmo que o sistema saia do ar.</p>
+
+        <div class="proj-gallery retrato">
+            <figure class="shot">
+                <img src="../assets/projetos/pocketrpg/menu.png" alt="Menu inicial do Pocket RPG">
+                <figcaption>Menu inicial — jogador ou mestre</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/pocketrpg/herois.png" alt="Seleção de classes de herói">
+                <figcaption>Seleção de classe, com opção de criar a sua</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/pocketrpg/ficha.png" alt="Ficha do personagem Mago">
+                <figcaption>Ficha — HP, mana, dados e habilidades</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/pocketrpg/grimorio.png" alt="Grimório do mestre">
+                <figcaption>Grimório do mestre — controles do narrador</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/pocketrpg/tutorial.png" alt="Missão tutorial no grimório">
+                <figcaption>Missão pronta, com salas e balanceamento</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/pocketrpg/combate.png" alt="Gerenciador de combate">
+                <figcaption>Gerenciador de combate com sugestão de balanceamento</figcaption>
+            </figure>
+            <figure class="shot">
+                <img src="../assets/projetos/pocketrpg/editor-mapa.png" alt="Editor de mapa em grid">
+                <figcaption>Editor de mapa — grid com paredes, portas e monstros</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <nav class="proj-nav-footer">
+        <a href="../index.html#publicacoes" class="btn-outline">← Todos os projetos</a>
+        <a href="https://codewithpatrickr.itch.io/pocket-rpg" target="_blank" rel="noopener noreferrer" class="btn-outline">Abrir no Itch.io →</a>
+    </nav>
+
+</div>
+</main>
+
+<footer class="footer">
+    <div class="footer-accent-line"></div>
+    <div class="container footer-inner">
+        <span class="footer-logo">&lt;CodeWithPatrickR/&gt;</span>
+        <span class="footer-copy">Desenvolvido com paixão e criatividade · GitHub Pages</span>
+    </div>
+</footer>
+
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close" aria-label="Fechar">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+const header = document.getElementById('header');
+addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10));
+
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.shot img').forEach(img => {
+    img.parentElement.addEventListener('click', () => {
+        lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open');
+    });
+});
+function closeLb() { lb.classList.remove('open'); lbImg.src = ''; }
+document.getElementById('lightbox-close').addEventListener('click', closeLb);
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+</script>
+</body>
+</html>
