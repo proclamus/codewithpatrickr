@@ -228,3 +228,18 @@
 @media (max-width: 640px) {
     .proj-features { grid-template-columns: 1fr; }
 }
+
+/* ============================
+   UTILITÁRIOS
+   (substituem style= inline, para a CSP dispensar 'unsafe-inline')
+   ============================ */
+.btn-icon { margin-left: 8px; }
+
+.proj-nota {
+    margin-top: 26px;
+    font-size: 0.86rem;
+    color: var(--txt-muted);
+    border-left: 2px solid var(--border-md);
+    padding-left: 14px;
+    max-width: 680px;
+}

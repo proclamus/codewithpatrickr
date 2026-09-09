@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; form-action 'none'; frame-src 'none'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <title>Delka Eletrics | Projeto — Patrick Ribeiro</title>
     <meta name="description" content="Delka Eletrics — site institucional e vitrine de mobilidade elétrica em Niterói/RJ, construído com Next.js 15, React 19, TypeScript e Supabase.">
     <meta property="og:title" content="Delka Eletrics | Projeto — Patrick Ribeiro">
@@ -61,7 +63,7 @@
         <div class="proj-actions">
             <a href="https://www.delkaeletrics.com/" target="_blank" rel="noopener noreferrer" class="btn-primary">
                 Visitar o site
-                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="margin-left:8px"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" class="btn-icon"><path d="M7 17L17 7M7 7h10v10"/></svg>
             </a>
             <span class="proj-status">
                 <span class="dot"></span> No ar
@@ -300,29 +302,6 @@
     <img id="lightbox-img" src="" alt="">
 </div>
 
-<script>
-// Reveal on scroll
-const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-}, { threshold: 0.12 });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// Header shadow on scroll
-const header = document.getElementById('header');
-addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 10));
-
-// Lightbox para os prints
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lightbox-img');
-document.querySelectorAll('.shot img').forEach(img => {
-    img.parentElement.addEventListener('click', () => {
-        lbImg.src = img.src; lbImg.alt = img.alt; lb.classList.add('open');
-    });
-});
-function closeLb() { lb.classList.remove('open'); lbImg.src = ''; }
-document.getElementById('lightbox-close').addEventListener('click', closeLb);
-lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
-addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
-</script>
+<script src="projetos.js"></script>
 </body>
 </html>
