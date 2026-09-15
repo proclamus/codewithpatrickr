@@ -1,6 +1,9 @@
 /* ============================================================
    /portfolio — landing para clientes de site (público leigo)
    Independente do styles.css do site principal, de propósito.
+
+   MOBILE-FIRST: o estilo base é o do celular. Os @media (min-width)
+   só acrescentam colunas e espaçamento conforme a tela cresce.
    ============================================================ */
 :root {
     --navy:       #14213d;
@@ -49,7 +52,7 @@ p  { color: var(--texto-2); }
 .btn-cta:hover { background: var(--cta-escuro); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(225,48,108,.4); }
 .btn-claro { background: #fff; color: var(--navy); border: 2px solid var(--borda); }
 .btn-claro:hover { border-color: var(--navy); }
-.btn-sm { padding: 10px 18px; font-size: .85rem; }
+.btn-sm { padding: 9px 14px; font-size: .8rem; }       /* celular: mais compacto no topo */
 .btn-lg { padding: 18px 36px; font-size: 1.05rem; }
 
 /* ── Topo ── */
@@ -62,9 +65,9 @@ p  { color: var(--texto-2); }
 .topo-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .marca { font-weight: 800; color: var(--navy); }
 
-/* ── Hero ── */
+/* ── Hero (celular: texto em cima, mockups embaixo) ── */
 .hero { padding-block: clamp(48px, 8vw, 96px) clamp(40px, 6vw, 80px); overflow: hidden; }
-.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.hero-grid { display: grid; grid-template-columns: 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; }
 .rotulo {
     display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .12em;
     text-transform: uppercase; color: var(--cta-escuro); margin-bottom: 18px;
@@ -72,14 +75,15 @@ p  { color: var(--texto-2); }
 .hero h1 { font-size: clamp(1.75rem, 4vw, 2.8rem); margin-bottom: 18px; }
 .hero-sub { font-size: 1.1rem; max-width: 520px; margin-bottom: 28px; }
 .hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-ctas .btn { flex: 1 1 100%; }                     /* celular: botões em largura total */
 
-.hero-visual { position: relative; }
+.hero-visual { position: relative; margin-top: 64px; padding-right: 8%; padding-bottom: 8%; }
 .hero-desktop {
     width: 100%; border-radius: var(--r); box-shadow: var(--sombra-2);
     border: 1px solid var(--borda);
 }
 .hero-mobile {
-    position: absolute; right: -6%; bottom: -10%; width: 30%;
+    position: absolute; right: -2%; bottom: 0; width: 28%;
     border-radius: 18px; box-shadow: var(--sombra-2); border: 3px solid #fff;
 }
 
@@ -88,8 +92,8 @@ p  { color: var(--texto-2); }
 .secao-cinza { background: var(--fundo-2); }
 .secao-sub { margin-top: -6px; margin-bottom: 28px; }
 
-/* ── Benefícios ── */
-.beneficios { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
+/* ── Benefícios (celular: 1 coluna) ── */
+.beneficios { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
 .beneficio {
     background: #fff; border: 1px solid var(--borda); border-radius: var(--r);
     padding: 24px 22px; box-shadow: var(--sombra);
@@ -97,8 +101,8 @@ p  { color: var(--texto-2); }
 .beneficio h3::before { content: ''; display: block; width: 34px; height: 4px; background: var(--cta); border-radius: 2px; margin-bottom: 14px; }
 .beneficio p { font-size: .93rem; }
 
-/* ── Cases ── */
-.cases { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+/* ── Cases (celular: 1 coluna, largura contida) ── */
+.cases { display: grid; grid-template-columns: 1fr; gap: 22px; max-width: 640px; margin-inline: auto; }
 .case {
     background: #fff; border: 1px solid var(--borda); border-radius: var(--r);
     overflow: hidden; box-shadow: var(--sombra); display: flex; flex-direction: column;
@@ -120,8 +124,8 @@ p  { color: var(--texto-2); }
     padding: 3px 9px; border-radius: 999px;
 }
 
-/* ── Passos ── */
-.passos { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 28px; }
+/* ── Passos (celular: 1 coluna) ── */
+.passos { list-style: none; display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 28px; }
 .passos li { background: #fff; border: 1px solid var(--borda); border-radius: var(--r); padding: 24px 22px; box-shadow: var(--sombra); }
 .passo-num {
     display: inline-grid; place-items: center; width: 38px; height: 38px; border-radius: 50%;
@@ -129,8 +133,8 @@ p  { color: var(--texto-2); }
 }
 .passos p { font-size: .93rem; }
 
-/* ── Quem faz ── */
-.quem-inner { display: flex; align-items: center; gap: 28px; max-width: 760px; }
+/* ── Quem faz (celular: foto em cima, centralizado) ── */
+.quem-inner { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 28px; max-width: 760px; }
 .quem-foto { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 4px solid var(--fundo-2); box-shadow: var(--sombra); }
 .quem p { font-size: 1.02rem; }
 
@@ -147,30 +151,39 @@ p  { color: var(--texto-2); }
 /* ── Instagram flutuante ── */
 .cta-flutuante {
     position: fixed; right: 18px; bottom: 18px; z-index: 60;
-    width: 58px; height: 58px; border-radius: 50%;
+    width: 54px; height: 54px; border-radius: 50%;
     background: var(--cta); color: #fff; display: grid; place-items: center;
     box-shadow: 0 8px 24px rgba(225,48,108,.45);
     transition: transform .2s;
 }
 .cta-flutuante:hover { transform: scale(1.07); }
 
-/* ── Responsivo ── */
-@media (max-width: 960px) {
+/* ============================================================
+   AMPLIANDO A PARTIR DO CELULAR
+   ============================================================ */
+
+/* ── ≥ 521px: celular grande / tablet pequeno ── */
+@media (min-width: 521px) {
+    .btn-sm { padding: 10px 18px; font-size: .85rem; }
     .beneficios, .passos { grid-template-columns: repeat(2, 1fr); }
-    .cases { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
+    .quem-inner { flex-direction: row; text-align: left; }
+    .cta-flutuante { width: 58px; height: 58px; }
 }
-@media (max-width: 760px) {
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-visual { margin-top: 64px; padding-right: 8%; padding-bottom: 8%; }
-    .hero-mobile { right: -2%; bottom: 0; width: 28%; }
-    .hero-ctas .btn { flex: 1 1 100%; }
+
+/* ── ≥ 761px: tablet / notebook pequeno — hero vira 2 colunas ── */
+@media (min-width: 761px) {
+    .hero-grid { grid-template-columns: 1.05fr .95fr; }
+    .hero-ctas .btn { flex: 0 0 auto; }
+    .hero-visual { margin-top: 0; padding: 0; }
+    .hero-mobile { right: -6%; bottom: -10%; width: 30%; }
 }
-@media (max-width: 520px) {
-    .beneficios, .passos { grid-template-columns: 1fr; }
-    .quem-inner { flex-direction: column; text-align: center; }
-    .topo .btn-sm { padding: 9px 14px; font-size: .8rem; }
-    .cta-flutuante { width: 54px; height: 54px; }
+
+/* ── ≥ 961px: desktop — grades completas ── */
+@media (min-width: 961px) {
+    .beneficios, .passos { grid-template-columns: repeat(4, 1fr); }
+    .cases { grid-template-columns: repeat(2, 1fr); max-width: none; }
 }
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .btn, .case, .cta-flutuante { transition: none; }
