@@ -28,15 +28,4 @@
         window.matchMedia('(min-width: 861px)').addEventListener('change', fechar);
     }
 
-    // Fade-in das seções ao entrar na tela
-    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (en) {
-                if (en.isIntersecting) { en.target.classList.add('visivel'); io.unobserve(en.target); }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-    } else {
-        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visivel'); });
-    }
 })();
