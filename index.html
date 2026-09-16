@@ -3,38 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'none'; frame-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; frame-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Sites para negócios locais — Patrick Ribeiro</title>
-    <meta name="description" content="Site que aparece no Google, passa confiança e leva o cliente direto pro seu WhatsApp. Veja exemplos de lojas e empresas que já estão no ar.">
-    <link rel="canonical" href="https://patrickribeirodev.com.br/portfolio/">
+
+    <title>Site para Negócio Local que Aparece no Google | Patrick Ribeiro</title>
+    <meta name="description" content="Desenvolvimento de site institucional para lojas, clínicas e profissionais no Rio de Janeiro e Niterói. Sites que aparecem no Google, passam confiança e levam o cliente direto pro WhatsApp.">
+    <link rel="canonical" href="https://patrickribeirodev.com.br/">
+
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://patrickribeirodev.com.br/portfolio/">
-    <meta property="og:title" content="Sites para negócios locais — Patrick Ribeiro">
-    <meta property="og:description" content="Site que aparece no Google, passa confiança e leva o cliente direto pro seu WhatsApp.">
-    <meta property="og:image" content="https://patrickribeirodev.com.br/portfolio/img/delka.jpg">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2314213d'/><text x='50%25' y='55%25' dominant-baseline='central' text-anchor='middle' font-family='Arial,sans-serif' font-size='17' font-weight='700' fill='%23ffffff'>P</text></svg>">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://patrickribeirodev.com.br/">
+    <meta property="og:site_name" content="Patrick Ribeiro — Sites para negócios locais">
+    <meta property="og:title" content="Site para negócio local que aparece no Google">
+    <meta property="og:description" content="Sites para lojas, clínicas e profissionais: aparecem na busca, passam confiança e levam o cliente direto pro seu WhatsApp.">
+    <meta property="og:image" content="https://patrickribeirodev.com.br/img/delka.jpg">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230f172a'/><text x='50%25' y='55%25' dominant-baseline='central' text-anchor='middle' font-family='Arial,sans-serif' font-size='17' font-weight='700' fill='%23ffffff'>P</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="preload" as="image" href="img/delka.webp" type="image/webp" fetchpriority="high">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Patrick Ribeiro — Sites para negócios locais",
+      "url": "https://patrickribeirodev.com.br/",
+      "description": "Desenvolvimento de sites institucionais para lojas, clínicas e profissionais: sites que aparecem no Google, passam confiança e levam o cliente direto pro WhatsApp.",
+      "areaServed": ["Rio de Janeiro", "Niterói", "Brasil"],
+      "founder": { "@type": "Person", "name": "Patrick Ribeiro" },
+      "sameAs": ["https://www.instagram.com/codewithpatrickr/", "https://www.linkedin.com/in/patrickribeiro97/"],
+      "knowsAbout": ["site institucional", "site para negócio local", "desenvolvimento web", "presença digital"]
+    }
+    </script>
 </head>
 <body>
 
 <!-- ====== TOPO ====== -->
 <header class="topo">
     <div class="container topo-inner">
-        <span class="marca">Patrick Ribeiro</span>
-        <a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-sm">Chamar no Instagram</a>
+        <a href="#inicio" class="marca">Patrick Ribeiro</a>
+
+        <nav class="menu" id="menu" aria-label="Seções da página">
+            <a href="#por-que">Por que um site</a>
+            <a href="#beneficios">O que você ganha</a>
+            <a href="#exemplos">Exemplos</a>
+            <a href="#como-funciona">Como funciona</a>
+            <a href="#duvidas">Dúvidas</a>
+            <a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="btn btn-cta menu-cta">Chamar no Instagram</a>
+        </nav>
+
+        <div class="topo-acoes">
+            <a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-sm topo-cta">Chamar no Instagram</a>
+            <button class="menu-btn" id="menu-btn" aria-label="Abrir menu" aria-controls="menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </div>
 </header>
 
-<main>
+<main id="inicio">
 
 <!-- ====== O PROBLEMA ====== -->
 <section class="hero">
     <div class="container hero-grid">
-        <div class="hero-texto">
+        <div class="hero-texto reveal">
             <span class="rotulo">Sites para negócios locais</span>
             <h1>Se o seu negócio não aparece no Google, o cliente vai pro concorrente que aparece.</h1>
             <p class="hero-sub">
@@ -46,49 +84,101 @@
                 <a href="#exemplos" class="btn btn-claro">Ver exemplos</a>
             </div>
         </div>
-        <div class="hero-visual" aria-hidden="true">
-            <img src="img/delka.jpg" alt="" class="hero-desktop" width="1280" height="640">
-            <img src="img/delka-mobile.jpg" alt="" class="hero-mobile" width="383" height="832">
+        <div class="hero-visual reveal reveal-atraso">
+            <picture>
+                <source srcset="img/delka.webp" type="image/webp">
+                <img src="img/delka.jpg" alt="Site da Delka Eletrics aberto no computador, com uma moto elétrica em destaque na página inicial" class="hero-desktop" width="1280" height="640" fetchpriority="high">
+            </picture>
+            <picture>
+                <source srcset="img/delka-mobile.webp" type="image/webp">
+                <img src="img/delka-mobile.jpg" alt="O mesmo site da Delka Eletrics aberto no celular" class="hero-mobile" width="383" height="832">
+            </picture>
         </div>
     </div>
 </section>
 
-<!-- ====== O QUE VOCÊ RECEBE ====== -->
-<section class="secao secao-cinza">
+<!-- ====== POR QUE UM SITE (Instagram + Google) ====== -->
+<section class="secao secao-cinza" id="por-que">
     <div class="container">
-        <h2>O que o site faz pelo seu negócio</h2>
+        <div class="secao-cabeca reveal">
+            <span class="rotulo">Instagram + site</span>
+            <h2>O Instagram traz gente. O site é onde ela decide.</h2>
+            <p class="secao-sub">Não é pra largar o Instagram — é pra ele não ser o único lugar onde o seu negócio existe.</p>
+        </div>
+
+        <div class="comparativo reveal">
+            <div class="comp-card">
+                <span class="comp-tag">No Instagram</span>
+                <h3>Alcance</h3>
+                <p>O algoritmo decide quem vê o seu post — inclusive gente que não está procurando o que você faz. É ótimo pra ser visto e criar conexão. Mas a atenção no feed se dispersa em segundos.</p>
+            </div>
+            <div class="comp-card comp-card-destaque">
+                <span class="comp-tag">No Google</span>
+                <h3>Intenção</h3>
+                <p>Quem te encontra já está pesquisando exatamente o que você oferece. A pessoa chegou querendo resolver algo — você só precisa estar lá quando ela procurar.</p>
+            </div>
+        </div>
+
+        <p class="nota reveal">
+            Isso não é garantia de primeiro lugar no Google — quem promete isso está enganando.
+            É estar na disputa por quem já está procurando. Sem site, você não entra nem nela.
+        </p>
+    </div>
+</section>
+
+<!-- ====== O QUE VOCÊ RECEBE ====== -->
+<section class="secao" id="beneficios">
+    <div class="container">
+        <div class="secao-cabeca reveal">
+            <span class="rotulo">O que você ganha</span>
+            <h2>O que o site faz pelo seu negócio</h2>
+        </div>
         <div class="beneficios">
-            <div class="beneficio">
+            <div class="beneficio reveal">
                 <h3>Aparece na busca</h3>
                 <p>Montado pra ser encontrado quando alguém pesquisa o que você faz na sua região.</p>
             </div>
-            <div class="beneficio">
+            <div class="beneficio reveal">
                 <h3>Passa confiança</h3>
-                <p>Quem chega vê serviços claros, fotos de verdade e um negócio sério — antes de decidir chamar.</p>
+                <p>Quem você é, o que faz e provas reais do trabalho — sem a pessoa precisar rolar feed nem caçar destaque fixado.</p>
             </div>
-            <div class="beneficio">
+            <div class="beneficio reveal">
+                <h3>Guia até o contato</h3>
+                <p>Cada seção é organizada pra levar o visitante até o botão de contato. No feed a atenção se dispersa; no site ela tem um caminho.</p>
+            </div>
+            <div class="beneficio reveal">
                 <h3>Contato em um toque</h3>
                 <p>Botão de WhatsApp em todo lugar. Sem formulário chato, sem e-mail que ninguém responde.</p>
             </div>
-            <div class="beneficio">
+            <div class="beneficio reveal">
                 <h3>Feito pro celular</h3>
                 <p>A maior parte das visitas vem do celular. O site é pensado pra ele primeiro.</p>
+            </div>
+            <div class="beneficio reveal">
+                <h3>No seu próprio endereço</h3>
+                <p>Perfil pode ser bloqueado, perder alcance ou sair do ar de uma hora pra outra. O site fica no seu domínio, sem depender de regra de plataforma nenhuma.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ====== EXEMPLOS ====== -->
-<section class="secao" id="exemplos">
+<section class="secao secao-cinza" id="exemplos">
     <div class="container">
-        <h2>Sites que já estão no ar</h2>
-        <p class="secao-sub">Negócios reais, com o site aberto pra você ver.</p>
+        <div class="secao-cabeca reveal">
+            <span class="rotulo">Exemplos reais</span>
+            <h2>Sites que já estão no ar</h2>
+            <p class="secao-sub">Negócios reais, com o site aberto pra você ver.</p>
+        </div>
 
         <div class="cases">
 
-            <article class="case">
+            <article class="case reveal">
                 <a href="https://www.delkaeletrics.com/" target="_blank" rel="noopener noreferrer" class="case-img">
-                    <img src="img/delka.jpg" alt="Site da Delka Eletrics" width="1280" height="640" loading="lazy">
+                    <picture>
+                        <source srcset="img/delka.webp" type="image/webp">
+                        <img src="img/delka.jpg" alt="Página inicial do site da Delka Eletrics, loja de bikes e motos elétricas em Niterói, com foto de moto elétrica em destaque" width="1280" height="640" loading="lazy">
+                    </picture>
                 </a>
                 <div class="case-corpo">
                     <h3>Delka Eletrics</h3>
@@ -99,9 +189,12 @@
                 </div>
             </article>
 
-            <article class="case">
+            <article class="case reveal">
                 <a href="https://bemmequerobeer.com.br" target="_blank" rel="noopener noreferrer" class="case-img">
-                    <img src="img/bmq.jpg" alt="Site da Bem Me Quero Beer" width="1280" height="634" loading="lazy">
+                    <picture>
+                        <source srcset="img/bmq.webp" type="image/webp">
+                        <img src="img/bmq.jpg" alt="Página inicial do site da Bem Me Quero Beer, aluguel de chopeiras para eventos em Salvador, em preto e amarelo" width="1280" height="634" loading="lazy">
+                    </picture>
                 </a>
                 <div class="case-corpo">
                     <h3>Bem Me Quero Beer</h3>
@@ -112,9 +205,12 @@
                 </div>
             </article>
 
-            <article class="case">
+            <article class="case reveal">
                 <a href="https://tcaconsult.com.br" target="_blank" rel="noopener noreferrer" class="case-img">
-                    <img src="img/tca.jpg" alt="Site da TCA Tonelli" width="1280" height="636" loading="lazy">
+                    <picture>
+                        <source srcset="img/tca.webp" type="image/webp">
+                        <img src="img/tca.jpg" alt="Página inicial do site da TCA Tonelli, consultoria de engenharia e avaliação patrimonial no Rio de Janeiro" width="1280" height="636" loading="lazy">
+                    </picture>
                 </a>
                 <div class="case-corpo">
                     <h3>TCA Tonelli <span class="selo">Em construção</span></h3>
@@ -125,16 +221,19 @@
                 </div>
             </article>
 
-            <article class="case">
-                <a href="https://patrickribeirodev.com.br/" target="_blank" rel="noopener noreferrer" class="case-img">
-                    <img src="img/perfil.jpg" alt="Site profissional de Patrick Ribeiro" width="1280" height="638" loading="lazy">
+            <article class="case reveal">
+                <a href="portfolio/" class="case-img">
+                    <picture>
+                        <source srcset="img/perfil.webp" type="image/webp">
+                        <img src="img/perfil.jpg" alt="Página inicial do portfólio profissional de Patrick Ribeiro, em tema escuro, com foto e áreas de atuação" width="1280" height="638" loading="lazy">
+                    </picture>
                 </a>
                 <div class="case-corpo">
                     <h3>Patrick Ribeiro</h3>
                     <span class="case-tag">Perfil profissional · o meu próprio site</span>
                     <p><strong>Situação:</strong> precisava de um endereço único pra mostrar experiência, projetos e contato.</p>
                     <p><strong>O site:</strong> apresentação profissional com os trabalhos entregues, área de atuação e canais de contato — tudo numa página só.</p>
-                    <a href="https://patrickribeirodev.com.br/" target="_blank" rel="noopener noreferrer" class="case-link">patrickribeirodev.com.br ↗</a>
+                    <a href="portfolio/" class="case-link">patrickribeirodev.com.br/portfolio ↗</a>
                 </div>
             </article>
 
@@ -143,26 +242,29 @@
 </section>
 
 <!-- ====== COMO FUNCIONA ====== -->
-<section class="secao secao-cinza">
+<section class="secao" id="como-funciona">
     <div class="container">
-        <h2>Como funciona</h2>
+        <div class="secao-cabeca reveal">
+            <span class="rotulo">Processo</span>
+            <h2>Como funciona</h2>
+        </div>
         <ol class="passos">
-            <li>
+            <li class="reveal">
                 <span class="passo-num">1</span>
                 <h3>Conversa</h3>
                 <p>Você me conta como é o negócio e como o cliente chega até você hoje. Pelo Instagram mesmo.</p>
             </li>
-            <li>
+            <li class="reveal">
                 <span class="passo-num">2</span>
                 <h3>Proposta</h3>
                 <p>Te mando o que o site vai ter, prazo e valor. Sem surpresa depois.</p>
             </li>
-            <li>
+            <li class="reveal">
                 <span class="passo-num">3</span>
                 <h3>Desenvolvimento</h3>
                 <p>Eu monto, você acompanha e pede ajuste antes de ir pro ar.</p>
             </li>
-            <li>
+            <li class="reveal">
                 <span class="passo-num">4</span>
                 <h3>Site no ar</h3>
                 <p>Publicado no seu endereço, com você sabendo mexer no que precisar.</p>
@@ -171,10 +273,46 @@
     </div>
 </section>
 
+<!-- ====== DÚVIDAS ====== -->
+<section class="secao secao-cinza" id="duvidas">
+    <div class="container container-estreito">
+        <div class="secao-cabeca reveal">
+            <span class="rotulo">Dúvidas comuns</span>
+            <h2>O que todo dono de negócio me pergunta</h2>
+        </div>
+
+        <div class="faq reveal">
+            <details>
+                <summary>Funciona mesmo? Vou aparecer no Google?</summary>
+                <p>Ninguém pode garantir posição no Google — quem promete isso está enganando. O que o site faz é te colocar na disputa por quem já está procurando o que você oferece. Sem site, você não entra nem nessa disputa.</p>
+            </details>
+            <details>
+                <summary>Quanto tempo leva?</summary>
+                <p>Depende do tamanho do site. O prazo vai na proposta, antes de começar — você sabe a data desde o primeiro dia.</p>
+            </details>
+            <details>
+                <summary>Preciso saber mexer em site depois?</summary>
+                <p>Não. O site é feito pra você não precisar mexer. E quando o negócio tem algo que muda sempre — produtos, preços, fotos — dá pra montar uma área onde você mesmo atualiza, como fiz pra Delka.</p>
+            </details>
+            <details>
+                <summary>Vou ter que largar o Instagram?</summary>
+                <p>Não — e nem deve. O Instagram traz visibilidade e conexão; o site traz autoridade e o caminho direto pro contato. Um alimenta o outro: o link da bio leva pro site, e o site leva pro seu WhatsApp.</p>
+            </details>
+            <details>
+                <summary>Quanto custa?</summary>
+                <p>Depende do que o site precisa ter. Na primeira conversa eu entendo o negócio e te passo o valor na proposta, antes de qualquer trabalho começar. Sem surpresa depois.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
 <!-- ====== QUEM FAZ ====== -->
 <section class="secao quem">
-    <div class="container quem-inner">
-        <img src="img/patrick.jpg" alt="Patrick Ribeiro" class="quem-foto" width="320" height="344">
+    <div class="container quem-inner reveal">
+        <picture>
+            <source srcset="img/patrick.webp" type="image/webp">
+            <img src="img/patrick.jpg" alt="Foto de Patrick Ribeiro, desenvolvedor de sites" class="quem-foto" width="320" height="344" loading="lazy">
+        </picture>
         <div>
             <h2>Quem faz</h2>
             <p>
@@ -187,7 +325,7 @@
 
 <!-- ====== CTA FINAL ====== -->
 <section class="cta-final">
-    <div class="container">
+    <div class="container reveal">
         <h2>Quer ver se isso funciona pro seu negócio?</h2>
         <p>Me chama. A primeira conversa é só pra entender se faz sentido.</p>
         <a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-lg">Chamar no Instagram</a>
@@ -197,9 +335,15 @@
 </main>
 
 <footer class="rodape">
-    <div class="container">
-        <span>Patrick Ribeiro</span>
-        <a href="https://www.instagram.com/codewithpatrickr/" target="_blank" rel="noopener noreferrer">@codewithpatrickr</a>
+    <div class="container rodape-inner">
+        <div>
+            <strong>Patrick Ribeiro</strong>
+            <span class="rodape-sub">Sites para negócios locais · Rio de Janeiro e Niterói</span>
+        </div>
+        <nav class="rodape-links" aria-label="Links do rodapé">
+            <a href="https://www.instagram.com/codewithpatrickr/" target="_blank" rel="noopener noreferrer">@codewithpatrickr</a>
+            <a href="portfolio/" class="rodape-dev">Sou dev — portfólio técnico →</a>
+        </nav>
     </div>
 </footer>
 
@@ -208,5 +352,6 @@
     <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
 </a>
 
+<script src="home.js" defer></script>
 </body>
 </html>

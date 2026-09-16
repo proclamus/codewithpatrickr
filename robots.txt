@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /projetos/comunidade-streamers.html
+
+Sitemap: https://patrickribeirodev.com.br/sitemap.xml

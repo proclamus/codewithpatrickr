@@ -868,6 +868,8 @@ code { font-family: var(--mono); }
 }
 .footer-logo { font-family: var(--mono); font-size: 0.88rem; color: var(--acento); }
 .footer-copy { font-size: 0.8rem; color: var(--txt-muted); }
+.footer-link { font-size: 0.8rem; color: var(--txt-sec); border-bottom: 1px solid var(--border-md); transition: color var(--t), border-color var(--t); }
+.footer-link:hover { color: var(--acento); border-color: var(--acento); }
 
 /* ============================
    RESPONSIVE
