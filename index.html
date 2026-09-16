@@ -3,681 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self'; form-action 'none'; frame-src 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'none'; frame-src 'none'; img-src 'self' data:; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
-    <title>Patrick Ribeiro | Full Stack & Backend Developer</title>
-    <meta name="description" content="Desenvolvedor Full Stack especializado em Backend (C#/.NET, Java), Web, Mobile (Flutter) e IA aplicada — LLMs, RAGs e Agentes.">
-    <meta property="og:title" content="Patrick Ribeiro | Full Stack Developer">
-    <meta property="og:description" content="Full Stack · Backend · Web · Mobile — @CodeWithPatrickR">
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230f172a'/><text x='50%25' y='54%25' dominant-baseline='central' text-anchor='middle' font-family='monospace' font-size='13' font-weight='bold' fill='%2322d3ee'>PR</text></svg>">
+    <title>Sites para negócios locais — Patrick Ribeiro</title>
+    <meta name="description" content="Site que aparece no Google, passa confiança e leva o cliente direto pro seu WhatsApp. Veja exemplos de lojas e empresas que já estão no ar.">
+    <link rel="canonical" href="https://patrickribeirodev.com.br/portfolio/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://patrickribeirodev.com.br/portfolio/">
+    <meta property="og:title" content="Sites para negócios locais — Patrick Ribeiro">
+    <meta property="og:description" content="Site que aparece no Google, passa confiança e leva o cliente direto pro seu WhatsApp.">
+    <meta property="og:image" content="https://patrickribeirodev.com.br/portfolio/img/delka.jpg">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%2314213d'/><text x='50%25' y='55%25' dominant-baseline='central' text-anchor='middle' font-family='Arial,sans-serif' font-size='17' font-weight='700' fill='%23ffffff'>P</text></svg>">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="portfolio.css">
 </head>
 <body>
 
-<!-- ====== HEADER ====== -->
-<header id="header">
-    <nav class="container nav-container">
-        <a href="#home" class="nav-logo">
-            <span class="logo-bracket">&lt;</span>CodeWithPatrickR<span class="logo-bracket">/&gt;</span>
-        </a>
-        <div class="nav-links" id="nav-links">
-            <a href="#home" class="nav-link">Início</a>
-            <a href="#techs" class="nav-link">Tecnologias</a>
-            <a href="#conteudos" class="nav-link">Conteúdos</a>
-            <a href="#publicacoes" class="nav-link">Publicações</a>
-            <a href="#contatos" class="nav-link btn-nav">Contatos</a>
-        </div>
-        <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
+<!-- ====== TOPO ====== -->
+<header class="topo">
+    <div class="container topo-inner">
+        <span class="marca">Patrick Ribeiro</span>
+        <a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-sm">Chamar no Instagram</a>
+    </div>
 </header>
-
-<div class="nav-overlay" id="nav-overlay"></div>
-<div class="nav-drawer" id="nav-drawer">
-    <button class="drawer-close" id="drawer-close" aria-label="Fechar menu">
-        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
-    </button>
-    <a href="#home" class="drawer-link">Início</a>
-    <a href="#techs" class="drawer-link">Tecnologias</a>
-    <a href="#conteudos" class="drawer-link">Conteúdos</a>
-    <a href="#publicacoes" class="drawer-link">Publicações</a>
-    <a href="#contatos" class="drawer-link">Contatos</a>
-</div>
 
 <main>
 
-<!-- ====== HERO ====== -->
-<section id="home" class="hero">
+<!-- ====== O PROBLEMA ====== -->
+<section class="hero">
     <div class="container hero-grid">
-        <div class="hero-content reveal">
-            <div class="hero-badge">
-                <span class="badge-dot"></span>
-                Disponível para Projetos
-            </div>
-            <h1 class="hero-title">
-                Patrick<br>
-                <span class="accent">Ribeiro</span>
-            </h1>
-            <div class="hero-roles">
-                <span class="role-label">Full Stack</span>
-                <span class="role-sep">·</span>
-                <span class="role-label">Backend</span>
-                <span class="role-sep">·</span>
-                <span class="role-label">Web</span>
-                <span class="role-sep">·</span>
-                <span class="role-label">Mobile</span>
-            </div>
-            <p class="hero-desc">
-                Atuo como Desenvolvedor <span class="accent">Full Stack</span> com foco sólido em
-                Backend (<span class="accent">C#/.NET</span>, <span class="accent">Java</span>) e Web.
-                Desenvolvo apps mobile com <span class="accent">Flutter</span> e aprofundo
-                conhecimentos em <span class="accent">IA aplicada</span> — LLMs, RAGs e Agentes —
-                com foco crescente em arquitetura e infraestrutura de sistemas.
+        <div class="hero-texto">
+            <span class="rotulo">Sites para negócios locais</span>
+            <h1>Se o seu negócio não aparece no Google, o cliente vai pro concorrente que aparece.</h1>
+            <p class="hero-sub">
+                Eu faço sites para lojas, clínicas e profissionais que precisam ser encontrados —
+                e que levam quem chega direto pro seu WhatsApp.
             </p>
             <div class="hero-ctas">
-                <a href="#publicacoes" class="btn-primary">Ver Projetos</a>
-                <a href="#contatos" class="btn-outline">Entrar em Contato</a>
+                <a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="btn btn-cta">Chamar no Instagram</a>
+                <a href="#exemplos" class="btn btn-claro">Ver exemplos</a>
             </div>
         </div>
-
-        <div class="hero-visual reveal reveal-delay">
-            <div class="hero-photo-wrap">
-                <div class="photo-ring"></div>
-                <img src="AirBrush_20220901151039.jpg" alt="Patrick Ribeiro" class="hero-photo">
-                <span class="photo-status"></span>
-            </div>
-            <div class="terminal-card">
-                <div class="terminal-header">
-                    <span class="dot dot-red"></span>
-                    <span class="dot dot-yellow"></span>
-                    <span class="dot dot-green"></span>
-                    <span class="terminal-title">developer.ts</span>
-                </div>
-                <pre class="terminal-body"><code><span class="c-kw">const</span> <span class="c-var">developer</span> <span class="c-op">=</span> {
-  <span class="c-key">name</span><span class="c-op">:</span>  <span class="c-str">'Patrick Ribeiro'</span>,
-  <span class="c-key">stack</span><span class="c-op">:</span> [<span class="c-str">'C#'</span>, <span class="c-str">'Java'</span>, <span class="c-str">'React'</span>],
-  <span class="c-key">also</span><span class="c-op">:</span>  [<span class="c-str">'Flutter'</span>, <span class="c-str">'Python'</span>, <span class="c-str">'LLMs'</span>],
-  <span class="c-key">open</span><span class="c-op">:</span>  <span class="c-bool">true</span> <span class="c-comment">// para novos projetos</span>
-}</code></pre>
-            </div>
+        <div class="hero-visual" aria-hidden="true">
+            <img src="img/delka.jpg" alt="" class="hero-desktop" width="1280" height="640">
+            <img src="img/delka-mobile.jpg" alt="" class="hero-mobile" width="383" height="832">
         </div>
-    </div>
-    <div class="hero-scroll-indicator">
-        <div class="scroll-line"></div>
-        <span>scroll</span>
     </div>
 </section>
 
-<!-- ====== TECH STACK ====== -->
-<section id="techs" class="section section-alt">
+<!-- ====== O QUE VOCÊ RECEBE ====== -->
+<section class="secao secao-cinza">
     <div class="container">
-        <div class="section-header reveal">
-            <span class="section-label">// stack</span>
-            <h2 class="section-title">Tecnologias com que <span class="accent">mais trabalho</span></h2>
-        </div>
-        <div class="tech-grid">
-            <!-- C#/.NET -->
-            <div class="tech-card reveal">
-                <div class="tech-icon">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <path d="M15 2L3 8.5v13L15 28l12-7.5v-13L15 2z" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.08)"/>
-                        <text x="50%" y="56%" dominant-baseline="central" text-anchor="middle" font-family="monospace" font-size="10" font-weight="bold" fill="#22d3ee">C#</text>
-                    </svg>
-                </div>
-                <h3 class="tech-name">C# / .NET</h3>
-                <p class="tech-desc">Backend Sólido</p>
+        <h2>O que o site faz pelo seu negócio</h2>
+        <div class="beneficios">
+            <div class="beneficio">
+                <h3>Aparece na busca</h3>
+                <p>Montado pra ser encontrado quando alguém pesquisa o que você faz na sua região.</p>
             </div>
-            <!-- Java -->
-            <div class="tech-card reveal">
-                <div class="tech-icon">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <path d="M11 4s-1.5 1 1.5 3.5C15.5 10 17 11 17 13.5c0 0 2-2-1-4C13 7.5 11 6.5 11 4z" fill="#22d3ee"/>
-                        <path d="M15.5 4.5s-1 .7 1 2.3c2 1.6 3.5 2.8 3.5 4.7 0 0 1.5-1.2-.7-2.8C17.3 7.2 15.5 6 15.5 4.5z" fill="#22d3ee" opacity=".7"/>
-                        <path d="M9 19.5s-1 .6.7 1.2c2 .8 6 .9 9.5-.1 0 0 1 .7-.3 1.3-5 1.9-11.5-.1-9.9-2.4z" fill="#22d3ee"/>
-                        <path d="M8.5 17s-1.2.8.6 1.5c2.3.9 8 1 10.6-.1 0 0 .8.7-.3 1.2-4.5 1.5-10.6.2-10.9-2.6z" fill="#22d3ee" opacity=".8"/>
-                        <path d="M14 14.5c1.8 0 5-1.5 5-1.5S17.5 15.5 14 16.5c-3.5 1-7.5.5-7.5.5s2.5-.7 7.5-2.5z" fill="#22d3ee" opacity=".6"/>
-                        <path d="M20 24.5c-3 .8-7 .9-10 .1 0 0-.5.4.7.7 3.5 1 10.5.5 11.5-2C22.5 22.5 20 24.5 20 24.5z" fill="#22d3ee" opacity=".7"/>
-                    </svg>
-                </div>
-                <h3 class="tech-name">Java</h3>
-                <p class="tech-desc">Alto Desempenho</p>
+            <div class="beneficio">
+                <h3>Passa confiança</h3>
+                <p>Quem chega vê serviços claros, fotos de verdade e um negócio sério — antes de decidir chamar.</p>
             </div>
-            <!-- JS/React -->
-            <div class="tech-card reveal">
-                <div class="tech-icon">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <circle cx="15" cy="15" r="3" fill="#22d3ee"/>
-                        <ellipse cx="15" cy="15" rx="12" ry="5" stroke="#22d3ee" stroke-width="1.5" fill="none" opacity=".7"/>
-                        <ellipse cx="15" cy="15" rx="12" ry="5" stroke="#22d3ee" stroke-width="1.5" fill="none" opacity=".7" transform="rotate(60 15 15)"/>
-                        <ellipse cx="15" cy="15" rx="12" ry="5" stroke="#22d3ee" stroke-width="1.5" fill="none" opacity=".7" transform="rotate(-60 15 15)"/>
-                    </svg>
-                </div>
-                <h3 class="tech-name">JS / React</h3>
-                <p class="tech-desc">Desenvolvimento Web</p>
+            <div class="beneficio">
+                <h3>Contato em um toque</h3>
+                <p>Botão de WhatsApp em todo lugar. Sem formulário chato, sem e-mail que ninguém responde.</p>
             </div>
-            <!-- Python -->
-            <div class="tech-card reveal">
-                <div class="tech-icon">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <path d="M15 3c-3 0-5.5.8-5.5 2.3V8.5h5.5v1H8C6.3 9.5 5 10.8 5 12.5v3.5c0 1.5 1.3 2.8 3 2.8h1.5V16c0-1.5 1.3-2.8 3-2.8h5c1.5 0 2.8-1.3 2.8-2.8V5.3C20.3 3.8 18 3 15 3zm-1 3c.5 0 1 .4 1 1s-.4 1-1 1-1-.4-1-1 .4-1 1-1z" fill="#22d3ee" opacity=".9"/>
-                        <path d="M15 27c3 0 5.5-.8 5.5-2.3V21.5H15v-1h7C23.7 20.5 25 19.2 25 17.5V14c0-1.5-1.3-2.8-3-2.8h-1.5V14c0 1.5-1.3 2.8-3 2.8h-5C11 16.8 9.7 18.1 9.7 19.6V24.7C9.7 26.2 12 27 15 27zm1-3c-.5 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z" fill="#22d3ee" opacity=".5"/>
-                    </svg>
-                </div>
-                <h3 class="tech-name">Python</h3>
-                <p class="tech-desc">Scripts e Automação</p>
-            </div>
-            <!-- Flutter -->
-            <div class="tech-card reveal">
-                <div class="tech-icon">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <path d="M12 4h9L11 14H4L12 4z" fill="#22d3ee" opacity=".9"/>
-                        <path d="M11 16l-7 7h8.5l4-4L11 16z" fill="#22d3ee" opacity=".5"/>
-                        <path d="M16.5 19.5L13 24h8.5L16.5 19.5z" fill="#22d3ee" opacity=".9"/>
-                        <path d="M11 16l5 3.5L22 14H13L11 16z" fill="#22d3ee" opacity=".7"/>
-                    </svg>
-                </div>
-                <h3 class="tech-name">Flutter / Dart</h3>
-                <p class="tech-desc">Mobile Multiplataforma</p>
-            </div>
-            <!-- IA / LLMs -->
-            <div class="tech-card reveal">
-                <div class="tech-icon">
-                    <svg width="30" height="30" viewBox="0 0 30 30" fill="none">
-                        <circle cx="15" cy="15" r="4.5" stroke="#22d3ee" stroke-width="1.5" fill="rgba(34,211,238,0.12)"/>
-                        <circle cx="5"  cy="10" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
-                        <circle cx="5"  cy="20" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
-                        <circle cx="25" cy="10" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
-                        <circle cx="25" cy="20" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
-                        <circle cx="15" cy="4"  r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
-                        <circle cx="15" cy="26" r="2.5" stroke="#22d3ee" stroke-width="1.2" fill="none" opacity=".7"/>
-                        <line x1="10.5" y1="12.5" x2="7"   y2="11"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
-                        <line x1="10.5" y1="17.5" x2="7"   y2="19"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
-                        <line x1="19.5" y1="12.5" x2="23"  y2="11"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
-                        <line x1="19.5" y1="17.5" x2="23"  y2="19"  stroke="#22d3ee" stroke-width="1" opacity=".5"/>
-                        <line x1="15"   y1="10.5" x2="15"  y2="6.5" stroke="#22d3ee" stroke-width="1" opacity=".5"/>
-                        <line x1="15"   y1="19.5" x2="15"  y2="23.5" stroke="#22d3ee" stroke-width="1" opacity=".5"/>
-                    </svg>
-                </div>
-                <h3 class="tech-name">IA / LLMs</h3>
-                <p class="tech-desc">Agentes &amp; Arquitetura</p>
+            <div class="beneficio">
+                <h3>Feito pro celular</h3>
+                <p>A maior parte das visitas vem do celular. O site é pensado pra ele primeiro.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ====== CONTEÚDOS ====== -->
-<section id="conteudos" class="section">
+<!-- ====== EXEMPLOS ====== -->
+<section class="secao" id="exemplos">
     <div class="container">
-        <div class="section-header reveal">
-            <span class="section-label">// knowledge</span>
-            <h2 class="section-title">Conhecimento <span class="accent">Detalhado</span></h2>
-        </div>
-        <div class="tabs-container reveal">
-            <div class="tabs-nav" role="tablist">
-                <button class="tab-btn active" data-target="java" role="tab">Java</button>
-                <button class="tab-btn" data-target="csharp" role="tab">C#</button>
-                <button class="tab-btn" data-target="sql" role="tab">DBs</button>
-                <button class="tab-btn" data-target="python" role="tab">Python</button>
-                <button class="tab-btn" data-target="mobile" role="tab">Mobile</button>
-                <button class="tab-btn" data-target="unity" role="tab">Unity</button>
-                <button class="tab-btn" data-target="web" role="tab">Web</button>
-                <button class="tab-btn" data-target="ia" role="tab">IA</button>
-            </div>
-            <div class="tabs-body">
+        <h2>Sites que já estão no ar</h2>
+        <p class="secao-sub">Negócios reais, com o site aberto pra você ver.</p>
 
-                <!-- Java -->
-                <div class="tab-panel active" data-content="java">
-                    <div class="tab-info">
-                        <h3 class="tab-title">Java: <span class="accent">O Poder Transacional</span></h3>
-                        <p class="tab-desc">Minha experiência com Java se concentra em arquiteturas de microsserviços e sistemas legados de alta disponibilidade.</p>
-                        <ul class="tab-list">
-                            <li>Experiência com Java voltada principalmente ao desenvolvimento backend e automação de processos.</li>
-                            <li>Atuei com Spring Boot, Camunda BPM e integrações REST, focando em construção de fluxos de negócio e APIs escaláveis.</li>
-                            <li>Um dos principais desafios foi montar fluxogramas complexos no Camunda e integrar tarefas automatizadas com código Java.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang java-lang">Java</span>
-                            <span class="code-file">ClienteController.java</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-comment">// Exemplo simples de API REST com Spring Boot</span>
-<span class="c-kw">@RestController</span>
-<span class="c-kw">@RequestMapping</span>(<span class="c-str">"/api/clientes"</span>)
-<span class="c-kw">public class</span> <span class="c-type">ClienteController</span> {
+        <div class="cases">
 
-    <span class="c-kw">@GetMapping</span>(<span class="c-str">"/{id}"</span>)
-    <span class="c-kw">public</span> <span class="c-type">ResponseEntity</span>&lt;<span class="c-type">Cliente</span>&gt; buscarCliente(
-            <span class="c-kw">@PathVariable</span> <span class="c-type">Long</span> id) {
-        <span class="c-type">Cliente</span> cliente <span class="c-op">=</span> <span class="c-kw">new</span> <span class="c-type">Cliente</span>(id, <span class="c-str">"Patrick"</span>, <span class="c-str">"RJ"</span>);
-        <span class="c-kw">return</span> <span class="c-type">ResponseEntity</span>.ok(cliente);
-    }
-}</code></pre>
-                    </div>
+            <article class="case">
+                <a href="https://www.delkaeletrics.com/" target="_blank" rel="noopener noreferrer" class="case-img">
+                    <img src="img/delka.jpg" alt="Site da Delka Eletrics" width="1280" height="640" loading="lazy">
+                </a>
+                <div class="case-corpo">
+                    <h3>Delka Eletrics</h3>
+                    <span class="case-tag">Loja de bikes e motos elétricas · Niterói/RJ</span>
+                    <p><strong>Situação:</strong> catálogo grande e todo atendimento começava do zero no WhatsApp.</p>
+                    <p><strong>O site:</strong> todos os modelos com ficha e preço, botão que já abre a conversa, e a própria equipe atualiza os produtos sem depender de ninguém.</p>
+                    <a href="https://www.delkaeletrics.com/" target="_blank" rel="noopener noreferrer" class="case-link">delkaeletrics.com ↗</a>
                 </div>
+            </article>
 
-                <!-- C# -->
-                <div class="tab-panel" data-content="csharp">
-                    <div class="tab-info">
-                        <h3 class="tab-title">C#: <span class="accent">Da Estabilidade ao Game Dev</span></h3>
-                        <p class="tab-desc">C# é a espinha dorsal da minha carreira CLT e a linguagem central para meus projetos de Game Development.</p>
-                        <ul class="tab-list">
-                            <li>Atuo com C# e .NET Core em desenvolvimento web e desktop, utilizando arquiteturas em camadas e MVC.</li>
-                            <li>Tenho experiência com Entity Framework para consultas otimizadas e migrações de banco, além de IoC e DTOs para manter o código limpo e organizado.</li>
-                            <li>Um dos projetos mais relevantes foi o desenvolvimento de uma plataforma para geração de documentos, focando em desempenho e estabilidade.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang cs-lang">C#</span>
-                            <span class="code-file">ProdutosController.cs</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-comment">// Exemplo de endpoint simples em ASP.NET Core</span>
-[<span class="c-kw">ApiController</span>]
-[<span class="c-kw">Route</span>(<span class="c-str">"api/[controller]"</span>)]
-<span class="c-kw">public class</span> <span class="c-type">ProdutosController</span> : <span class="c-type">ControllerBase</span>
-{
-    [<span class="c-kw">HttpGet</span>(<span class="c-str">"{id}"</span>)]
-    <span class="c-kw">public</span> <span class="c-type">IActionResult</span> GetProduto(<span class="c-type">int</span> id)
-    {
-        <span class="c-kw">var</span> produto <span class="c-op">=</span> <span class="c-kw">new</span> {
-            Id = id, Nome = <span class="c-str">"Café Expresso"</span>, Preco = <span class="c-num">9.90</span>
-        };
-        <span class="c-kw">return</span> Ok(produto);
-    }
-}</code></pre>
-                    </div>
+            <article class="case">
+                <a href="https://bemmequerobeer.com.br" target="_blank" rel="noopener noreferrer" class="case-img">
+                    <img src="img/bmq.jpg" alt="Site da Bem Me Quero Beer" width="1280" height="634" loading="lazy">
+                </a>
+                <div class="case-corpo">
+                    <h3>Bem Me Quero Beer</h3>
+                    <span class="case-tag">Chopeiras para eventos · Salvador/BA</span>
+                    <p><strong>Situação:</strong> cada orçamento começava com a mesma sequência de perguntas no WhatsApp.</p>
+                    <p><strong>O site:</strong> o cliente monta o pedido em 5 passos e chega no WhatsApp com tudo pronto — evento, chopeira, data e endereço.</p>
+                    <a href="https://bemmequerobeer.com.br" target="_blank" rel="noopener noreferrer" class="case-link">bemmequerobeer.com.br ↗</a>
                 </div>
+            </article>
 
-                <!-- SQL -->
-                <div class="tab-panel" data-content="sql">
-                    <div class="tab-info">
-                        <h3 class="tab-title">SQL: <span class="accent">Gestão de Dados</span></h3>
-                        <p class="tab-desc">Modelagem de dados, otimização de consultas e manutenção de bancos relacionais e NoSQL.</p>
-                        <ul class="tab-list">
-                            <li>Experiência com bancos SQL Server, Vertica e Elastic Search, aplicando modelagem de dados, procedures e otimização de queries.</li>
-                            <li>Já atuei em projetos com múltiplos contextos de banco e estratégias de versionamento via migrations.</li>
-                            <li>Em aplicações reais, desenvolvi queries para relatórios e controle de fluxos automatizados com grande volume de dados.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang sql-lang">SQL</span>
-                            <span class="code-file">query.sql</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-comment">-- Consulta com JOIN e otimização</span>
-<span class="c-kw">SELECT</span>
-    p.NomeProduto, c.NomeCategoria, p.Preco
-<span class="c-kw">FROM</span>
-    Produtos p
-<span class="c-kw">INNER JOIN</span>
-    Categorias c <span class="c-kw">ON</span> p.CategoriaId <span class="c-op">=</span> c.Id
-<span class="c-kw">WHERE</span>
-    p.Preco <span class="c-op">&gt;</span> <span class="c-num">50</span>
-<span class="c-kw">ORDER BY</span>
-    p.Preco <span class="c-kw">DESC</span>;
-<span class="c-comment">-- Índice: CREATE INDEX IX_Produtos_CategoriaId ON Produtos(CategoriaId);</span></code></pre>
-                    </div>
+            <article class="case">
+                <a href="https://tcaconsult.com.br" target="_blank" rel="noopener noreferrer" class="case-img">
+                    <img src="img/tca.jpg" alt="Site da TCA Tonelli" width="1280" height="636" loading="lazy">
+                </a>
+                <div class="case-corpo">
+                    <h3>TCA Tonelli <span class="selo">Em construção</span></h3>
+                    <span class="case-tag">Engenharia e avaliação patrimonial · Rio de Janeiro</span>
+                    <p><strong>Situação:</strong> serviço técnico que precisa passar seriedade antes do primeiro contato.</p>
+                    <p><strong>O site:</strong> apresentação institucional com serviços claros, credenciais em destaque e contato direto. Está na reta final — dá pra ver como está ficando.</p>
+                    <a href="https://tcaconsult.com.br" target="_blank" rel="noopener noreferrer" class="case-link">tcaconsult.com.br ↗</a>
                 </div>
+            </article>
 
-                <!-- Python -->
-                <div class="tab-panel" data-content="python">
-                    <div class="tab-info">
-                        <h3 class="tab-title">Python: <span class="accent">Scripts e Ferramentas</span></h3>
-                        <p class="tab-desc">Uso Python para tarefas de automação, scripts de rotina de banco e data analysis simples.</p>
-                        <ul class="tab-list">
-                            <li>Utilizo Python para automação de tarefas, scripts de produtividade e criação de ferramentas com PyAutoGUI, Tkinter e Pandas.</li>
-                            <li>Também já trabalhei com Power BI e análise de dados em Python para criação de relatórios visuais.</li>
-                            <li>Um script que automatizava processos repetitivos no trabalho reduziu o tempo de execução em mais de 70%.</li>
-                            <li>Desenvolvi o FocusGuard, publicado no Itch.io: um sistema Pomodoro para auxiliar usuários a focarem em suas tarefas.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang py-lang">Python</span>
-                            <span class="code-file">automacao.py</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-comment"># Exemplo de automação simples em Python</span>
-<span class="c-kw">import</span> pyautogui, time
-
-<span class="c-fn">print</span>(<span class="c-str">"Automação iniciando em 3s..."</span>)
-time.<span class="c-fn">sleep</span>(<span class="c-num">3</span>)
-
-<span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-fn">range</span>(<span class="c-num">5</span>):
-    pyautogui.<span class="c-fn">write</span>(<span class="c-str">f"Execução número </span><span class="c-var">{i+1}</span><span class="c-str">"</span>)
-    pyautogui.<span class="c-fn">press</span>(<span class="c-str">"enter"</span>)</code></pre>
-                    </div>
+            <article class="case">
+                <a href="https://patrickribeirodev.com.br/" target="_blank" rel="noopener noreferrer" class="case-img">
+                    <img src="img/perfil.jpg" alt="Site profissional de Patrick Ribeiro" width="1280" height="638" loading="lazy">
+                </a>
+                <div class="case-corpo">
+                    <h3>Patrick Ribeiro</h3>
+                    <span class="case-tag">Perfil profissional · o meu próprio site</span>
+                    <p><strong>Situação:</strong> precisava de um endereço único pra mostrar experiência, projetos e contato.</p>
+                    <p><strong>O site:</strong> apresentação profissional com os trabalhos entregues, área de atuação e canais de contato — tudo numa página só.</p>
+                    <a href="https://patrickribeirodev.com.br/" target="_blank" rel="noopener noreferrer" class="case-link">patrickribeirodev.com.br ↗</a>
                 </div>
+            </article>
 
-                <!-- Mobile -->
-                <div class="tab-panel" data-content="mobile">
-                    <div class="tab-info">
-                        <h3 class="tab-title">Mobile: <span class="accent">Flutter / Dart</span></h3>
-                        <p class="tab-desc">Sempre pensei em virar desenvolvedor para facilitar a vida de pessoas. Quero voltar a focar nisso e empreender.</p>
-                        <ul class="tab-list">
-                            <li>Atuo no desenvolvimento mobile com Flutter, criando aplicativos nativos para Android com foco em usabilidade.</li>
-                            <li>Trabalho com SharedPreferences, notificações locais e persistência de dados leve.</li>
-                            <li>Meu primeiro app publicado na Google Play é um lembrete para beber água, desenvolvido para aprimorar hábitos diários de saúde.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang dart-lang">Flutter</span>
-                            <span class="code-file">counter_widget.dart</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-comment">// Exemplo simples de contador em Flutter</span>
-<span class="c-kw">class</span> <span class="c-type">CounterWidget</span> <span class="c-kw">extends</span> <span class="c-type">StatefulWidget</span> {
-  <span class="c-kw">const</span> <span class="c-type">CounterWidget</span>({<span class="c-kw">super</span>.key});
-  <span class="c-kw">@override</span>
-  State&lt;<span class="c-type">CounterWidget</span>&gt; createState()
-      <span class="c-op">=&gt;</span> _<span class="c-type">CounterWidgetState</span>();
-}
-
-<span class="c-kw">class</span> _<span class="c-type">CounterWidgetState</span>
-    <span class="c-kw">extends</span> <span class="c-type">State</span>&lt;<span class="c-type">CounterWidget</span>&gt; {
-  <span class="c-type">int</span> count <span class="c-op">=</span> <span class="c-num">0</span>;
-  <span class="c-kw">@override</span>
-  <span class="c-type">Widget</span> build(<span class="c-type">BuildContext</span> context) {
-    <span class="c-kw">return</span> <span class="c-type">ElevatedButton</span>(
-      onPressed: () <span class="c-op">=&gt;</span> setState(() <span class="c-op">=&gt;</span> count<span class="c-op">++</span>),
-      child: <span class="c-type">Text</span>(<span class="c-str">'Contagem: </span><span class="c-var">$count</span><span class="c-str">'</span>),
-    );
-  }
-}</code></pre>
-                    </div>
-                </div>
-
-                <!-- Unity -->
-                <div class="tab-panel" data-content="unity">
-                    <div class="tab-info">
-                        <h3 class="tab-title">Unity: <span class="accent">C# / Game Dev</span></h3>
-                        <p class="tab-desc">Games é uma paixão minha, então desenvolver os meus próprios é quase um hobbie.</p>
-                        <ul class="tab-list">
-                            <li>Uso Unity e C# no desenvolvimento de jogos 2D e protótipos indie, aplicando conceitos de prefabs, física, colisões e controle de player.</li>
-                            <li>Já atuei em GameJam em um projeto roguelike e de tiro 2D, com foco em gameplay fluido e progressão de personagem.</li>
-                            <li>Um dos projetos atuais é um roguelite 2D desenvolvido em parceria com um amigo, que será lançado no Itch.io.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang unity-lang">Unity C#</span>
-                            <span class="code-file">PlayerMovement.cs</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-comment">// Script básico de movimento horizontal no Unity</span>
-<span class="c-kw">using</span> UnityEngine;
-
-<span class="c-kw">public class</span> <span class="c-type">PlayerMovement</span> : <span class="c-type">MonoBehaviour</span>
-{
-    <span class="c-kw">public float</span> speed <span class="c-op">=</span> <span class="c-num">5f</span>;
-
-    <span class="c-kw">void</span> <span class="c-fn">Update</span>()
-    {
-        <span class="c-kw">float</span> move <span class="c-op">=</span> <span class="c-type">Input</span>.GetAxis(<span class="c-str">"Horizontal"</span>)
-                    <span class="c-op">*</span> speed <span class="c-op">*</span> <span class="c-type">Time</span>.deltaTime;
-        transform.Translate(move, <span class="c-num">0</span>, <span class="c-num">0</span>);
-    }
-}</code></pre>
-                    </div>
-                </div>
-
-                <!-- Web -->
-                <div class="tab-panel" data-content="web">
-                    <div class="tab-info">
-                        <h3 class="tab-title">Frontend: <span class="accent">A Interface do Usuário</span></h3>
-                        <p class="tab-desc">Embora meu foco seja Backend, tenho experiência em estruturação Web e frameworks modernos para prototipagem e interfaces.</p>
-                        <ul class="tab-list">
-                            <li>Domínio em HTML5, CSS3 e JavaScript, criando interfaces responsivas e interativas.</li>
-                            <li>Costumo utilizar React em conjunto com APIs REST para construção de SPAs dinâmicas.</li>
-                            <li>Um exemplo prático foi a criação desta própria página.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang web-lang">HTML/JS</span>
-                            <span class="code-file">exemplo.html</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-op">&lt;</span><span class="c-kw">div</span> <span class="c-var">class</span><span class="c-op">=</span><span class="c-str">"card"</span><span class="c-op">&gt;</span>
-  <span class="c-op">&lt;</span><span class="c-kw">h3</span><span class="c-op">&gt;</span>Olá, mundo!<span class="c-op">&lt;/</span><span class="c-kw">h3</span><span class="c-op">&gt;</span>
-  <span class="c-op">&lt;</span><span class="c-kw">button</span> <span class="c-var">id</span><span class="c-op">=</span><span class="c-str">"btn"</span><span class="c-op">&gt;</span>Clique Aqui<span class="c-op">&lt;/</span><span class="c-kw">button</span><span class="c-op">&gt;</span>
-<span class="c-op">&lt;/</span><span class="c-kw">div</span><span class="c-op">&gt;</span>
-
-<span class="c-op">&lt;</span><span class="c-kw">script</span><span class="c-op">&gt;</span>
-  document.<span class="c-fn">getElementById</span>(<span class="c-str">"btn"</span>)
-    .addEventListener(<span class="c-str">"click"</span>, () <span class="c-op">=&gt;</span> {
-      <span class="c-fn">alert</span>(<span class="c-str">"Você clicou!"</span>);
-    });
-<span class="c-op">&lt;/</span><span class="c-kw">script</span><span class="c-op">&gt;</span></code></pre>
-                    </div>
-                </div>
-
-                <!-- IA / LLMs -->
-                <div class="tab-panel" data-content="ia">
-                    <div class="tab-info">
-                        <h3 class="tab-title">IA: <span class="accent">Engenharia Aplicada</span></h3>
-                        <p class="tab-desc">Cursando Pós-graduação em Engenharia de Software Aplicada à IA (UNIPDS + Anhanguera), com foco em sistemas inteligentes e arquitetura.</p>
-                        <ul class="tab-list">
-                            <li>Aprofundamento em LLMs, RAGs, engenharia de prompt e construção de agentes autônomos.</li>
-                            <li>Nos projetos recentes, passo mais tempo pensando em arquitetura e infraestrutura do que codando — orquestração de modelos, pipelines de dados e integração com APIs de IA.</li>
-                            <li>Experiência prática com integração da API do <strong>Gemini (Google)</strong> para geração e avaliação de conteúdo em produção.</li>
-                            <li><strong>Qual Gabarito</strong> é o principal caso real: plataforma educacional para ENEM e UERJ com simulados gerados por IA, correção automática de redações, flashcards adaptativos, cronograma personalizado e laboratório de redação — tudo alimentado pelo Gemini.</li>
-                        </ul>
-                    </div>
-                    <div class="code-block-wrap">
-                        <div class="code-block-header">
-                            <span class="code-lang py-lang">Python</span>
-                            <span class="code-file">rag_pipeline.py</span>
-                        </div>
-                        <pre class="code-block"><code><span class="c-comment"># Integração com Gemini — padrão usado no Qual Gabarito</span>
-<span class="c-kw">import</span> google.generativeai <span class="c-kw">as</span> genai
-
-genai.<span class="c-fn">configure</span>(api_key<span class="c-op">=</span>GEMINI_API_KEY)
-model <span class="c-op">=</span> genai.<span class="c-fn">GenerativeModel</span>(<span class="c-str">"gemini-1.5-flash"</span>)
-
-<span class="c-kw">def</span> <span class="c-fn">gerar_questao</span>(topico, dificuldade):
-    prompt <span class="c-op">=</span> <span class="c-str">f"""Crie uma questão de múltipla escolha sobre
-</span><span class="c-var">{topico}</span><span class="c-str">, nível </span><span class="c-var">{dificuldade}</span><span class="c-str">, no estilo ENEM.
-Inclua 5 alternativas e o gabarito comentado."""</span>
-    response <span class="c-op">=</span> model.<span class="c-fn">generate_content</span>(prompt)
-    <span class="c-kw">return</span> response.text</code></pre>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
 </section>
 
-<!-- ====== PUBLICAÇÕES ====== -->
-<section id="publicacoes" class="section section-alt">
+<!-- ====== COMO FUNCIONA ====== -->
+<section class="secao secao-cinza">
     <div class="container">
-        <div class="section-header reveal">
-            <span class="section-label">// projects</span>
-            <h2 class="section-title">Sistemas &amp; Apps <span class="accent">Publicados</span></h2>
-        </div>
-        <div class="pub-grid">
-            <a href="projetos/qual-gabarito.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <path d="M12 2a7 7 0 017 7c0 4-3 6-4 8H9c-1-2-4-4-4-8a7 7 0 017-7z"/>
-                        <path d="M9 17h6M10 20h4"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">Qual Gabarito</h3>
-                    <p class="pub-desc">Plataforma de estudos com IA para ENEM e UERJ — simulados gerados por IA, correção de redação, flashcards, cronograma personalizado e ranking</p>
-                    <span class="pub-tag">Web App / IA · Edu</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/delka-eletrics.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">Delka Eletrics</h3>
-                    <p class="pub-desc">Site institucional de mobilidade elétrica em Niterói/RJ — Next.js 15, React, TypeScript e Supabase, com foco em conversão via WhatsApp</p>
-                    <span class="pub-tag">Freela · Web</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/rinstrack.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">RinsTrack</h3>
-                    <p class="pub-desc">App Android em Flutter para lembrar de beber água — meta diária, lembretes configuráveis e histórico de 7 dias</p>
-                    <span class="pub-tag">Android</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/focusguard.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">FocusGuard</h3>
-                    <p class="pub-desc">Timer Pomodoro para desktop com verificação ativa de foco e penalidade adaptativa</p>
-                    <span class="pub-tag">Desktop / Python</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/bingopop.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">BingoPop</h3>
-                    <p class="pub-desc">Jogo de bingo casual no navegador — cartelas configuráveis, sorteador embutido e temas visuais</p>
-                    <span class="pub-tag">Game</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/pocket-rpg.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <path d="M2 20h20M6 20V10l6-6 6 6v10M10 20v-5h4v5"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">Pocket RPG</h3>
-                    <p class="pub-desc">App utilitário para RPG de mesa — fichas, mapas, dados e grimório do mestre</p>
-                    <span class="pub-tag">Web App / RPG</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/comunidade-streamers.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <rect x="2" y="3" width="9" height="7" rx="1"/><rect x="13" y="3" width="9" height="7" rx="1"/>
-                        <rect x="2" y="13" width="9" height="7" rx="1"/><rect x="13" y="13" width="9" height="7" rx="1"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">Plataforma de Comunidade para Streamers</h3>
-                    <p class="pub-desc">Produto entregue 3× para comunidades diferentes — app desktop Electron, Postgres com RLS, algoritmo de distribuição determinístico e camada anti-fraude</p>
-                    <span class="pub-tag">Freela · Desktop + Web · 3 entregas</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/tca-tonelli.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <path d="M3 21h18M3 7l9-4 9 4M4 7v14M20 7v14M8 11h2M14 11h2M8 15h2M14 15h2M11 21v-4h2v4"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">TCA Tonelli</h3>
-                    <p class="pub-desc">Site institucional para empresa de assessoria em engenharia e gestão patrimonial — perícias, avaliações e gerenciamento de obras</p>
-                    <span class="pub-tag">Freela · Web</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="projetos/bem-me-quer-beer.html" class="pub-card reveal">
-                <div class="pub-icon">
-                    <svg width="26" height="26" fill="none" viewBox="0 0 24 24" stroke="#22d3ee" stroke-width="1.5">
-                        <path d="M5 3h14l-1 7H6L5 3zM6 10v9a1 1 0 001 1h10a1 1 0 001-1v-9"/><path d="M15 10v5M9 10v5M12 10v5"/>
-                    </svg>
-                </div>
-                <div class="pub-info">
-                    <h3 class="pub-title">Bem me quer Beer</h3>
-                    <p class="pub-desc">Landing de conversão para locação de chopeiras em eventos — formulário em 5 etapas que monta o pedido e envia pelo WhatsApp</p>
-                    <span class="pub-tag">Freela · Web</span>
-                </div>
-                <svg class="pub-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
+        <h2>Como funciona</h2>
+        <ol class="passos">
+            <li>
+                <span class="passo-num">1</span>
+                <h3>Conversa</h3>
+                <p>Você me conta como é o negócio e como o cliente chega até você hoje. Pelo Instagram mesmo.</p>
+            </li>
+            <li>
+                <span class="passo-num">2</span>
+                <h3>Proposta</h3>
+                <p>Te mando o que o site vai ter, prazo e valor. Sem surpresa depois.</p>
+            </li>
+            <li>
+                <span class="passo-num">3</span>
+                <h3>Desenvolvimento</h3>
+                <p>Eu monto, você acompanha e pede ajuste antes de ir pro ar.</p>
+            </li>
+            <li>
+                <span class="passo-num">4</span>
+                <h3>Site no ar</h3>
+                <p>Publicado no seu endereço, com você sabendo mexer no que precisar.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<!-- ====== QUEM FAZ ====== -->
+<section class="secao quem">
+    <div class="container quem-inner">
+        <img src="img/patrick.jpg" alt="Patrick Ribeiro" class="quem-foto" width="320" height="344">
+        <div>
+            <h2>Quem faz</h2>
+            <p>
+                Sou o Patrick. Trabalho direto com o dono do negócio, sem agência no meio —
+                você fala comigo do início ao fim, e é comigo que você resolve qualquer coisa depois.
+            </p>
         </div>
     </div>
 </section>
 
-<!-- ====== CONTATOS ====== -->
-<section id="contatos" class="section contatos-section">
+<!-- ====== CTA FINAL ====== -->
+<section class="cta-final">
     <div class="container">
-        <div class="section-header reveal">
-            <span class="section-label">// connect</span>
-            <h2 class="section-title">Vamos <span class="accent">Conectar?</span></h2>
-            <p class="section-sub">Estou sempre aberto a discutir projetos de Backend, Mobile, Sites ou a próxima ideia de Game!</p>
-        </div>
-        <div class="contact-grid">
-            <a href="https://www.linkedin.com/in/patrickribeiro97/" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
-                <div class="contact-icon">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM4 9h4v12H4zM6 4.5A1.5 1.5 0 114.5 6 1.5 1.5 0 016 4.5z"/></svg>
-                </div>
-                <div class="contact-info">
-                    <span class="contact-platform">LinkedIn</span>
-                    <span class="contact-handle">Perfil Profissional</span>
-                </div>
-                <svg class="contact-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="https://www.instagram.com/codewithpatrickr/" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
-                <div class="contact-icon">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" fill="#0f172a"/><circle cx="17.5" cy="6.5" r="1.5" fill="#0f172a"/></svg>
-                </div>
-                <div class="contact-info">
-                    <span class="contact-platform">Instagram</span>
-                    <span class="contact-handle">@codewithpatrickr</span>
-                </div>
-                <svg class="contact-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-            <a href="https://codewithpatrickr.itch.io/" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
-                <div class="contact-icon">
-                    <svg width="24" height="24" fill="currentColor" viewBox="0 0 245.371 220.736">
-                        <path d="M31.99 1.365C21.287 7.72.2 31.945 0 38.298v10.516c0 13.126 12.44 24.2 23.73 24.2 13.57 0 24.957-11.37 24.957-24.9 0 13.53 10.88 24.9 24.45 24.9 13.57 0 24.45-11.37 24.45-24.9 0 13.53 11.386 24.9 24.956 24.9h.04c13.57 0 24.956-11.37 24.956-24.9 0 13.53 10.88 24.9 24.45 24.9 13.57 0 24.45-11.37 24.45-24.9 0 13.53 11.386 24.9 24.956 24.9 11.29 0 23.73-11.074 23.73-24.2V38.298c-.2-6.353-21.287-30.578-31.99-36.933C180.118.197 45.377.197 31.99 1.365zm80.565 87.474c-1.956.01-3.94.087-5.874.285-5.74.646-11.494 2.065-15.87 4.97C72.5 106.37 64.887 128.5 64.887 128.5H45.507v38.504h9.99c0 18.54-.876 36.04-4.967 54.956h149.32c-4.09-18.916-4.967-36.416-4.967-54.956h9.99V128.5h-19.38s-7.612-22.13-26.004-34.406c-6.723-4.44-16.62-5.932-26.937-5.255a94.97 94.97 0 00-25.0 0z"/>
-                    </svg>
-                </div>
-                <div class="contact-info">
-                    <span class="contact-platform">Itch.io</span>
-                    <span class="contact-handle">codewithpatrickr</span>
-                </div>
-                <svg class="contact-arrow" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-            </a>
-        </div>
+        <h2>Quer ver se isso funciona pro seu negócio?</h2>
+        <p>Me chama. A primeira conversa é só pra entender se faz sentido.</p>
+        <a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="btn btn-cta btn-lg">Chamar no Instagram</a>
     </div>
 </section>
 
 </main>
 
-<!-- ====== FOOTER ====== -->
-<footer class="footer">
-    <div class="footer-accent-line"></div>
-    <div class="container footer-inner">
-        <span class="footer-logo">&lt;CodeWithPatrickR/&gt;</span>
-        <span class="footer-copy">Desenvolvido com paixão e criatividade · GitHub Pages</span>
+<footer class="rodape">
+    <div class="container">
+        <span>Patrick Ribeiro</span>
+        <a href="https://www.instagram.com/codewithpatrickr/" target="_blank" rel="noopener noreferrer">@codewithpatrickr</a>
     </div>
 </footer>
 
-<script src="script.js"></script>
+<!-- ====== INSTAGRAM FLUTUANTE ====== -->
+<a href="https://ig.me/m/codewithpatrickr" target="_blank" rel="noopener noreferrer" class="cta-flutuante" aria-label="Chamar no Instagram">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+</a>
+
 </body>
 </html>
