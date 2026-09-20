@@ -11,9 +11,14 @@
     /* verde-jade: marca em fios, marca-texto e títulos grandes */
     --jade:        #1E8A6B;
     /* escurecido só onde o texto é pequeno (botão, link): 6,0:1 sobre branco = AA */
+    /* fundo de botao (texto branco grande/medio) */
+    --jade-btn:    #0ea783;
+    --jade-btn-h:  #0b8f70;
+    /* link e rotulo pequeno sobre branco: 6,0:1 = AA */
     --jade-acao:   #15705A;
     --jade-hover:  #0F5A47;
-    --jade-claro:  #C7EBDC;
+    /* marca-texto e notas sobre navy */
+    --jade-claro:  #11c59a;
 
     --navy:        #0F172A;
     --navy-2:      #1E293B;
@@ -85,12 +90,14 @@ mark { background: linear-gradient(transparent 55%, var(--jade-claro) 55%); colo
     -webkit-tap-highlight-color: transparent;
 }
 .btn:active { transform: translateY(1px); }
-.btn-cta { background: var(--jade-acao); color: #fff; }
-.btn-cta:hover { background: var(--jade-hover); }
+.btn-cta { background: var(--jade-btn); color: #fff; }
+.btn-cta:hover { background: var(--jade-btn-h); }
 .btn-claro { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
 .btn-claro:hover { background: var(--navy); color: #fff; }
 .btn-sm { min-height: 44px; padding: 10px 16px; font-size: .92rem; }
 .btn-lg { min-height: 58px; padding: 16px 34px; font-size: var(--t-1); }
+/* 19px bold = "texto grande" na WCAG: o branco sobre --jade-btn passa no minimo de 3:1 */
+.btn-cta { font-size: var(--t-1); font-weight: 700; }
 
 /* ── Topo / menu ── */
 .topo {
@@ -224,8 +231,8 @@ mark { background: linear-gradient(transparent 55%, var(--jade-claro) 55%); colo
 .rodape-dev { font-size: .88rem; color: rgba(255,255,255,.5); }
 
 /* ── Flutuante ── */
-.cta-flutuante { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 56px; height: 56px; border-radius: 50%; color: #fff; display: grid; place-items: center; background: var(--jade-acao); box-shadow: 0 10px 24px -8px rgba(15,90,71,.55); transition: background .2s; }
-.cta-flutuante:hover { background: var(--jade-hover); }
+.cta-flutuante { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 56px; height: 56px; border-radius: 50%; color: #fff; display: grid; place-items: center; background: var(--jade-btn); box-shadow: 0 10px 24px -8px rgba(11,143,112,.55); transition: background .2s; }
+.cta-flutuante:hover { background: var(--jade-btn-h); }
 
 /* ============================================================
    AMPLIANDO A PARTIR DO CELULAR
