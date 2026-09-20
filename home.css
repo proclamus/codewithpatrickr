@@ -3,21 +3,25 @@
    Independente do portfolio/styles.css (vitrine técnica).
 
    Tipo:   Bricolage Grotesque (display, só H1/H2) + Instrument Sans (tudo o mais)
-   Cor:    rosa = ação · navy = peso e prova · cinza = apoio
+   Cor:    jade = ação · navy = peso e prova · cinza = apoio
    Regra:  a ousadia fica no headline e no bloco de dados; o resto é quieto.
    Mobile-first: base = celular; @media (min-width) só amplia.
    ============================================================ */
 :root {
-    --rosa:        #EC1E63;
-    --rosa-escuro: #C8144F;
-    --rosa-claro:  #FDE7EF;
+    /* verde-jade: marca em fios, marca-texto e títulos grandes */
+    --jade:        #1E8A6B;
+    /* escurecido só onde o texto é pequeno (botão, link): 6,0:1 sobre branco = AA */
+    --jade-acao:   #15705A;
+    --jade-hover:  #0F5A47;
+    --jade-claro:  #C7EBDC;
+
     --navy:        #0F172A;
     --navy-2:      #1E293B;
-    --texto:       #1F2937;
+    --texto:       #1E293B;
     --cinza:       #64748B;
     --branco:      #FFFFFF;
-    --gelo:        #F5F7FB;
-    --fio:         #E3E8EF;
+    --gelo:        #F1F5F9;
+    --fio:         #E2E8F0;
 
     --display:     'Bricolage Grotesque', 'Instrument Sans', system-ui, sans-serif;
     --texto-font:  'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -50,7 +54,7 @@ body.sem-scroll { overflow: hidden; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 picture { display: contents; }
-:focus-visible { outline: 3px solid var(--rosa); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--jade); outline-offset: 3px; border-radius: 4px; }
 
 .container { max-width: var(--max); margin-inline: auto; padding-inline: clamp(20px, 5vw, 40px); }
 .container-estreito { max-width: 760px; }
@@ -66,11 +70,11 @@ h2 { font-size: var(--t-4); margin-bottom: 14px; }
 h3 { font-size: var(--t-1); font-weight: 600; color: var(--navy); line-height: 1.3; margin-bottom: 6px; }
 p { color: var(--cinza); max-width: var(--medida); }
 strong { color: var(--navy); font-weight: 600; }
-mark { background: linear-gradient(transparent 55%, var(--rosa-claro) 55%); color: inherit; padding: 0 .06em; }
+mark { background: linear-gradient(transparent 55%, var(--jade-claro) 55%); color: inherit; padding: 0 .06em; }
 
 .secao-cabeca { margin-bottom: 32px; }
 .secao-sub { font-size: var(--t-1); margin-top: 6px; }
-.nota { margin-top: 24px; padding-left: 16px; border-left: 3px solid var(--rosa); font-size: var(--t-0); }
+.nota { margin-top: 24px; padding-left: 16px; border-left: 3px solid var(--jade); font-size: var(--t-0); }
 
 /* ── Botões (toque ≥ 48px) ── */
 .btn {
@@ -81,8 +85,8 @@ mark { background: linear-gradient(transparent 55%, var(--rosa-claro) 55%); colo
     -webkit-tap-highlight-color: transparent;
 }
 .btn:active { transform: translateY(1px); }
-.btn-cta { background: var(--rosa); color: #fff; }
-.btn-cta:hover { background: var(--rosa-escuro); }
+.btn-cta { background: var(--jade-acao); color: #fff; }
+.btn-cta:hover { background: var(--jade-hover); }
 .btn-claro { background: transparent; color: var(--navy); border: 1.5px solid var(--navy); }
 .btn-claro:hover { background: var(--navy); color: #fff; }
 .btn-sm { min-height: 44px; padding: 10px 16px; font-size: .92rem; }
@@ -145,8 +149,8 @@ mark { background: linear-gradient(transparent 55%, var(--rosa-claro) 55%); colo
 .comp-card { padding: 26px 0; border-bottom: 1px solid var(--fio); }
 .comp-tag { display: block; font-size: .95rem; font-weight: 600; color: var(--cinza); margin-bottom: 8px; }
 .comp-card h3 { font-family: var(--display); font-weight: 800; font-size: var(--t-3); letter-spacing: -.02em; margin-bottom: 10px; }
-.comp-card-destaque .comp-tag { color: var(--rosa); }
-.comp-card-destaque h3 { color: var(--rosa); }
+.comp-card-destaque .comp-tag { color: var(--jade-acao); }
+.comp-card-destaque h3 { color: var(--jade); }
 
 /* ── Benefícios: lista com fios, não cards ── */
 .beneficios { display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--fio); }
@@ -161,8 +165,8 @@ mark { background: linear-gradient(transparent 55%, var(--rosa-claro) 55%); colo
 .dado-num { display: block; font-family: var(--display); font-weight: 800; color: #fff; font-size: clamp(2.6rem, 11vw, 3.75rem); letter-spacing: -.04em; line-height: .95; margin-bottom: 12px; font-variation-settings: 'opsz' 96; }
 .dado p { color: rgba(255,255,255,.78); max-width: none; }
 .dado p strong { color: #fff; }
-.dado sup a { color: var(--rosa-claro); font-weight: 600; margin-left: 2px; }
-.dados-aviso { margin-top: 30px; padding-left: 16px; border-left: 3px solid var(--rosa); color: rgba(255,255,255,.85); max-width: none; }
+.dado sup a { color: var(--jade-claro); font-weight: 600; margin-left: 2px; }
+.dados-aviso { margin-top: 30px; padding-left: 16px; border-left: 3px solid var(--jade); color: rgba(255,255,255,.85); max-width: none; }
 .dados-aviso strong { color: #fff; }
 .fontes { margin-top: 24px; padding-left: 18px; font-size: .84rem; color: rgba(255,255,255,.55); }
 .fontes li { margin-bottom: 4px; }
@@ -179,7 +183,7 @@ mark { background: linear-gradient(transparent 55%, var(--rosa-claro) 55%); colo
 .case-corpo h3 { font-family: var(--display); font-weight: 800; font-size: var(--t-2); letter-spacing: -.02em; }
 .case-tag { font-size: .95rem; color: var(--cinza); margin-top: -4px; }
 .case-corpo p { max-width: none; }
-.case-link { margin-top: auto; padding-top: 12px; font-weight: 600; color: var(--rosa); }
+.case-link { margin-top: auto; padding-top: 12px; font-weight: 600; color: var(--jade-acao); }
 .case-link:hover { text-decoration: underline; }
 .selo { display: inline-block; vertical-align: middle; margin-left: 8px; font-family: var(--texto-font); font-size: .78rem; font-weight: 600; color: #8A5A00; background: #FFF3D6; padding: 3px 10px; border-radius: 999px; }
 
@@ -196,7 +200,7 @@ mark { background: linear-gradient(transparent 55%, var(--rosa-claro) 55%); colo
 .faq details { border-bottom: 1px solid var(--fio); }
 .faq summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 0; min-height: 60px; font-weight: 600; color: var(--navy); font-size: var(--t-1); line-height: 1.3; }
 .faq summary::-webkit-details-marker { display: none; }
-.faq summary::after { content: ''; flex-shrink: 0; width: 12px; height: 12px; border-right: 2px solid var(--rosa); border-bottom: 2px solid var(--rosa); transform: rotate(45deg); margin-right: 6px; transition: transform .25s var(--ease); }
+.faq summary::after { content: ''; flex-shrink: 0; width: 12px; height: 12px; border-right: 2px solid var(--jade); border-bottom: 2px solid var(--jade); transform: rotate(45deg); margin-right: 6px; transition: transform .25s var(--ease); }
 .faq details[open] summary::after { transform: rotate(-135deg); }
 .faq details p { padding: 0 0 22px; }
 
@@ -220,8 +224,8 @@ mark { background: linear-gradient(transparent 55%, var(--rosa-claro) 55%); colo
 .rodape-dev { font-size: .88rem; color: rgba(255,255,255,.5); }
 
 /* ── Flutuante ── */
-.cta-flutuante { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 56px; height: 56px; border-radius: 50%; color: #fff; display: grid; place-items: center; background: var(--rosa); box-shadow: 0 10px 24px -8px rgba(236,30,99,.6); transition: background .2s; }
-.cta-flutuante:hover { background: var(--rosa-escuro); }
+.cta-flutuante { position: fixed; right: 16px; bottom: 16px; z-index: 30; width: 56px; height: 56px; border-radius: 50%; color: #fff; display: grid; place-items: center; background: var(--jade-acao); box-shadow: 0 10px 24px -8px rgba(15,90,71,.55); transition: background .2s; }
+.cta-flutuante:hover { background: var(--jade-hover); }
 
 /* ============================================================
    AMPLIANDO A PARTIR DO CELULAR
