@@ -3,12 +3,12 @@
    Independente do portfolio/styles.css (vitrine técnica).
 
    Tipo:  Archivo 800/900 nos títulos · Inter 400/500/600 no resto
-   Cor:   ~70% branco · ~20% navy · ~10% verde
-   Regra: verde escuro só em letrinha · verde claro quando for área
-          texto sobre verde é SEMPRE navy, nunca branco
-          --jade-vivo só sobre navy · --cinza-texto só sobre branco
+   Cor:   ~70% branco · ~20% navy · ~10% rosa (a cor das redes)
+   Regra: rosa escuro só em letrinha · rosa claro quando for área
+          texto sobre rosa é SEMPRE navy, nunca branco
+          --rosa-vivo só sobre navy · --cinza-texto só sobre branco
    Ritmo: branco → NAVY (virada) → branco → navy (dados) → branco
-          → faixa --jade-acao (a parte mais luminosa) → rodapé navy
+          → faixa --rosa-acao (a parte mais luminosa) → rodapé navy
    Mobile-first: base = celular; @media (min-width) só amplia.
    ============================================================ */
 :root {
@@ -18,10 +18,10 @@
     --cinza-card:  #F1F5F9;
     --cinza-texto: #64748B;
     --borda:       #E2E8F0;
-    --jade-link:   #15705A;   /* letra pequena: link, ícone, numeral */
-    --jade-acao:   #15A074;   /* área clicável: botão, selo, faixa CTA */
-    --jade-vivo:   #2FBF8F;   /* ênfase só sobre navy */
-    --jade-lavado: #D6F2E7;   /* marca-texto só sobre branco */
+    --rosa-link:   #C8144F;   /* letra pequena: link, ícone, numeral */
+    --rosa-acao:   #F53D8D;   /* área clicável: botão, selo, faixa CTA */
+    --rosa-vivo:   #FF70AE;   /* ênfase só sobre navy */
+    --rosa-lavado: #FDE7EF;   /* marca-texto só sobre branco */
 
     --display: 'Archivo', system-ui, sans-serif;
     --corpo:   'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -47,7 +47,7 @@ body.sem-scroll { overflow: hidden; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; text-decoration: none; }
 picture { display: contents; }
-:focus-visible { outline: 3px solid var(--jade-link); outline-offset: 3px; border-radius: 4px; }
+:focus-visible { outline: 3px solid var(--rosa-link); outline-offset: 3px; border-radius: 4px; }
 
 .container { max-width: var(--max); margin-inline: auto; padding-inline: var(--pad-s); }
 .container-estreito { max-width: 780px; }
@@ -65,7 +65,7 @@ strong { color: var(--navy); font-weight: 600; }
    Então aqui é um traço de 4px sob UMA palavra.                        */
 mark { background: none; color: inherit; padding: 0; }
 .palavra {
-    text-decoration: underline; text-decoration-color: var(--jade-acao);
+    text-decoration: underline; text-decoration-color: var(--rosa-acao);
     text-decoration-thickness: 4px; text-underline-offset: 3px;
     text-decoration-skip-ink: none;
 }
@@ -75,9 +75,9 @@ mark { background: none; color: inherit; padding: 0; }
 .quebra { display: none; }   /* quebras manuais do título: só no desktop */
 
 /* traço reto sob o título — o acento da seção navy */
-.traco { display: block; width: 56px; height: 4px; background: var(--jade-vivo); margin-top: 20px; }
+.traco { display: block; width: 56px; height: 4px; background: var(--rosa-vivo); margin-top: 20px; }
 
-/* ── Botões: texto navy sobre verde, nunca branco ─────────── */
+/* ── Botões: texto navy sobre rosa, nunca branco ──────────── */
 .btn {
     display: inline-flex; align-items: center; justify-content: center; gap: 10px;
     min-height: 50px; padding: 13px 26px; border-radius: 999px;
@@ -88,15 +88,15 @@ mark { background: none; color: inherit; padding: 0; }
 }
 .btn:active { transform: translateY(1px); }
 .btn svg { flex-shrink: 0; }
-.btn-acao { background: var(--jade-acao); color: var(--navy); }
-.btn-acao:hover { background: var(--jade-vivo); }
+.btn-acao { background: var(--rosa-acao); color: var(--navy); }
+.btn-acao:hover { background: var(--rosa-vivo); }
 .btn-navy { background: var(--navy); color: var(--branco); }
 .btn-navy:hover { background: var(--navy-2); }
 .btn-sm { min-height: 44px; padding: 11px 20px; font-size: 14px; }
 
-/* link secundário: letrinha, então verde escuro (6,0:1) */
-.link-jade { font-weight: 600; color: var(--jade-link); border-bottom: 2px solid var(--jade-lavado); padding-bottom: 2px; }
-.link-jade:hover { border-bottom-color: var(--jade-link); }
+/* link secundário: letrinha, então rosa escuro (5,7:1) */
+.link-rosa { font-weight: 600; color: var(--rosa-link); border-bottom: 2px solid var(--rosa-lavado); padding-bottom: 2px; }
+.link-rosa:hover { border-bottom-color: var(--rosa-link); }
 
 /* ── Topo: branco, fino, fio de 1px ──────────────────────── */
 .topo {
@@ -139,10 +139,18 @@ mark { background: none; color: inherit; padding: 0; }
 .hero-sub { font-size: 16px; color: var(--cinza-texto); margin-bottom: 26px; max-width: 40ch; }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 22px; }
 
-.hero-visual { position: relative; padding-right: 12%; padding-bottom: 12%; }
-.hero-desktop { width: 100%; border-radius: var(--r-img); border: 1px solid var(--borda); }
+/* A única ousadia da página: o mockup sentado num palco rosa chapado —
+   a mesma cara do carrossel que trouxe a pessoa até aqui.
+   É área, então recebe --rosa-acao — chapado, sem efeito nenhum.          */
+.hero-visual {
+    position: relative; margin: 34px 12% 34px 0;
+    padding: 24px 26% 24px 24px;
+    background: var(--rosa-acao); border-radius: var(--r-img);
+}
+.hero-desktop { width: 100%; border-radius: 12px; border: 1px solid var(--borda); }
+/* o celular atravessa o palco, centrado na vertical: sai por cima e por baixo igual */
 .hero-mobile {
-    position: absolute; right: 0; bottom: 0; width: 31%;
+    position: absolute; right: -12%; top: 50%; transform: translateY(-50%); width: 32%;
     border-radius: 16px; border: 6px solid var(--branco); outline: 1px solid var(--borda);
 }
 
@@ -156,7 +164,7 @@ mark { background: none; color: inherit; padding: 0; }
 /* ── Seção NAVY: a virada visual da página ────────────────── */
 .secao-navy { background: var(--navy); color: var(--branco); }
 .secao-navy h2 { color: var(--branco); }
-.secao-navy .destaque { color: var(--jade-vivo); }
+.secao-navy .destaque { color: var(--rosa-vivo); }
 .secao-navy .secao-sub { color: var(--borda); }
 
 .comparativo { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 36px; }
@@ -164,16 +172,16 @@ mark { background: none; color: inherit; padding: 0; }
 .comp-tag  { display: block; font-size: 14px; line-height: 1.5; font-weight: 500; color: var(--borda); margin-bottom: 10px; }
 .comp-card h3 { font-size: 26px; font-weight: 800; color: var(--branco); text-transform: uppercase; margin-bottom: 12px; }
 .comp-card p { color: var(--borda); max-width: none; }
-.comp-card-destaque .comp-tag { color: var(--jade-vivo); }
-.comp-card-destaque h3 { color: var(--jade-vivo); }
+.comp-card-destaque .comp-tag { color: var(--rosa-vivo); }
+.comp-card-destaque h3 { color: var(--rosa-vivo); }
 
-.nota { margin-top: 32px; padding-left: 18px; border-left: 4px solid var(--jade-vivo); color: var(--borda); }
+.nota { margin-top: 32px; padding-left: 18px; border-left: 4px solid var(--rosa-vivo); color: var(--borda); }
 .nota strong { color: var(--branco); }
 
 /* ── Benefícios: cards cinza-card, ícone de contorno ─────── */
 .beneficios { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .beneficio { background: var(--cinza-card); border-radius: var(--r); padding: 24px 22px 26px; }
-.beneficio svg { color: var(--jade-link); margin-bottom: 14px; }
+.beneficio svg { color: var(--rosa-link); margin-bottom: 14px; }
 .beneficio p { color: var(--navy-2); max-width: none; }
 
 /* ── Dados: painel navy com cards navy-2 ──────────────────── */
@@ -182,11 +190,11 @@ mark { background: none; color: inherit; padding: 0; }
 .dados-cabeca { margin-bottom: 26px; }
 .dados-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .dado { background: var(--navy-2); border-radius: var(--r); padding: 24px 22px 26px; }
-.dado-num { display: block; font-family: var(--display); font-weight: 900; color: var(--jade-vivo); font-size: 52px; letter-spacing: -.03em; line-height: 1; margin-bottom: 12px; }
+.dado-num { display: block; font-family: var(--display); font-weight: 900; color: var(--rosa-vivo); font-size: 52px; letter-spacing: -.03em; line-height: 1; margin-bottom: 12px; }
 .dado p { color: var(--borda); max-width: none; }
 .dado p strong { color: var(--branco); }
-.dado sup a { color: var(--jade-vivo); font-weight: 600; margin-left: 2px; }
-.dados-aviso { margin-top: 28px; padding-left: 18px; border-left: 4px solid var(--jade-vivo); color: var(--borda); max-width: none; }
+.dado sup a { color: var(--rosa-vivo); font-weight: 600; margin-left: 2px; }
+.dados-aviso { margin-top: 28px; padding-left: 18px; border-left: 4px solid var(--rosa-vivo); color: var(--borda); max-width: none; }
 .dados-aviso strong { color: var(--branco); }
 .fontes { margin-top: 26px; padding-left: 18px; font-size: 14px; line-height: 1.55; color: var(--borda); }
 .fontes li { margin-bottom: 5px; }
@@ -201,17 +209,17 @@ mark { background: none; color: inherit; padding: 0; }
 .case-img:hover img { transform: scale(1.02); }
 .case-corpo { padding-top: 18px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex: 1; }
 .case-corpo h3 { font-size: 22px; font-weight: 800; text-transform: uppercase; margin: 0; }
-/* selo pílula: fundo jade lavado, texto navy */
-.case-tag { display: inline-block; background: var(--jade-lavado); color: var(--navy); font-size: 14px; font-weight: 600; line-height: 1.4; padding: 5px 14px; border-radius: 999px; }
+/* selo pílula: fundo rosa lavado, texto navy */
+.case-tag { display: inline-block; background: var(--rosa-lavado); color: var(--navy); font-size: 14px; font-weight: 600; line-height: 1.4; padding: 5px 14px; border-radius: 999px; }
 .case-corpo p { max-width: none; margin: 0; }
-.case-link { margin-top: auto; padding-top: 6px; font-weight: 600; color: var(--jade-link); }
+.case-link { margin-top: auto; padding-top: 6px; font-weight: 600; color: var(--rosa-link); }
 .case-link:hover { text-decoration: underline; }
 .selo { display: inline-block; vertical-align: middle; margin-left: 8px; font-family: var(--corpo); font-size: 12px; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--cinza-texto); border: 1px solid var(--borda); padding: 3px 10px; border-radius: 999px; }
 
 /* ── Como funciona: numeral grande + fio entre passos ─────── */
 .passos { list-style: none; display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--borda); }
 .passos li { padding: 24px 0 26px; border-bottom: 1px solid var(--borda); }
-.passo-num { display: block; font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1; color: var(--jade-link); letter-spacing: -.03em; margin-bottom: 12px; }
+.passo-num { display: block; font-family: var(--display); font-weight: 900; font-size: 44px; line-height: 1; color: var(--rosa-link); letter-spacing: -.03em; margin-bottom: 12px; }
 .passos p { color: var(--cinza-texto); }
 
 /* ── Dúvidas: acordeão de fios, sem sombra ────────────────── */
@@ -225,7 +233,7 @@ mark { background: none; color: inherit; padding: 0; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after {
     content: ''; flex-shrink: 0; width: 11px; height: 11px;
-    border-right: 2px solid var(--jade-link); border-bottom: 2px solid var(--jade-link);
+    border-right: 2px solid var(--rosa-link); border-bottom: 2px solid var(--rosa-link);
     transform: rotate(45deg); transition: transform .25s var(--ease);
 }
 .faq details[open] summary::after { transform: rotate(-135deg); }
@@ -235,8 +243,8 @@ mark { background: none; color: inherit; padding: 0; }
 .quem-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 22px; max-width: 780px; }
 .quem-foto { width: 104px; height: 104px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
 
-/* ── CTA final: faixa verde clara — a parte mais luminosa ── */
-.cta-final { background: var(--jade-acao); color: var(--navy); padding-block: 60px; }
+/* ── CTA final: faixa rosa — a parte mais luminosa do site ── */
+.cta-final { background: var(--rosa-acao); color: var(--navy); padding-block: 60px; }
 .cta-final h2 { color: var(--navy); max-width: 18ch; }
 .cta-final p { color: var(--navy); margin-bottom: 28px; }
 
@@ -291,13 +299,13 @@ mark { background: none; color: inherit; padding: 0; }
 
     /* no desktop o título tem 5 linhas e a frase-chave ocupa 2:
        aí o marca-texto cabe e o traço sai de cena */
-    mark { background: var(--jade-lavado); color: var(--navy); padding: 0 4px; border-radius: 0;
+    mark { background: var(--rosa-lavado); color: var(--navy); padding: 0 4px; border-radius: 0;
            box-decoration-break: clone; -webkit-box-decoration-break: clone; }
     .palavra { text-decoration: none; }
 
     .hero-sub { font-size: 17px; max-width: 42ch; }
-    .hero-visual { padding-right: 9%; padding-bottom: 9%; }
-    .hero-mobile { right: -2%; bottom: -3%; }
+    .hero-visual { margin: 0 13% 0 0; padding: 30px 27% 30px 30px; }
+    .hero-mobile { right: -13%; width: 33%; }
 
     h2 { font-size: 40px; }
     .cases { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
