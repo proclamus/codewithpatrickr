@@ -88,11 +88,12 @@ strong { color: var(--navy); font-weight: 600; }
 /* marca-texto que "pinta" quando entra */
 mark {
     color: inherit; padding: 0 .08em; border-radius: 4px;
-    background: linear-gradient(var(--rosa-lavado), var(--rosa-lavado)) no-repeat 0 0 / 0% 100%;
+    background: linear-gradient(var(--rosa-lavado), var(--rosa-lavado)) no-repeat 0 0 / 100% 100%;
     box-decoration-break: clone; -webkit-box-decoration-break: clone;
     transition: background-size .9s var(--ease-out) .55s;
 }
-.entrou mark, .visivel mark { background-size: 100% 100%; }
+.js mark { background-size: 0% 100%; }
+.js.entrou mark, .js .visivel mark { background-size: 100% 100%; }
 
 /* etiqueta em pílula acima do título (a referência usa em toda seção) */
 .etiqueta {
@@ -182,7 +183,7 @@ mark {
 /* cada linha do título entra em sequência */
 .hero .linha { display: block; }
 @keyframes sobe { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
-.hero-texto > *, .hero .linha { opacity: 0; }
+.js .hero-texto > *, .js .hero .linha { opacity: 0; }
 .entrou .hero .linha    { animation: sobe .8s var(--ease-out) both; }
 .entrou .hero-texto > * { animation: sobe .8s var(--ease-out) both; }
 .entrou .hero h1 { opacity: 1; animation: none; }
@@ -194,7 +195,8 @@ mark {
 .entrou .hero-ctas { animation-delay: .62s; }
 
 /* o palco navy do mockup */
-.hero-visual { position: relative; opacity: 0; }
+.hero-visual { position: relative; }
+.js .hero-visual { opacity: 0; }
 .entrou .hero-visual { animation: sobe 1s var(--ease-out) .35s both; }
 .palco {
     position: relative; margin: 0 10% 10% 0;
@@ -222,15 +224,18 @@ mark {
 .painel strong { color: var(--branco); }
 
 /* traço que se desenha */
-.traco { display: block; width: 56px; height: 4px; background: var(--rosa-vivo); margin-top: 18px; border-radius: 2px; transform-origin: left; transform: scaleX(0); transition: transform .8s var(--ease-out) .25s; }
-.visivel .traco { transform: scaleX(1); }
+.traco { display: block; width: 56px; height: 4px; background: var(--rosa-vivo); margin-top: 18px; border-radius: 2px; transform-origin: left; transition: transform .8s var(--ease-out) .25s; }
+.js .traco { transform: scaleX(0); }
+.js .visivel .traco { transform: scaleX(1); }
 
 /* ── Revelação ao rolar ───────────────────────────────────── */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
-.reveal.visivel { opacity: 1; transform: none; }
+.reveal { transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
+.js .reveal { opacity: 0; transform: translateY(24px); }
+.js .reveal.visivel { opacity: 1; transform: none; }
 /* filhos escalonados: cada card entra 90ms depois do anterior */
-.escalona > * { opacity: 0; transform: translateY(22px); transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
-.escalona.visivel > * { opacity: 1; transform: none; }
+.escalona > * { transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
+.js .escalona > * { opacity: 0; transform: translateY(22px); }
+.js .escalona.visivel > * { opacity: 1; transform: none; }
 .escalona.visivel > :nth-child(1) { transition-delay: .05s; }
 .escalona.visivel > :nth-child(2) { transition-delay: .14s; }
 .escalona.visivel > :nth-child(3) { transition-delay: .23s; }

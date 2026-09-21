@@ -6,6 +6,8 @@
 
     var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var raiz = document.documentElement;
+    // Só com o JS rodando o CSS esconde o que vai ser revelado. Sem JS (ou com JS velho em cache), tudo aparece.
+    if (!reduz) raiz.classList.add('js');
 
     /* ── 1. Entrada do hero: espera a fonte pra não "pular" ── */
     var entrar = function () { raiz.classList.add('entrou'); };
