@@ -49,6 +49,10 @@
     --r-sm:    10px;
     --sombra:  0 24px 60px -24px var(--navy-a35);
     --sombra-s: 0 10px 30px -18px var(--navy-a35);
+    /* sombra dos cartoes sob o mouse, medida na referencia (Tailwind shadow-xl) */
+    --sombra-xl: 0 20px 25px -5px rgba(0,0,0,.10), 0 8px 10px -6px rgba(0,0,0,.10);
+    /* sobre navy uma sombra navy nao aparece: precisa ser mais escura que o fundo */
+    --sombra-frente: 0 26px 55px -14px rgba(0,0,0,.6);
     --ease:    cubic-bezier(.22,.61,.36,1);
     --ease-out: cubic-bezier(.16,1,.3,1);
     --topo-h:  68px;
@@ -58,6 +62,10 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--topo-h) + 16px); }
+/* com o Lenis ativo quem rola e ele: o smooth nativo brigaria com o dele */
+html.lenis-smooth { scroll-behavior: auto; }
+html.lenis, html.lenis body { height: auto; }
+html.lenis-stopped { overflow: hidden; }
 body {
     font-family: var(--corpo); font-size: var(--t-0); line-height: 1.6;
     color: var(--navy-2); background: var(--branco);
@@ -170,10 +178,22 @@ mark {
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
 
 /* cada linha do título entra em sequência */
+/* cada linha do titulo corre atras de uma mascara: o texto sobe de tras dela.
+   O respiro e negativo devolvem o espaco dos acentos e das pernas do g/c. */
+.hero .linha-mask { display: block; overflow: hidden; padding: .14em 0 .12em; margin: -.14em 0 -.12em; }
 .hero .linha { display: block; }
 @keyframes sobe { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 .js .hero-texto > *, .js .hero .linha { opacity: 0; }
 .entrou .hero .linha    { animation: sobe .8s var(--ease-out) both; }
+/* GSAP carregou: ele controla o hero, o CSS so ficaria brigando.
+   Sob .gsap a linha fica escondida pela MASCARA (deslocada pra baixo), nunca
+   pela opacidade: o GSAP so anima a posicao, entao opacidade 0 aqui deixaria
+   o titulo invisivel pra sempre. */
+.gsap .hero .linha, .gsap .hero-texto > *, .gsap .hero-visual { animation: none !important; }
+.gsap .hero .linha, .gsap .hero h1 { opacity: 1; }
+/* o GSAP pinta o marca-texto do hero: a transicao do CSS animaria a mesma
+   propriedade em cima e as duas brigariam (o fundo ia e voltava). */
+.gsap .hero mark { transition: none; }
 .entrou .hero-texto > * { animation: sobe .8s var(--ease-out) both; }
 .entrou .hero h1 { opacity: 1; animation: none; }
 .entrou .hero .linha:nth-child(1) { animation-delay: .05s; }
@@ -184,17 +204,20 @@ mark {
 .entrou .hero-ctas { animation-delay: .62s; }
 
 /* o palco navy do mockup */
-.hero-visual { position: relative; }
+.hero-visual { position: relative; perspective: 1100px; }
 .js .hero-visual { opacity: 0; }
 .entrou .hero-visual { animation: sobe 1s var(--ease-out) .35s both; }
 .palco {
-    position: relative; margin: 0 10% 10% 0;
-    padding: clamp(18px, 3vw, 30px) 24% clamp(18px, 3vw, 30px) clamp(18px, 3vw, 30px);
-    background: var(--navy); border-radius: var(--r-lg);
+    transform-style: preserve-3d; will-change: transform;
+    position: relative; margin: 0 19% 10% 0;
+    /* moldura fina: o navy e so uma borda em volta do print, nao um painel.
+       A folga da direita e o minimo pro celular nao cobrir a imagem. */
+    padding: 14px;
+    background: var(--navy); border-radius: 20px;
 }
-.hero-desktop { width: 100%; border-radius: 12px; box-shadow: var(--sombra); }
+.hero-desktop { width: 100%; border-radius: 10px; box-shadow: var(--sombra); }
 .hero-mobile {
-    position: absolute; right: -10%; top: 50%; width: 34%;
+    position: absolute; right: -16%; top: 50%; width: 31%;
     transform: translateY(-50%); border-radius: 18px; border: 5px solid var(--branco);
     box-shadow: var(--sombra); will-change: transform;
 }
@@ -219,24 +242,43 @@ mark {
 
 /* ── Revelação ao rolar ───────────────────────────────────── */
 .reveal { transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
-.js .reveal { opacity: 0; transform: translateY(24px); }
-.js .reveal.visivel { opacity: 1; transform: none; }
+:where(.js .reveal) { opacity: 0; transform: translateY(24px); }
+:where(.js .reveal.visivel) { opacity: 1; transform: none; }
+/* :where() zera a especificidade destes resets. Sem isso eles valem (0,3,0)
+   e vencem qualquer `.card:hover { transform: ... }`, que vale (0,2,0) —
+   o hover dos cartoes simplesmente nao acontecia. */
 /* filhos escalonados: cada card entra 90ms depois do anterior */
 .escalona > * { transition: opacity .7s var(--ease-out), transform .7s var(--ease-out); }
-.js .escalona > * { opacity: 0; transform: translateY(22px); }
-.js .escalona.visivel > * { opacity: 1; transform: none; }
-.escalona.visivel > :nth-child(1) { transition-delay: .05s; }
-.escalona.visivel > :nth-child(2) { transition-delay: .14s; }
-.escalona.visivel > :nth-child(3) { transition-delay: .23s; }
-.escalona.visivel > :nth-child(4) { transition-delay: .32s; }
-.escalona.visivel > :nth-child(5) { transition-delay: .41s; }
-.escalona.visivel > :nth-child(6) { transition-delay: .50s; }
-.escalona.visivel > :nth-child(7) { transition-delay: .59s; }
+:where(.js .escalona) > * { opacity: 0; transform: translateY(22px); }
+:where(.js .escalona.visivel) > * { opacity: 1; transform: none; }
+/* O atraso e so pra entrada escalonada. Sem o :where() ele vale (0,3,0) e
+   continua valendo depois — o 6o cartao esperava meio segundo pra reagir ao
+   mouse. O .assentou, posto pelo JS quando a entrada termina, zera tudo. */
+:where(.escalona.visivel) > :nth-child(1) { transition-delay: .05s; }
+:where(.escalona.visivel) > :nth-child(2) { transition-delay: .14s; }
+:where(.escalona.visivel) > :nth-child(3) { transition-delay: .23s; }
+:where(.escalona.visivel) > :nth-child(4) { transition-delay: .32s; }
+:where(.escalona.visivel) > :nth-child(5) { transition-delay: .41s; }
+:where(.escalona.visivel) > :nth-child(6) { transition-delay: .50s; }
+:where(.escalona.visivel) > :nth-child(7) { transition-delay: .59s; }
+.escalona.assentou > * { transition-delay: 0s; }
 
 /* ── Comparativo Instagram × Google (dentro do painel navy) ─ */
-.comparativo { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
-.comp-card { background: var(--navy-2); border: 1px solid var(--branco-a10); border-radius: var(--r); padding: 28px 26px 30px; transition: transform .35s var(--ease-out), border-color .3s; }
-.comp-card:hover { transform: translateY(-3px); border-color: var(--branco-a18); }
+.comparativo { position: relative; display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 8px; }
+.comp-card {
+    position: relative; background: var(--navy-2); border: 1px solid var(--branco-a10);
+    border-radius: var(--r); padding: 28px 26px 30px;
+    transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out), opacity .4s var(--ease), border-color .3s;
+}
+/* o cartao sob o mouse cresce e vem pra frente; o outro recua.
+   E o recuo do vizinho que cria o destaque — sozinho, o zoom passa despercebido. */
+@media (hover: hover) and (pointer: fine) {
+    .comparativo:hover .comp-card { opacity: .45; }
+    .comparativo .comp-card:hover {
+        opacity: 1; transform: scale(1.05); z-index: 2;
+        box-shadow: var(--sombra-frente); border-color: var(--rosa-vivo);
+    }
+}
 .comp-tag { display: block; font-size: .9rem; font-weight: 600; color: var(--branco-a75); margin-bottom: 10px; }
 .comp-card h3 { font-size: var(--t-3); font-weight: 800; color: var(--branco); letter-spacing: -.02em; margin-bottom: 10px; }
 .comp-card p { max-width: none; }
@@ -248,11 +290,20 @@ mark {
 .beneficios { display: grid; grid-template-columns: 1fr; gap: 16px; }
 .beneficio {
     background: var(--cinza-card); border-radius: var(--r); padding: 26px 24px 28px;
-    transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), background .3s;
+    /* mesma receita medida no card da referencia: escala 1,02 + sombra grande em 300ms */
+    transition: transform .3s var(--ease), box-shadow .3s var(--ease), background .3s var(--ease);
 }
-.beneficio:hover { transform: translateY(-4px); box-shadow: var(--sombra-s); background: var(--branco); }
+/* o cartao vira navy sob o mouse: e o gesto mais caracteristico da referencia,
+   e aqui ele cabe porque o rosa-vivo so pode aparecer sobre navy */
+/* no toque o :hover gruda depois do tap e o cartao ficava navy pra sempre */
+@media (hover: hover) and (pointer: fine) {
+    .beneficio:hover { transform: scale(1.02); box-shadow: var(--sombra-xl); background: var(--navy); }
+    .beneficio:hover h3 { color: var(--branco); }
+    .beneficio:hover p  { color: var(--borda); }
+    .beneficio:hover .icone { background: var(--navy-2); border-color: var(--navy-2); color: var(--rosa-vivo); }
+}
 .icone { width: 46px; height: 46px; border-radius: 12px; background: var(--branco); color: var(--rosa-link); display: grid; place-items: center; margin-bottom: 18px; border: 1px solid var(--borda); transition: background .3s, color .3s, border-color .3s; }
-.beneficio:hover .icone { background: var(--rosa-lavado); border-color: var(--rosa-lavado); }
+.beneficio h3, .beneficio p { transition: color .35s var(--ease); }
 .beneficio p { max-width: none; }
 
 /* ── Dados: painel navy com cards; no celular, trilho deslizante ── */
@@ -269,6 +320,8 @@ mark {
 .dado p { max-width: none; }
 .dado sup a { color: var(--rosa-vivo); font-weight: 600; margin-left: 2px; }
 .dados-aviso { margin-top: 30px; padding-left: 18px; border-left: 4px solid var(--rosa-vivo); max-width: none; }
+/* o aviso honesto acende palavra por palavra conforme a pessoa rola */
+.dados-aviso .pal { color: var(--branco); }
 .fontes { margin-top: 24px; padding-left: 18px; font-size: .84rem; color: var(--branco-a75); }
 .fontes li { margin-bottom: 4px; }
 .fontes a { color: var(--branco); text-decoration: underline; text-decoration-color: var(--branco-a18); }
@@ -281,10 +334,22 @@ mark {
     border: 1px solid var(--borda); border-radius: var(--r-lg); overflow: hidden;
     transition: transform .4s var(--ease-out), box-shadow .4s var(--ease-out);
 }
-.case:hover { transform: translateY(-5px); box-shadow: var(--sombra); }
-.case-img { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--cinza-card); border-bottom: 1px solid var(--borda); }
+@media (hover: hover) and (pointer: fine) { .case:hover { transform: translateY(-5px); box-shadow: var(--sombra); } }
+.case-img { position: relative; display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--cinza-card); border-bottom: 1px solid var(--borda); }
+/* pilula que segue o cursor sobre o print: diz que da pra clicar e abrir */
+.case-cursor {
+    position: absolute; top: 0; left: 0; z-index: 2; pointer-events: none;
+    display: inline-flex; align-items: center; gap: 7px; white-space: nowrap;
+    padding: 10px 16px; border-radius: 999px;
+    background: var(--navy); color: var(--branco);
+    font-size: .86rem; font-weight: 600; letter-spacing: .01em;
+    opacity: 0; will-change: transform;
+}
+.case-cursor svg { width: 14px; height: 14px; }
+/* dedo nao tem cursor: no toque a pilula nao existe */
+@media (hover: none), (pointer: coarse) { .case-cursor { display: none; } }
 .case-img img { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .8s var(--ease-out); }
-.case:hover .case-img img { transform: scale(1.04); }
+@media (hover: hover) and (pointer: fine) { .case:hover .case-img img { transform: scale(1.04); } }
 .case-corpo { padding: 22px 24px 26px; display: flex; flex-direction: column; align-items: flex-start; gap: 10px; flex: 1; }
 .case-corpo h3 { font-size: var(--t-2); font-weight: 800; letter-spacing: -.02em; margin: 0; }
 .case-tag { display: inline-block; background: var(--rosa-lavado); color: var(--navy); font-size: .88rem; font-weight: 600; line-height: 1.4; padding: 5px 13px; border-radius: 999px; }
@@ -293,13 +358,18 @@ mark {
 .selo { display: inline-block; vertical-align: middle; margin-left: 8px; font-family: var(--corpo); font-size: .76rem; font-weight: 600; color: var(--cinza-texto); border: 1px solid var(--borda); padding: 3px 10px; border-radius: 999px; letter-spacing: 0; }
 
 /* ── Como funciona: cards em degrau, numeral grande ───────── */
-.passos { list-style: none; display: grid; grid-template-columns: 1fr; gap: 14px; }
+.passos { position: relative; list-style: none; display: grid; grid-template-columns: 1fr; gap: 14px; }
+/* fio pontilhado ligando os passos, como a constelacao da referencia.
+   Passa POR TRAS dos cartoes: so aparece nos vaos. */
+.passos-fio { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: visible; }
+.passos-fio polyline { fill: none; stroke: var(--rosa-acao); stroke-width: 1.5; stroke-dasharray: 5 7; }
 .passos li {
-    position: relative; background: var(--branco); border: 1px solid var(--borda); border-radius: var(--r);
+    position: relative; z-index: 1;
+    background: var(--branco); border: 1px solid var(--borda); border-radius: var(--r);
     padding: 26px 24px 28px 24px;
     transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .3s;
 }
-.passos li:hover { transform: translateY(-4px); box-shadow: var(--sombra-s); border-color: var(--rosa-lavado); }
+@media (hover: hover) and (pointer: fine) { .passos li:hover { transform: translateY(-4px); box-shadow: var(--sombra-s); border-color: var(--rosa-lavado); } }
 .passo-num { display: block; font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; color: var(--rosa-link); letter-spacing: -.04em; margin-bottom: 14px; font-variation-settings: 'opsz' 96; }
 .passos p { color: var(--cinza-texto); }
 
@@ -346,6 +416,16 @@ mark {
 .rodape-links a:hover { color: var(--navy); text-decoration: underline; }
 .rodape-dev { font-size: .86rem; }
 
+/* ── Alvos de toque ───────────────────────────────────────────
+   Sem cursor, tudo que se clica precisa de 44px. O padding negativo
+   aumenta a area sem mexer no layout. */
+@media (hover: none), (pointer: coarse) {
+    .link-rosa, .case-link { padding-block: 10px; }
+    .marca { display: inline-flex; align-items: center; min-height: 44px; }
+    .dado sup a, .fontes a { display: inline-block; padding: 12px; margin: -12px; }
+    .rodape-links a { display: inline-block; padding-block: 11px; }
+}
+
 /* ── Barra fixa do celular ────────────────────────────────── */
 .barra-fixa {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 45;
@@ -385,8 +465,8 @@ mark {
     .hero-grid { grid-template-columns: 1.05fr .95fr; gap: clamp(36px, 6vw, 72px); }
     .hero h1 { max-width: none; }
     .quebra { display: block; }
-    .palco { margin: 0 12% 0 0; padding: 32px 26% 32px 32px; }
-    .hero-mobile { right: -12%; width: 35%; }
+    .palco { margin: 0 14% 0 0; padding: 16px; }
+    .hero-mobile { right: -17%; width: 31%; }
 
     .cases { grid-template-columns: 1fr 1fr; gap: 32px; }
     .cta-final .container { flex-direction: row; align-items: center; justify-content: space-between; gap: 40px; }
@@ -397,11 +477,15 @@ mark {
 @media (min-width: 1024px) {
     .beneficios { grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .dados-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .passos { grid-template-columns: repeat(4, 1fr); gap: 18px; }
-    /* degrau: cada passo um pouco mais baixo que o anterior */
-    .passos li:nth-child(2) { margin-top: 22px; }
-    .passos li:nth-child(3) { margin-top: 44px; }
-    .passos li:nth-child(4) { margin-top: 66px; }
+    /* align-items:start e obrigatorio: com o stretch padrao o margin-top
+       so encolhia o cartao em vez de descer o degrau, e o fio ficava reto.
+       O vao largo e o que deixa o pontilhado visivel entre um cartao e outro. */
+    .passos { grid-template-columns: repeat(4, 1fr); gap: 44px; align-items: start; }
+    /* nth-of-type, nao nth-child: o SVG do fio e injetado como primeiro filho
+       do .passos e deslocaria a contagem em um. */
+    .passos li:nth-of-type(2) { margin-top: 40px; }
+    .passos li:nth-of-type(3) { margin-top: 80px; }
+    .passos li:nth-of-type(4) { margin-top: 120px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
