@@ -145,6 +145,11 @@ mark {
     transition: border-color .3s, box-shadow .3s;
 }
 .topo.rolou { border-bottom-color: var(--borda); box-shadow: 0 8px 24px -20px var(--navy-a35); }
+/* A trava de rolagem do menu poe overflow:hidden no html e no body, e isso
+   CANCELA o position:sticky: o header voltava pra sua posicao estatica no topo
+   do documento e sumia da tela, junto com o botao de fechar. Enquanto o menu
+   estiver aberto ele passa a fixed, que nao depende do container de rolagem. */
+body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .topo-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: var(--topo-h); }
 .marca { font-family: var(--display); font-weight: 800; color: var(--navy); font-size: 1.2rem; letter-spacing: -.03em; }
 .topo-acoes { display: flex; align-items: center; gap: 8px; }
