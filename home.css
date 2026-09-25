@@ -181,6 +181,9 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .hero h1 { margin-bottom: 20px; max-width: 14ch; }
 .hero-sub { font-size: var(--t-1); color: var(--cinza-texto); margin-bottom: 28px; max-width: 36ch; }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
+/* o argumento que fecha no hero, logo abaixo do botao */
+.hero-nota { display: flex; align-items: flex-start; gap: 9px; margin-top: 22px; font-size: .95rem; color: var(--cinza-texto); max-width: 34ch; }
+.hero-nota svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 4px; color: var(--rosa-link); }
 
 /* cada linha do título entra em sequência */
 /* cada linha do titulo corre atras de uma mascara: o texto sobe de tras dela.

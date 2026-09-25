@@ -57,7 +57,7 @@
         var gsap = window.gsap;
         // estado inicial no próprio GSAP, pra não depender da ordem de carga do CSS
         gsap.set('.hero .linha', { yPercent: 115 });
-        gsap.set(['.hero-sub', '.hero-ctas'], { opacity: 0, y: 18 });
+        gsap.set(['.hero-sub', '.hero-ctas', '.hero-nota'], { opacity: 0, y: 18 });
         gsap.set('.hero-visual', { opacity: 0, y: 26 });
         gsap.set('.hero mark', { backgroundSize: '0% 100%' });
 
@@ -68,7 +68,8 @@
                 .to('.hero-visual', { opacity: 1, y: 0, duration: 1.1 }, 0.25)
                 .to('.hero mark', { backgroundSize: '100% 100%', duration: 0.65, stagger: 0.1 }, 0.55)
                 .to('.hero-sub', { opacity: 1, y: 0, duration: 0.6 }, 0.5)
-                .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.6 }, 0.62);
+                .to('.hero-ctas', { opacity: 1, y: 0, duration: 0.6 }, 0.62)
+                .to('.hero-nota', { opacity: 1, y: 0, duration: 0.6 }, 0.74);
         };
         // espera a fonte: com a métrica errada as linhas entram e depois pulam
         if (document.fonts && document.fonts.ready) {
@@ -311,6 +312,24 @@
                     scrollTrigger: { trigger: aviso, start: 'top 85%', end: 'bottom 65%', scrub: 0.4 }
                 });
             }
+        }
+    }
+
+    /* ── 8e. No celular não existe mouse: quem move o mockup é o scroll ──
+       A mesma inclinação 3D do desktop, só que dirigida pela rolagem, mais
+       um balanço lento no celular da Delka pra puxar o olho no hero. */
+    if (temGsap && !reduz && window.ScrollTrigger && window.matchMedia('(max-width: 860px)').matches) {
+        var gm = window.gsap;
+        var palcoCel = document.querySelector('.palco');
+        var foneCel = document.querySelector('.hero-mobile');
+        if (palcoCel) {
+            gm.to(palcoCel, {
+                rotationY: -11, rotationX: 7, scale: 1.04, ease: 'none',
+                scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
+            });
+        }
+        if (foneCel) {
+            gm.to(foneCel, { y: 12, duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
         }
     }
 
