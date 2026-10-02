@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="home.css?v=20">
+    <link rel="stylesheet" href="home.css?v=21">
     <link rel="preload" as="image" href="img/delka.webp" type="image/webp" fetchpriority="high">
 
     <script type="application/ld+json">
@@ -125,6 +125,8 @@
 
 <!-- ====== O PROBLEMA ====== -->
 <section class="hero">
+    <!-- fundo líquido em WebGL, nas cores da marca; começa depois do load (efeitos/fundo-shader.js) -->
+    <canvas class="hero-fundo" data-shader data-cores="#FFFFFF,#FDE7EF,#FF70AE" data-velocidade="0.8" data-intensidade="1.6" aria-hidden="true"></canvas>
     <div class="container hero-grid">
         <div class="hero-texto">
             <h1><span class="linha-mask"><span class="linha">Se o seu negócio</span></span><span class="linha-mask"><span class="linha">não aparece no Google,</span></span><span class="linha-mask"><span class="linha"><mark>o cliente vai pro</mark></span></span><span class="linha-mask"><span class="linha"><mark>concorrente</mark> que aparece.</span></span></h1>
@@ -152,6 +154,15 @@
         </div>
     </div>
 </section>
+
+<!-- ====== FAIXA EM MOVIMENTO ======
+     Texto real (o Google lê); o JS duplica o grupo, com aria-hidden, e faz correr.
+     Sem JS ou com reduced-motion, fica parada mostrando o primeiro grupo. -->
+<div class="faixa">
+    <div class="faixa-trilho" data-faixa>
+        <p class="faixa-grupo"><span>Sites que aparecem no Google</span><i aria-hidden="true">✦</i><span>Passam confiança</span><i aria-hidden="true">✦</i><span>Levam o cliente pro WhatsApp</span><i aria-hidden="true">✦</i><span>São Gonçalo</span><i aria-hidden="true">✦</i><span>Niterói</span><i aria-hidden="true">✦</i><span>Rio de Janeiro</span><i aria-hidden="true">✦</i></p>
+    </div>
+</div>
 
 <!-- ====== QUEM SOU EU ====== -->
 <section class="secao quem" id="quem-sou-eu">
@@ -200,6 +211,8 @@
 
 <!-- ====== POR QUE UM SITE (Instagram + Google) — a virada visual ====== -->
 <section class="secao painel reveal" id="por-que">
+    <!-- constelação rosa que foge do mouse (efeitos/fundo-particulas.js) -->
+    <canvas class="painel-fundo" data-particulas data-cor="#FF70AE" data-densidade="0.7" aria-hidden="true"></canvas>
     <div class="container">
         <div class="secao-cabeca">
             <h2>O Instagram traz gente.<br class="quebra"> O site é onde ela <span class="destaque">decide</span>.</h2>
@@ -235,32 +248,32 @@
         </div>
         <div class="beneficios escalona">
             <div class="beneficio">
-                <span class="icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4.2-4.2"/></svg></span>
+                <span class="icone icone-busca"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle pathLength="1" cx="11" cy="11" r="7"/><path pathLength="1" d="M20 20l-4.2-4.2"/></svg></span>
                 <h3>Aparece na busca</h3>
                 <p>Montado pra ser encontrado quando alguém pesquisa o que você faz na sua região.</p>
             </div>
             <div class="beneficio">
-                <span class="icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-2.9 8.1-7 9.5-4.1-1.4-7-5.2-7-9.5V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                <span class="icone icone-escudo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M12 3l7 3v5.5c0 4.3-2.9 8.1-7 9.5-4.1-1.4-7-5.2-7-9.5V6l7-3z"/><path pathLength="1" d="M9 12l2 2 4-4"/></svg></span>
                 <h3>Passa confiança</h3>
                 <p>Quem você é, o que faz e provas reais do trabalho — sem a pessoa precisar rolar feed nem caçar destaque fixado.</p>
             </div>
             <div class="beneficio">
-                <span class="icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 4.5h17l-6.6 7.7v6.1l-3.8 2.2v-8.3z"/></svg></span>
+                <span class="icone icone-funil"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M3.5 4.5h17l-6.6 7.7v6.1l-3.8 2.2v-8.3z"/></svg></span>
                 <h3>Guia até o contato</h3>
                 <p>Cada seção é organizada pra levar o visitante até o botão de contato. No feed a atenção se dispersa; no site ela tem um caminho.</p>
             </div>
             <div class="beneficio">
-                <span class="icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 01-11.6 7.1L4 20l.9-4.4A8 8 0 1120 12z"/></svg></span>
+                <span class="icone icone-chat"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path pathLength="1" d="M20 12a8 8 0 01-11.6 7.1L4 20l.9-4.4A8 8 0 1120 12z"/></svg></span>
                 <h3>Contato em um toque</h3>
                 <p>Botão de WhatsApp em todo lugar. Sem formulário chato, sem e-mail que ninguém responde.</p>
             </div>
             <div class="beneficio">
-                <span class="icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg></span>
+                <span class="icone icone-celular"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect pathLength="1" x="6" y="2.5" width="12" height="19" rx="2.5"/><path pathLength="1" d="M11 18.5h2"/></svg></span>
                 <h3>Feito pro celular</h3>
                 <p>A maior parte das visitas vem do celular. O site é pensado pra ele primeiro.</p>
             </div>
             <div class="beneficio">
-                <span class="icone"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.6 3.6 5.7 3.6 9S14.4 18.4 12 21c-2.4-2.6-3.6-5.7-3.6-9S9.6 5.6 12 3z"/></svg></span>
+                <span class="icone icone-mundo"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle pathLength="1" cx="12" cy="12" r="9"/><path pathLength="1" d="M3 12h18M12 3c2.4 2.6 3.6 5.7 3.6 9S14.4 18.4 12 21c-2.4-2.6-3.6-5.7-3.6-9S9.6 5.6 12 3z"/></svg></span>
                 <h3>No seu próprio endereço</h3>
                 <p>Perfil pode ser bloqueado, perder alcance ou sair do ar de uma hora pra outra. O site fica no seu domínio, sem depender de regra de plataforma nenhuma.</p>
             </div>
@@ -488,6 +501,8 @@
 <script src="vendor/gsap.min.js?v=3.15.0" defer></script>
 <script src="vendor/ScrollTrigger.min.js?v=3.15.0" defer></script>
 <script src="vendor/lenis.min.js?v=1.3.26" defer></script>
-<script src="home.js?v=20" defer></script>
+<script src="home.js?v=21" defer></script>
+<script src="efeitos/fundo-shader.js?v=1" defer></script>
+<script src="efeitos/fundo-particulas.js?v=1" defer></script>
 </body>
 </html>

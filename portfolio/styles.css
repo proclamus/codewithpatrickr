@@ -119,6 +119,12 @@ code { font-family: var(--mono); }
     .reveal { opacity: 1; transform: none; transition: none; }
 }
 
+/* troca de página com fade cruzado, sem JS (a home tem a mesma regra) */
+@view-transition { navigation: auto; }
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
+
 /* ============================
    HEADER
    ============================ */

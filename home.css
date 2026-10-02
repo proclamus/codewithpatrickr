@@ -234,6 +234,38 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     box-shadow: var(--sombra); will-change: transform;
 }
 
+/* fundo liquido do hero (WebGL, efeitos/fundo-shader.js). Opacidade baixa de
+   proposito: o branco continua sendo o fundo, o rosa so "respira" atras do texto.
+   isolation no .hero deixa o z-index:-1 acima do fundo da pagina e abaixo do
+   conteudo, sem mexer no empilhamento do mockup 3D. A mascara apaga a borda de
+   baixo, senao o fundo terminava numa linha reta em cima da faixa. */
+.hero { position: relative; isolation: isolate; }
+.hero-fundo {
+    position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
+    opacity: 0; transition: opacity 1.6s var(--ease);
+    -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent);
+            mask-image: linear-gradient(to bottom, #000 62%, transparent);
+}
+.hero-fundo.pronto { opacity: .55; }
+
+/* ── Faixa em movimento ───────────────────────────────────── */
+/* navy levemente girada e mais larga que a tela: as pontas nunca aparecem.
+   O respiro vertical do .faixa e o que a rotacao precisa pra nao ser cortada. */
+.faixa { overflow: hidden; overflow: clip; padding-block: clamp(14px, 3vw, 28px); }
+.faixa-trilho {
+    display: flex; margin-inline: -3%;
+    background: var(--navy); color: var(--branco);
+    padding-block: clamp(12px, 2vw, 18px);
+    transform: rotate(-1.5deg);
+}
+.faixa-grupo {
+    flex-shrink: 0; min-width: 100%; max-width: none;
+    display: flex; align-items: center; gap: clamp(18px, 3vw, 36px); padding-right: clamp(18px, 3vw, 36px);
+    white-space: nowrap; font-family: var(--display); font-weight: 800; letter-spacing: -.02em; line-height: 1.2;
+    font-size: clamp(1.25rem, 3.4vw, 2.1rem); font-variation-settings: 'opsz' 96;
+}
+.faixa-grupo i { font-style: normal; color: var(--rosa-vivo); font-size: .7em; }
+
 /* ── Seções e painéis embutidos ───────────────────────────── */
 .secao { padding-block: clamp(56px, 9vw, 104px); }
 .painel {
@@ -241,6 +273,9 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     background: var(--navy); color: var(--branco);
     padding-block: clamp(48px, 8vw, 96px);
 }
+/* constelacao rosa atras do conteudo do painel (efeitos/fundo-particulas.js) */
+.painel { position: relative; isolation: isolate; }
+.painel-fundo { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .7; }
 .painel h2 { color: var(--branco); }
 .painel .destaque { color: var(--rosa-vivo); }
 .painel .secao-sub { color: var(--branco-a75); }
@@ -316,6 +351,36 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 }
 .icone { width: 46px; height: 46px; border-radius: 12px; background: var(--branco); color: var(--rosa-link); display: grid; place-items: center; margin-bottom: 18px; border: 1px solid var(--borda); transition: background .3s, color .3s, border-color .3s; }
 .beneficio h3, .beneficio p { transition: color .35s var(--ease); }
+
+/* ícones que se desenham quando a grade entra: pathLength="1" no HTML faz o
+   traço inteiro valer 1, então dasharray 1 + offset 1 = invisível, offset 0 = completo.
+   Cada um começa depois do seu cartão (mesmo escalonamento do .escalona + .3s). */
+:where(.js .beneficios) .icone svg > * { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.1s var(--ease-out); }
+:where(.js .beneficios.visivel) .icone svg > * { stroke-dashoffset: 0; }
+:where(.beneficios.visivel) > :nth-child(1) .icone svg > * { transition-delay: .35s; }
+:where(.beneficios.visivel) > :nth-child(2) .icone svg > * { transition-delay: .44s; }
+:where(.beneficios.visivel) > :nth-child(3) .icone svg > * { transition-delay: .53s; }
+:where(.beneficios.visivel) > :nth-child(4) .icone svg > * { transition-delay: .62s; }
+:where(.beneficios.visivel) > :nth-child(5) .icone svg > * { transition-delay: .71s; }
+:where(.beneficios.visivel) > :nth-child(6) .icone svg > * { transition-delay: .80s; }
+
+/* e sob o mouse cada ícone faz o gesto do que ele representa */
+@media (hover: hover) and (pointer: fine) {
+    .beneficio:hover .icone-busca svg   { animation: icone-procura 1s var(--ease); }
+    .beneficio:hover .icone-escudo svg  { animation: icone-pulsa .7s var(--ease-out); }
+    .beneficio:hover .icone-escudo svg path:last-child { animation: icone-check .6s var(--ease-out) .12s both; }
+    .beneficio:hover .icone-funil svg   { animation: icone-goteja .9s var(--ease); }
+    .beneficio:hover .icone-chat svg    { animation: icone-balanca .7s var(--ease); }
+    .beneficio:hover .icone-celular svg { animation: icone-vibra .45s linear; }
+    .beneficio:hover .icone-mundo svg   { animation: icone-gira 1.1s var(--ease-out); }
+}
+@keyframes icone-procura { 25% { transform: translate(3px, -2px); } 50% { transform: translate(-2px, -3px); } 75% { transform: translate(-3px, 2px); } }
+@keyframes icone-pulsa   { 40% { transform: scale(1.18); } }
+@keyframes icone-check   { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes icone-goteja  { 30% { transform: translateY(-3px); } 60% { transform: translateY(3px); } }
+@keyframes icone-balanca { 25% { transform: rotate(-12deg); } 50% { transform: rotate(9deg); } 75% { transform: rotate(-5deg); } }
+@keyframes icone-vibra   { 20% { transform: rotate(-8deg); } 40% { transform: rotate(8deg); } 60% { transform: rotate(-6deg); } 80% { transform: rotate(6deg); } }
+@keyframes icone-gira    { to { transform: rotateY(360deg); } }
 .beneficio p { max-width: none; }
 
 /* ── Dados: painel navy com cards; no celular, trilho deslizante ── */
@@ -537,8 +602,14 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .menu-cta { display: none; }
 }
 
+/* troca de página (home ↔ portfólio ↔ projetos) com fade cruzado, sem JS.
+   O portfolio/styles.css tem a mesma regra: as duas pontas precisam aceitar. */
+@view-transition { navigation: auto; }
+
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
+    ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+    .icone svg, .icone svg > * { animation: none !important; }
     .hero-texto > *, .hero .linha, .hero-visual, .reveal, .escalona > * { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
     .traco { transform: none; transition: none; }
     mark { background-size: 100% 100%; transition: none; }

@@ -337,6 +337,36 @@
         }
     }
 
+    /* ── 8f. Faixa em movimento ───────────────────────────────────
+       Duas cópias do mesmo grupo andando juntas: quando a primeira sai
+       inteira pela esquerda, a segunda está exatamente no lugar dela.
+       Acelera com a velocidade do scroll e, rolando pra cima, anda pra
+       trás — parece presa ao dedo. Fora da tela, pausa. */
+    var faixa = document.querySelector('[data-faixa]');
+    if (faixa && temGsap && window.ScrollTrigger) {
+        var gf = window.gsap;
+        var grupo = faixa.firstElementChild;
+        var copia = grupo.cloneNode(true);
+        copia.setAttribute('aria-hidden', 'true');
+        faixa.appendChild(copia);
+        var corre = gf.to([grupo, copia], { xPercent: -100, duration: 28, ease: 'none', repeat: -1 });
+        // começa "lá na frente" das repetições: com timeScale negativo a
+        // animação volta no tempo, e no tempo zero ela travaria
+        corre.totalTime(corre.duration() * 200);
+        window.ScrollTrigger.create({
+            trigger: faixa, start: 'top bottom', end: 'bottom top',
+            onToggle: function (self) { if (self.isActive) corre.play(); else corre.pause(); },
+            onUpdate: function (self) {
+                var sentido = self.direction < 0 ? -1 : 1;
+                var turbo = 1 + Math.min(Math.abs(self.getVelocity()) / 350, 3);
+                gf.to(corre, {
+                    timeScale: sentido * turbo, duration: 0.2, overwrite: true,
+                    onComplete: function () { gf.to(corre, { timeScale: sentido, duration: 0.9 }); }
+                });
+            }
+        });
+    }
+
     /* ── 9. Celular do hero: paralaxe amarrada ao scroll ──────────── */
     /* só onde existe mouse: no toque o celular já tem o balanço do 8e,
        e duas animações no mesmo eixo do mesmo elemento brigariam. */
