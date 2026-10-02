@@ -181,9 +181,13 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .hero h1 { margin-bottom: 20px; max-width: 14ch; }
 .hero-sub { font-size: var(--t-1); color: var(--cinza-texto); margin-bottom: 28px; max-width: 36ch; }
 .hero-ctas { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 24px; }
-/* o argumento que fecha no hero, logo abaixo do botao */
-.hero-nota { display: flex; align-items: flex-start; gap: 9px; margin-top: 22px; font-size: .95rem; color: var(--cinza-texto); max-width: 34ch; }
-.hero-nota svg { width: 17px; height: 17px; flex-shrink: 0; margin-top: 4px; color: var(--rosa-link); }
+/* a assinatura do hero: o rosto aparece na primeira tela, nao no fim da pagina */
+.hero-nota { display: flex; align-items: center; gap: 13px; margin-top: 26px; max-width: 42ch; }
+.hero-nota p { font-size: .92rem; line-height: 1.5; color: var(--cinza-texto); max-width: none; }
+.hero-nota strong { display: block; color: var(--navy); font-weight: 600; }
+.hero-autor-foto { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--rosa-lavado); }
+.hero-autor-link { color: var(--rosa-link); font-weight: 600; white-space: nowrap; border-bottom: 1px solid var(--rosa-lavado); }
+.hero-autor-link:hover { border-bottom-color: var(--rosa-link); }
 
 /* cada linha do título entra em sequência */
 /* cada linha do titulo corre atras de uma mascara: o texto sobe de tras dela.
@@ -400,10 +404,34 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 @keyframes abre { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 .faq details p { padding: 0 20px 22px; color: var(--navy-2); animation: abre .35s var(--ease-out); }
 
-/* ── Quem faz ─────────────────────────────────────────────── */
-.quem-inner { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; max-width: 800px; }
-.quem-foto { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 4px solid var(--rosa-lavado); }
-.quem p { font-size: var(--t-1); }
+/* ── Quem sou eu ──────────────────────────────────────────────
+   Retrato grande em cartao, nao a bolinha de 112px: a foto e o
+   argumento de confianca da pagina, entao ela ocupa espaco.
+   A secao e um painel proprio (cinza-card, embutido como os navy):
+   sem isso o mockup da Delka, que fecha o hero, e o retrato, que
+   abre esta secao, ficavam os dois sobre branco, com 115px de vao
+   e nenhuma fronteira — liam como um par de imagens coladas. */
+.quem {
+    margin-inline: var(--inset); border-radius: var(--r-lg);
+    background: var(--cinza-card);
+    margin-block: clamp(20px, 5vw, 36px) clamp(16px, 3vw, 32px);
+}
+.quem-inner { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; }
+/* isolation: sem isso a moldura rosa (z-index:-1) iria parar ATRAS do fundo do painel */
+.quem-retrato { position: relative; isolation: isolate; width: 100%; max-width: 300px; }
+.quem-foto { width: 100%; height: auto; border-radius: var(--r-lg); display: block; }
+/* moldura rosa deslocada atras do retrato */
+.quem-retrato::before {
+    content: ''; position: absolute; inset: 14px -14px -14px 14px;
+    border: 2px solid var(--rosa-acao); border-radius: var(--r-lg); z-index: -1;
+}
+.quem-texto h2 { margin-bottom: 16px; }
+.quem-chamada { font-size: var(--t-2); font-family: var(--display); font-weight: 700; color: var(--navy); letter-spacing: -.02em; margin-bottom: 12px; max-width: none; }
+.quem p { font-size: var(--t-0); margin-bottom: 14px; }
+.quem-fatos { list-style: none; display: grid; gap: 10px; margin: 22px 0 20px; }
+.quem-fatos li { display: flex; align-items: flex-start; gap: 10px; font-size: .95rem; color: var(--navy-2); }
+.quem-fatos svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; color: var(--rosa-link); }
+.quem-link { margin-top: 4px; }
 
 /* ── CTA final: painel rosa embutido ──────────────────────── */
 .cta-final {
@@ -451,7 +479,7 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 @media (min-width: 600px) {
     .beneficios { grid-template-columns: 1fr 1fr; }
     .comparativo { grid-template-columns: 1fr 1fr; gap: 20px; }
-    .quem-inner { flex-direction: row; align-items: center; gap: 32px; }
+    .quem-inner { grid-template-columns: 300px 1fr; gap: 44px; align-items: center; }
     .rodape-inner { flex-direction: row; justify-content: space-between; align-items: center; }
     .rodape-links { flex-direction: row; gap: 24px; align-items: center; }
     .passos { grid-template-columns: 1fr 1fr; }
@@ -459,16 +487,7 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 }
 
 @media (min-width: 861px) {
-    body { padding-bottom: 0; }
-    .barra-fixa { display: none; }
-    .topo { background: rgba(255,255,255,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-    .menu-btn { display: none; }
-    .topo-cta { display: inline-flex; }
-    /* menu vira uma pílula central, como na referência */
-    .menu { position: static; inset: auto; display: flex; flex-direction: row; align-items: center; gap: 2px; padding: 4px; background: var(--cinza-card); border: 0; border-radius: 999px; opacity: 1; transform: none; pointer-events: auto; overflow: visible; }
-    .menu a:not(.btn) { min-height: 0; padding: 8px 14px; font-family: var(--corpo); font-weight: 500; font-size: .92rem; color: var(--navy-2); letter-spacing: 0; border-radius: 999px; transition: background .25s, color .25s; }
-    .menu a:not(.btn):hover { color: var(--navy); background: var(--branco); }
-    .menu-cta { display: none; }
+    .marca, .topo .btn { white-space: nowrap; }
 
     .hero-grid { grid-template-columns: 1.05fr .95fr; gap: clamp(36px, 6vw, 72px); }
     .hero h1 { max-width: none; }
@@ -494,6 +513,28 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .passos li:nth-of-type(2) { margin-top: 40px; }
     .passos li:nth-of-type(3) { margin-top: 80px; }
     .passos li:nth-of-type(4) { margin-top: 120px; }
+}
+
+/* ============================================================
+   O NAV EM PILULA PRECISA DE MAIS LARGURA QUE O RESTO DO LAYOUT
+   Medido: logo 131 + nav 672 + botao 218 = 1045px, e a caixa do
+   header trava em 1040px. Nao cabia em largura NENHUMA — o botao
+   saia cortado ate em 1440. Com o nav apertado a soma cai pra ~1005
+   e cabe a partir de 1120px. Abaixo disso, hamburguer; o layout
+   segue de desktop desde 861 e a barra fixa de baixo leva ao CTA.
+   ============================================================ */
+@media (min-width: 1120px) {
+    body { padding-bottom: 0; }
+    .barra-fixa { display: none; }
+    .topo { background: rgba(255,255,255,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+    .menu-btn { display: none; }
+    .topo-cta { display: inline-flex; padding-left: 18px; }
+    /* menu vira uma pílula central, como na referência */
+    .menu { position: static; inset: auto; display: flex; flex-direction: row; align-items: center; gap: 2px; padding: 4px; background: var(--cinza-card); border: 0; border-radius: 999px; opacity: 1; transform: none; pointer-events: auto; overflow: visible; }
+    /* nada no header pode quebrar linha */
+    .menu a:not(.btn) { min-height: 0; padding: 8px 9px; font-family: var(--corpo); font-weight: 500; font-size: .85rem; color: var(--navy-2); letter-spacing: 0; border-radius: 999px; white-space: nowrap; transition: background .25s, color .25s; }
+    .menu a:not(.btn):hover { color: var(--navy); background: var(--branco); }
+    .menu-cta { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

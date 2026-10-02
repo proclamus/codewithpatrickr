@@ -108,7 +108,8 @@
         });
         menu.addEventListener('click', function (e) { if (e.target.closest('a')) fechar(); });
         document.addEventListener('keydown', function (e) { if (e.key === 'Escape') fechar(); });
-        window.matchMedia('(min-width: 861px)').addEventListener('change', fechar);
+        // o nav so vira pilula em 1120px: e ai que o menu deixa de fazer sentido aberto
+        window.matchMedia('(min-width: 1120px)').addEventListener('change', fechar);
     }
 
     /* ── 5. Revelação ao rolar (seções e grades escalonadas) ──────── */
@@ -315,10 +316,13 @@
         }
     }
 
-    /* ── 8e. No celular não existe mouse: quem move o mockup é o scroll ──
+    /* ── 8e. Sem mouse, quem move o mockup é o scroll ────────────────
        A mesma inclinação 3D do desktop, só que dirigida pela rolagem, mais
-       um balanço lento no celular da Delka pra puxar o olho no hero. */
-    if (temGsap && !reduz && window.ScrollTrigger && window.matchMedia('(max-width: 860px)').matches) {
+       um balanço lento no celular da Delka pra puxar o olho no hero.
+       A condição é a CAPACIDADE do aparelho, não a largura da tela: num
+       tablet de 900px com toque não há mouse, e com um corte em 860px o
+       mockup ficava completamente parado. */
+    if (temGsap && !reduz && window.ScrollTrigger && !ponteiroFino) {
         var gm = window.gsap;
         var palcoCel = document.querySelector('.palco');
         var foneCel = document.querySelector('.hero-mobile');
@@ -334,9 +338,10 @@
     }
 
     /* ── 9. Celular do hero: paralaxe amarrada ao scroll ──────────── */
+    /* só onde existe mouse: no toque o celular já tem o balanço do 8e,
+       e duas animações no mesmo eixo do mesmo elemento brigariam. */
     var fone = document.querySelector('.hero-mobile');
-    var desktop = window.matchMedia('(min-width: 861px)').matches;
-    if (fone && !reduz && desktop) {
+    if (fone && !reduz && ponteiroFino) {
         if (temGsap && window.ScrollTrigger) {
             window.gsap.to(fone, {
                 y: 56, ease: 'none',
