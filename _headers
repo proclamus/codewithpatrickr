@@ -1,0 +1,26 @@
+# Headers HTTP do Cloudflare Pages (https://developers.cloudflare.com/pages/configuration/headers/)
+# A CSP repete a <meta> das páginas e acrescenta o que a <meta> não aplica (frame-ancestors).
+# O navegador obedece às duas ao mesmo tempo: aqui frame-src libera só o YouTube sem cookies,
+# e a <meta> de cada página fecha em 'none' onde não há vídeo (só qual-gabarito tem).
+# Se uma página passar a carregar algo de fora, ajuste aqui e na <meta>.
+
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; frame-src https://www.youtube-nocookie.com; frame-ancestors 'none'; form-action 'none'; upgrade-insecure-requests
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), camera=(), display-capture=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), midi=(), payment=(), usb=(), browsing-topics=(), autoplay=(self "https://www.youtube-nocookie.com"), encrypted-media=(self "https://www.youtube-nocookie.com"), picture-in-picture=(self "https://www.youtube-nocookie.com"), fullscreen=(self "https://www.youtube-nocookie.com")
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  ! Access-Control-Allow-Origin
+
+# Cópias que não devem ir para o Google: o endereço *.pages.dev e o www
+https://:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://:version.:project.pages.dev/*
+  X-Robots-Tag: noindex
+
+https://www.patrickribeirodev.com.br/*
+  X-Robots-Tag: noindex
