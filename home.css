@@ -498,6 +498,35 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .quem-fatos svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; color: var(--rosa-link); }
 .quem-link { margin-top: 4px; }
 
+/* ── Serviços: três frentes, cada uma com um cartão aberto ────────
+   Branco entre o cinza do "Quem sou eu" e o navy do "Por que".
+   Cartão branco com borda (a família dos .passos), não o cinza dos
+   benefícios: são coisas para escolher, não argumentos. */
+.frente { padding-block: 30px 34px; border-top: 1px solid var(--borda); }
+.frente:last-child { padding-bottom: 0; }
+.frente-cabeca { margin-bottom: 20px; }
+.frente-passo { display: block; font-size: .88rem; font-weight: 600; color: var(--rosa-link); letter-spacing: .02em; margin-bottom: 6px; }
+.frente-cabeca h3 { font-size: var(--t-3); font-weight: 800; letter-spacing: -.02em; margin-bottom: 6px; }
+.frente-cabeca p { color: var(--cinza-texto); }
+
+/* align-items:start: com o stretch padrão o cartão curto esticava até a altura do
+   vizinho e o link ia lá pro fundo, longe do texto */
+.servicos { list-style: none; display: grid; grid-template-columns: 1fr; gap: 14px; align-items: start; }
+.servico {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 10px;
+    background: var(--branco); border: 1px solid var(--borda); border-radius: var(--r);
+    padding: 24px 22px 18px;
+    transition: transform .35s var(--ease-out), box-shadow .35s var(--ease-out), border-color .3s;
+}
+@media (hover: hover) and (pointer: fine) { .servico:hover { transform: translateY(-4px); box-shadow: var(--sombra-s); border-color: var(--rosa-lavado); } }
+.servico h4 { font-family: var(--display); font-size: var(--t-2); font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1.15; }
+.servico p { max-width: none; }
+.servico-exemplo { font-size: .92rem; color: var(--cinza-texto); }
+.servico-exemplo a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rosa-lavado); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.servico-exemplo a:hover { text-decoration-color: var(--rosa-link); }
+.servico-cta { padding-top: 6px; }
+
+
 /* ── CTA final: painel rosa embutido ──────────────────────── */
 .cta-final {
     margin-inline: var(--inset); border-radius: var(--r-lg);
@@ -524,6 +553,7 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .link-rosa, .case-link { padding-block: 10px; }
     .marca { display: inline-flex; align-items: center; min-height: 44px; }
     .dado sup a, .fontes a { display: inline-block; padding: 12px; margin: -12px; }
+    .servico-exemplo a { display: inline-block; padding-block: 10px; margin-block: -10px; }
     .rodape-links a { display: inline-block; padding-block: 11px; }
 }
 
@@ -548,6 +578,8 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .rodape-inner { flex-direction: row; justify-content: space-between; align-items: center; }
     .rodape-links { flex-direction: row; gap: 24px; align-items: center; }
     .passos { grid-template-columns: 1fr 1fr; }
+    /* auto-fit: a frente com um cartão só usa a largura toda, a de três divide */
+    .servicos { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
     .dados-grid { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: 1fr 1fr; overflow: visible; margin-inline: 0; padding-inline: 0; }
 }
 
@@ -578,6 +610,11 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .passos li:nth-of-type(2) { margin-top: 40px; }
     .passos li:nth-of-type(3) { margin-top: 80px; }
     .passos li:nth-of-type(4) { margin-top: 120px; }
+
+    /* cada frente vira uma linha: nome à esquerda, cartões à direita */
+    .frente { display: grid; grid-template-columns: 230px 1fr; gap: 40px; align-items: start; padding-block: 40px 44px; }
+    .frente-cabeca { margin-bottom: 0; position: sticky; top: calc(var(--topo-h) + 24px); }
+    .servicos { gap: 18px; }
 }
 
 /* ============================================================
@@ -613,5 +650,5 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .hero-texto > *, .hero .linha, .hero-visual, .reveal, .escalona > * { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
     .traco { transform: none; transition: none; }
     mark { background-size: 100% 100%; transition: none; }
-    .btn, .btn .seta, .case, .case-img img, .beneficio, .passos li, .comp-card, .faq summary::after, .faq details p, .barra-fixa, .link-rosa svg { transition: none; animation: none; }
+    .btn, .btn .seta, .case, .case-img img, .beneficio, .passos li, .servico, .comp-card, .faq summary::after, .faq details p, .barra-fixa, .link-rosa svg { transition: none; animation: none; }
 }
