@@ -525,6 +525,10 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .servico-exemplo a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rosa-lavado); text-underline-offset: 3px; text-decoration-thickness: 2px; }
 .servico-exemplo a:hover { text-decoration-color: var(--rosa-link); }
 .servico-cta { padding-top: 6px; }
+/* o que dá pra pôr no site: pílulas sem link (não são serviços à parte, são partes do site) */
+.servico-rotulo { font-size: .92rem; font-weight: 600; color: var(--navy); margin-top: 2px; }
+.servico-recursos { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: -2px; }
+.servico-recursos li { background: var(--rosa-lavado); color: var(--navy); font-size: .88rem; font-weight: 600; line-height: 1.4; padding: 5px 13px; border-radius: 999px; }
 
 
 /* ── CTA final: painel rosa embutido ──────────────────────── */
