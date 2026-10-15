@@ -391,4 +391,26 @@
         }
     }
 
+    /* ── 10. Funções do site que viram no clique ──────────────────
+       Interação, não enfeite: roda também com movimento reduzido (aí o
+       CSS troca a face sem girar). Por isso tem a própria classe, .vira,
+       e não depende da .js. A face escondida fica inert: o Tab não entra
+       nela e o leitor de tela não lê as duas ao mesmo tempo. */
+    var funcoes = document.querySelector('.funcoes');
+    if (funcoes && 'inert' in HTMLElement.prototype) {
+        raiz.classList.add('vira');
+        funcoes.addEventListener('click', function (e) {
+            if (e.target.closest('a')) return;          // o link do case abre o site, não vira o cartão
+            var card = e.target.closest('.funcao');
+            if (!card) return;
+            var virado = card.classList.toggle('virado');
+            var frente = card.querySelector('.funcao-frente');
+            var verso = card.querySelector('.funcao-verso');
+            frente.inert = virado;
+            verso.inert = !virado;
+            // quem virou pelo teclado continua com o foco no botão da face que apareceu
+            if (e.target.closest('.funcao-virar')) (virado ? verso : frente).querySelector('.funcao-virar').focus({ preventScroll: true });
+        });
+    }
+
 })();

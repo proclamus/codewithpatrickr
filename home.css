@@ -498,10 +498,12 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .quem-fatos svg { width: 18px; height: 18px; flex-shrink: 0; margin-top: 3px; color: var(--rosa-link); }
 .quem-link { margin-top: 4px; }
 
-/* ── Serviços: três frentes, cada uma com um cartão aberto ────────
+/* ── Serviços: três frentes com pesos diferentes ──────────────
    Branco entre o cinza do "Quem sou eu" e o navy do "Por que".
-   Cartão branco com borda (a família dos .passos), não o cinza dos
-   benefícios: são coisas para escolher, não argumentos. */
+   01 Presença: cartão branco com borda (a família dos .passos).
+   02 Sites: a oferta principal, o único cartão navy, com as funções
+      do site em cartões internos. Rosa-vivo só aparece aqui, sobre navy.
+   03 Programas: frente secundária, cinza e com títulos menores. */
 .frente { padding-block: 30px 34px; border-top: 1px solid var(--borda); }
 .frente:last-child { padding-bottom: 0; }
 .frente-cabeca { margin-bottom: 20px; }
@@ -525,10 +527,95 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .servico-exemplo a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rosa-lavado); text-underline-offset: 3px; text-decoration-thickness: 2px; }
 .servico-exemplo a:hover { text-decoration-color: var(--rosa-link); }
 .servico-cta { padding-top: 6px; }
-/* o que dá pra pôr no site: pílulas sem link (não são serviços à parte, são partes do site) */
-.servico-rotulo { font-size: .92rem; font-weight: 600; color: var(--navy); margin-top: 2px; }
-.servico-recursos { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: -2px; }
-.servico-recursos li { background: var(--rosa-lavado); color: var(--navy); font-size: .88rem; font-weight: 600; line-height: 1.4; padding: 5px 13px; border-radius: 999px; }
+.frente-corpo { min-width: 0; }
+
+/* 01: o e-mail é um extra da frente, não um cartão */
+.frente-extra { margin-top: 16px; padding-left: 14px; border-left: 3px solid var(--borda); font-size: .95rem; color: var(--cinza-texto); max-width: none; }
+
+/* 02: cartão principal. Branco como os outros; o destaque vem da borda navy
+   mais grossa, do traço rosa da marca e das funções que viram no clique. */
+.frente-principal .frente-cabeca h3 { font-size: var(--t-4); }
+.servico-principal { border: 2px solid var(--navy); padding: 26px 20px 20px; gap: 12px; }
+.servico-principal h4 { font-size: var(--t-3); }
+.servico-principal .traco { background: var(--rosa-acao); margin: 0 0 2px; }
+@media (hover: hover) and (pointer: fine) { .servico-principal:hover { transform: none; box-shadow: var(--sombra-s); border-color: var(--navy); } }
+.servico-rotulo { font-weight: 600; color: var(--navy); margin-top: 6px; }
+.funcoes-dica { display: none; font-size: .92rem; color: var(--cinza-texto); margin-top: -8px; }
+.vira .funcoes-dica { display: block; }
+.funcoes-nota { padding-left: 12px; border-left: 2px solid var(--rosa-acao); font-size: .92rem; color: var(--cinza-texto); }
+
+/* ── Funções que viram ──────────────────────────────────────────
+   As duas faces ocupam a mesma célula do grid: o cartão fica com a
+   altura da maior, sem position:absolute nem altura chutada. O giro é
+   só transform (barato). Sem JS o verso não existe: fica a frente. */
+.funcoes { list-style: none; align-self: stretch; display: grid; grid-template-columns: 1fr; gap: 10px; }
+.funcao { perspective: 1200px; }
+.funcao-giro { display: grid; height: 100%; transform-style: preserve-3d; transition: transform .7s var(--ease-out); }
+.funcao.virado .funcao-giro { transform: rotateY(180deg); }
+.funcao-face {
+    grid-area: 1 / 1; display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+    border-radius: var(--r-sm); padding: 16px 18px 12px;
+    -webkit-backface-visibility: hidden; backface-visibility: hidden;
+}
+.funcao-frente { background: var(--cinza-card); border: 1px solid var(--cinza-card); transition: border-color .3s, background .3s; }
+.funcao-verso { background: var(--navy); color: var(--branco-a75); transform: rotateY(180deg); gap: 8px; }
+.funcao h5 { font-family: var(--display); font-size: var(--t-0); font-weight: 700; color: var(--navy); line-height: 1.25; letter-spacing: -.01em; }
+.funcao-frente p { font-size: .95rem; line-height: 1.5; }
+.funcao-exemplo { margin-top: 2px; font-size: .88rem; color: var(--cinza-texto); }
+.funcao-exemplo a { color: var(--navy); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rosa-lavado); text-underline-offset: 3px; text-decoration-thickness: 2px; }
+.funcao-exemplo a:hover { text-decoration-color: var(--rosa-link); }
+.funcao-lista { list-style: none; display: grid; gap: 8px; margin-top: 2px; }
+.funcao-lista li { font-size: .95rem; line-height: 1.5; }
+
+.funcao-virar {
+    display: none; align-items: center; gap: 7px; margin-top: auto; min-height: 44px; padding: 0;
+    background: none; border: 0; cursor: pointer;
+    font: inherit; font-size: .9rem; font-weight: 600; color: var(--rosa-link);
+    -webkit-tap-highlight-color: transparent;
+}
+.vira .funcao-virar { display: inline-flex; }
+.funcao-virar svg { width: 16px; height: 16px; transition: transform .45s var(--ease-out); }
+.funcao-verso .funcao-virar { color: var(--rosa-vivo); }
+.vira .funcao { cursor: pointer; }
+html:not(.vira) .funcao-verso { display: none; }
+@media (hover: hover) and (pointer: fine) {
+    .vira .funcao:hover .funcao-frente { border-color: var(--rosa-lavado); background: var(--branco); }
+    .funcao:hover .funcao-virar svg { transform: rotate(-200deg); }
+}
+
+/* a mini tela do verso: um pedaço de site de mentira, só pra mostrar a ideia */
+.mock-rotulo { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--branco-a75); }
+.mock { align-self: stretch; display: grid; gap: 8px; background: var(--branco); color: var(--navy); border-radius: 10px; padding: 10px 12px 12px; font-size: .82rem; line-height: 1.35; }
+.mock p, .mock li { max-width: none; }
+.mock-barra { display: block; font-size: .7rem; color: var(--cinza-texto); padding-bottom: 7px; border-bottom: 1px solid var(--borda); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mock-titulo { font-weight: 700; }
+.mock-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.mock-chips span { border: 1px solid var(--borda); border-radius: 999px; padding: 2px 9px; font-size: .78rem; }
+.mock-chips .off { color: var(--cinza-texto); text-decoration: line-through; }
+.mock-chips .sel { background: var(--rosa-acao); border-color: var(--rosa-acao); font-weight: 700; }
+.mock-ok { font-weight: 600; color: var(--rosa-link); }
+.mock-ok::before { content: '✓ '; }
+.mock-produtos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.mock-produtos span { display: grid; gap: 2px; border: 1px solid var(--borda); border-radius: 7px; padding: 5px; font-size: .74rem; color: var(--cinza-texto); }
+.mock-produtos i { display: block; aspect-ratio: 4 / 3; border-radius: 4px; background: linear-gradient(135deg, var(--cinza-card), var(--rosa-lavado)); }
+.mock-produtos b { color: var(--navy); font-weight: 600; }
+.mock-balao { justify-self: end; max-width: 92%; background: var(--rosa-lavado); border-radius: 12px 12px 3px 12px; padding: 8px 10px; }
+.mock-linhas { list-style: none; display: grid; }
+.mock-linhas li { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 4px 0; border-bottom: 1px dashed var(--borda); }
+.mock-linhas li:last-child { border-bottom: 0; }
+.mock-linhas b { font-weight: 600; white-space: nowrap; }
+.mock-tag { font-style: normal; font-size: .68rem; font-weight: 700; background: var(--rosa-lavado); color: var(--rosa-link); border-radius: 999px; padding: 1px 7px; margin-left: 4px; }
+.mock-checks { list-style: none; display: grid; gap: 6px; }
+.mock-checks li { display: flex; align-items: center; gap: 8px; }
+.mock-checks li::before { content: '✓'; flex-shrink: 0; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: .7rem; font-weight: 700; background: var(--rosa-acao); color: var(--navy); }
+
+/* Site no ar: cartão branco curto logo abaixo do principal, sem número de frente próprio */
+.servico-apoio { margin-top: 14px; }
+
+/* 03: frente secundária, mais leve */
+.frente-secundaria .frente-cabeca h3 { font-size: var(--t-2); }
+.frente-secundaria .servico { background: var(--cinza-card); border-color: var(--cinza-card); }
+.frente-secundaria .servico h4 { font-size: var(--t-1); }
 
 
 /* ── CTA final: painel rosa embutido ──────────────────────── */
@@ -557,7 +644,7 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .link-rosa, .case-link { padding-block: 10px; }
     .marca { display: inline-flex; align-items: center; min-height: 44px; }
     .dado sup a, .fontes a { display: inline-block; padding: 12px; margin: -12px; }
-    .servico-exemplo a { display: inline-block; padding-block: 10px; margin-block: -10px; }
+    .servico-exemplo a, .funcao-exemplo a { display: inline-block; padding-block: 12px; margin-block: -12px; }
     .rodape-links a { display: inline-block; padding-block: 11px; }
 }
 
@@ -584,6 +671,10 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .passos { grid-template-columns: 1fr 1fr; }
     /* auto-fit: a frente com um cartão só usa a largura toda, a de três divide */
     .servicos { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+    .servico-principal { padding: 30px 28px 22px; }
+    .funcoes { grid-template-columns: 1fr 1fr; }
+    /* cinco funções em duas colunas: a última ocupa a linha inteira em vez de sobrar sozinha */
+    .funcao:last-child:nth-child(odd) { grid-column: 1 / -1; }
     .dados-grid { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: 1fr 1fr; overflow: visible; margin-inline: 0; padding-inline: 0; }
 }
 
@@ -654,5 +745,5 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
     .hero-texto > *, .hero .linha, .hero-visual, .reveal, .escalona > * { opacity: 1 !important; transform: none !important; animation: none !important; transition: none !important; }
     .traco { transform: none; transition: none; }
     mark { background-size: 100% 100%; transition: none; }
-    .btn, .btn .seta, .case, .case-img img, .beneficio, .passos li, .servico, .comp-card, .faq summary::after, .faq details p, .barra-fixa, .link-rosa svg { transition: none; animation: none; }
+    .funcao-giro, .funcao-virar svg, .btn, .btn .seta, .case, .case-img img, .beneficio, .passos li, .servico, .comp-card, .faq summary::after, .faq details p, .barra-fixa, .link-rosa svg { transition: none; animation: none; }
 }
