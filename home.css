@@ -432,6 +432,9 @@ body.sem-scroll .topo { position: fixed; top: 0; left: 0; right: 0; }
 .case-tag { display: inline-block; background: var(--rosa-lavado); color: var(--navy); font-size: .88rem; font-weight: 600; line-height: 1.4; padding: 5px 13px; border-radius: 999px; }
 .case-corpo p { max-width: none; margin: 0; }
 .case-link { margin-top: auto; padding-top: 8px; }
+/* CTA depois dos cases: quem acabou de ver os sites já sabe o que quer */
+.exemplos-cta { margin-top: 36px; display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.exemplos-cta p { font-family: var(--display); font-weight: 700; font-size: var(--t-2); color: var(--navy); letter-spacing: -.01em; }
 .selo { display: inline-block; vertical-align: middle; margin-left: 8px; font-family: var(--corpo); font-size: .76rem; font-weight: 600; color: var(--cinza-texto); border: 1px solid var(--borda); padding: 3px 10px; border-radius: 999px; letter-spacing: 0; }
 
 /* ── Como funciona: cards em degrau, numeral grande ───────── */
@@ -719,6 +722,8 @@ html:not(.vira) .funcao-verso { display: none; }
    saia cortado ate em 1440. Com o nav apertado a soma cai pra ~1005
    e cabe a partir de 1120px. Abaixo disso, hamburguer; o layout
    segue de desktop desde 861 e a barra fixa de baixo leva ao CTA.
+   Com "Chamar no WhatsApp" o botao foi a 222px e passou 1px da tela
+   em 1120: os links do nav cairam de 9px pra 8px de respiro lateral.
    ============================================================ */
 @media (min-width: 1120px) {
     body { padding-bottom: 0; }
@@ -729,7 +734,7 @@ html:not(.vira) .funcao-verso { display: none; }
     /* menu vira uma pílula central, como na referência */
     .menu { position: static; inset: auto; display: flex; flex-direction: row; align-items: center; gap: 2px; padding: 4px; background: var(--cinza-card); border: 0; border-radius: 999px; opacity: 1; transform: none; pointer-events: auto; overflow: visible; }
     /* nada no header pode quebrar linha */
-    .menu a:not(.btn) { min-height: 0; padding: 8px 9px; font-family: var(--corpo); font-weight: 500; font-size: .85rem; color: var(--navy-2); letter-spacing: 0; border-radius: 999px; white-space: nowrap; transition: background .25s, color .25s; }
+    .menu a:not(.btn) { min-height: 0; padding: 8px 8px; font-family: var(--corpo); font-weight: 500; font-size: .85rem; color: var(--navy-2); letter-spacing: 0; border-radius: 999px; white-space: nowrap; transition: background .25s, color .25s; }
     .menu a:not(.btn):hover { color: var(--navy); background: var(--branco); }
     .menu-cta { display: none; }
 }
